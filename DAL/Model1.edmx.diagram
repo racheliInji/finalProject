@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8f86b184ae6a4f88b201bdd63c8629ce" Name="Diagram1">
+        <EntityTypeShape EntityType="RacheliandDiniModel.Grade" Width="1.5" PointX="3.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Hour" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.HoursForTeacher" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Lesson" Width="1.5" PointX="10.5" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Message" Width="1.5" PointX="13.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Recommendation" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Schedule" Width="1.5" PointX="8.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Student" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Subject" Width="1.5" PointX="6" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.SubjectToTeacher" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Teacher" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.User" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Vacation" Width="1.5" PointX="11.25" PointY="12.625" IsExpanded="true" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Student__IdGrade__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Hours__TeacherId__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__HoursForT__Teach__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Lesson__Schedule__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Message__Vacatio__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Recommend__Subje__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Recommend__Teach__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Schedule__Studen__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Schedule__Subjec__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Schedule__Teache__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Student__Student__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Vacation__Studen__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__SubjectTo__Teach__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Teacher__Teacher__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Vacation__Teache__5535A963" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

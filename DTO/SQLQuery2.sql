@@ -1,0 +1,4 @@
+﻿GO
+ALTER DATABASE foo SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+GO
+EXEC sp_renamedb N'foo', N'bar';

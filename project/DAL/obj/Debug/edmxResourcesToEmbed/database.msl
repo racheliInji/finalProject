@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RacheliandDiniModel1StoreContainer" CdmEntityContainer="RacheliandDiniEntities1">
+    <EntitySetMapping Name="Grades">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.Grade">
+        <MappingFragment StoreEntitySet="Grade">
+          <ScalarProperty Name="IdGrade" ColumnName="IdGrade" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Grade1" ColumnName="Grade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hours">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.Hour">
+        <MappingFragment StoreEntitySet="Hours">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Starttime" ColumnName="Starttime" />
+          <ScalarProperty Name="Endtime" ColumnName="Endtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoursForTeachers">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.HoursForTeacher">
+        <MappingFragment StoreEntitySet="HoursForTeacher">
+          <ScalarProperty Name="HoursForTeacherId" ColumnName="HoursForTeacherId" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Starttime" ColumnName="Starttime" />
+          <ScalarProperty Name="Endtime" ColumnName="Endtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lessons">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.Lesson">
+        <MappingFragment StoreEntitySet="Lesson">
+          <ScalarProperty Name="LessonId" ColumnName="LessonId" />
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="LessonDescribe" ColumnName="LessonDescribe" />
+          <ScalarProperty Name="H_W" ColumnName="H.W" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+          <ScalarProperty Name="VacationId" ColumnName="VacationId" />
+          <ScalarProperty Name="IsOk" ColumnName="IsOk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recommendations">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.Recommendation">
+        <MappingFragment StoreEntitySet="Recommendation">
+          <ScalarProperty Name="RecommendationId" ColumnName="RecommendationId" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="RecommendationContents" ColumnName="RecommendationContents" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedules">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.Schedule">
+        <MappingFragment StoreEntitySet="Schedule">
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="IdGrade" ColumnName="IdGrade" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.Subject">
+        <MappingFragment StoreEntitySet="Subject">
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectToTeachers">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.SubjectToTeacher">
+        <MappingFragment StoreEntitySet="SubjectToTeacher">
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="PriceForLesson" ColumnName="PriceForLesson" />
+          <ScalarProperty Name="LessonLength" ColumnName="LessonLength" />
+          <ScalarProperty Name="GradesRange" ColumnName="GradesRange" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teachers">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.Teacher">
+        <MappingFragment StoreEntitySet="Teacher">
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="Qualifications" ColumnName="Qualifications" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="tz" ColumnName="tz" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="numhouse" ColumnName="numhouse" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vacations">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.Vacation">
+        <MappingFragment StoreEntitySet="Vacation">
+          <ScalarProperty Name="VacationId" ColumnName="VacationId" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="describe" ColumnName="describe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

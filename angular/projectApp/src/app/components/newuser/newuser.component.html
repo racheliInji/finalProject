@@ -1,0 +1,105 @@
+<div class="container">
+    <form action="action_page.php">
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">שם פרטי</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="fname" name="firstname" placeholder="Your name.."  [(ngModel)]="firstName" >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">משפחה</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="lastname" placeholder="Your last name.."  [(ngModel)]="lastName">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ת.ז</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="tz" name="tz"  [(ngModel)]="tz" >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="country">עיר</label>
+        </div>
+        <div class="col-75">
+          <select id="city" name="city"    [(ngModel)]="city">
+            <option value="australia">בני ברק</option>
+            <option value="canada">ירושלים</option>
+            <option value="usa">חיפה</option>
+            <option value="australia"> פתח תקוה</option>
+            <option value="canada">תל אביב </option>
+            <option value="usa">בית שמש</option>
+            <option value="usa">אשדוד</option>
+            <option value="usa"> אלעד</option>
+            <option value="usa"> ביתר </option>
+            <option value="usa"> גבעתיים </option>
+            <option value="usa"> הרצליה </option>
+            <option value="usa"> זכרון יעקב </option>
+            <option value="usa"> חדרה </option>
+            <option value="usa"> טבריה </option>
+            <option value="usa"> נתניה </option>
+            <option value="usa"> עפולה </option>
+            <option value="usa"> צפת </option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">רחוב</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="tz" name="tz"  [(ngModel)]="street" >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">מס בית</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="tz" name="tz"  [(ngModel)]="numhouse" >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="subject">דוא"ל</label>
+        </div>
+        <div class="col-75">
+            <input type="email" id="email" name="email"   [(ngModel)]="email">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="phone">טלפון</label>
+        </div>
+        <div class="col-75">
+          <input type="tel" id="phone" name="phone"   [(ngModel)]="phone">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname"> סיסמא</label>
+        </div>
+        <div class="col-75">
+          <input type="password" id="password" name="password"   [(ngModel)]="password">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname"> אימות הסיסמא</label>
+        </div>
+        <div class="col-75">
+          <input type="password" id="password" name="password"  >
+        </div>
+      </div>
+      <div class="row">
+        <input type="submit" value="Submit" (click)="adduser()" >
+      </div>
+    </form>
+  </div>

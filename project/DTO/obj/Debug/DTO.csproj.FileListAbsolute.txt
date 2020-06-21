@@ -11,3 +11,16 @@ C:\Users\USER\Desktop\תכנות\פרויקט\project\DTO\bin\Debug\Newtonsoft.J
 C:\Users\USER\Desktop\תכנות\פרויקט\project\DTO\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\USER\Desktop\תכנות\פרויקט\project\DTO\bin\Debug\System.Web.Http.xml
 C:\Users\USER\Desktop\תכנות\פרויקט\project\DTO\obj\Debug\DTO.csproj.CopyComplete
+C:\Users\USER\Desktop\myproject\project\DTO\bin\Debug\DTO.dll
+C:\Users\USER\Desktop\myproject\project\DTO\bin\Debug\DTO.pdb
+C:\Users\USER\Desktop\myproject\project\DTO\bin\Debug\Newtonsoft.Json.dll
+C:\Users\USER\Desktop\myproject\project\DTO\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\USER\Desktop\myproject\project\DTO\bin\Debug\System.Web.Http.dll
+C:\Users\USER\Desktop\myproject\project\DTO\bin\Debug\Newtonsoft.Json.xml
+C:\Users\USER\Desktop\myproject\project\DTO\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\USER\Desktop\myproject\project\DTO\bin\Debug\System.Web.Http.xml
+C:\Users\USER\Desktop\myproject\project\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+C:\Users\USER\Desktop\myproject\project\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\myproject\project\DTO\obj\Debug\DTO.csproj.CopyComplete
+C:\Users\USER\Desktop\myproject\project\DTO\obj\Debug\DTO.dll
+C:\Users\USER\Desktop\myproject\project\DTO\obj\Debug\DTO.pdb

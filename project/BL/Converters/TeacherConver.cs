@@ -26,7 +26,24 @@ namespace BL.Converters
             TeacherDTO.TeacherId = Teacher.TeacherId;
             return TeacherDTO;
         }
-
+        public static List<Teacher> TeachertList(List<DTO.TeacherDTO> list)
+        {
+            List<Teacher> teachers = new List<Teacher>();
+            foreach (var item in list)
+            {
+                teachers.Add(GetTeacher(item));
+            }
+            return teachers;
+        }
+        public static List<TeacherDTO> DtoTeachertList(List<Teacher> list)
+        {
+            List<TeacherDTO> teachers = new List<TeacherDTO>();
+            foreach (var item in list)
+            {
+                teachers.Add(GetTeacherDTO(item));
+            }
+            return teachers;
+        }
     }
 }
 

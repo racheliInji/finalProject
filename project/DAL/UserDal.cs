@@ -24,5 +24,22 @@ namespace DAL
                 db.SaveChanges();
             }
         }
+
+      
+
+        public static List<Student> getstudent()
+        {
+            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            {
+                return db.Students.ToList();
+            }
+        }
+        public static List<Teacher> getTeacher()
+        {
+            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            {
+                return db.Teachers.ToList();
+            }
+        }
     }
 }

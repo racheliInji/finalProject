@@ -7,15 +7,33 @@ namespace BL
 {
     public class UserBl
     {
-        public static bool Login(string username, string password)
+        public static string Login(string username, string password)
         {
            var q= Converters.UserConvert.DtoUserList(DAL.UserDal.GetUsers());
             foreach (var item in q)
             {
-                if (item.firstName == username )//&& item.password == password
-                    return true;
+                if (item.firstName == username && item.password==password)//&& item.password == password
+                {
+                    var q2 = DAL.TeacherDAL.GetTeachers();
+                    foreach(var t in q2)
+                    {
+                        if(item.userId== t.TeacherId)
+                        {
+                            return "teacher";
+                        }
+                    }
+
+                    var q3 = DAL.StudentDAL.GetStudents();
+                    foreach (var s in q3)
+                    {
+                        if (item.userId == s.StudentId)
+                        {
+                            return "student";
+                        }
+                    }
+                }
             }
-            return false;
+            return null;
 
         }
 

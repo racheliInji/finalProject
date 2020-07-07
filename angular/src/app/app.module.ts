@@ -17,6 +17,8 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchComponent } from './components/search/search.component';
+import { TeacherComponent } from './components/teacher/teacher.component';
 
 
 
@@ -29,7 +31,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StudentComponent,
     NewTeacherComponent,
     NewStudentComponent,
-    CalanderComponent
+    CalanderComponent,
+    SearchComponent,
+    TeacherComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,13 @@ body { background-image: radial-gradient( cover, rgba(92,100,111,1) 0%,rgba(31,3
   width: 298px;
   margin-top: 10%;
 }
+#no{
+color:  red;
+font-size: small;
+margin-left: 10%;
+float: left; 
+margin-top: -6%
+}
 .login h1 {
   background-image: linear-gradient(top, #f1f3f3, #d4dae0);
   border-bottom: 1px solid #a6abaf;
@@ -80,9 +87,14 @@ input[type="checkbox"]:checked + .toggle { background-position: 0 -16px }
   text-decoration: none;
   top: 18px;
   transition: color .4s;
+  // float: left; 
+}
+#login{
+  margin-top: 1%;
 }
 .forgot:hover { color: #3b3b3b }
 input[type="submit"] {
+ 
   width:240px;
   height:35px;
   display:block;
@@ -124,7 +136,11 @@ input[type="submit"]:active {
   box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #31524d, 0px 5px 3px #999;
 }
 .new{
+  font-family: Arial, Helvetica, sans-serif;
   float: left;
-  margin-left: 15%;
-margin-top:5%
+  margin-left: 10%;
+margin-top:2%;
+padding: 1%;
+margin-top: 2%;
+
 }

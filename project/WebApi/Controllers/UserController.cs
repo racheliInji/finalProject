@@ -13,7 +13,7 @@ namespace WebApi.Controllers
     {
         [Route("Login")]
         [HttpPut]
-        public bool Login(UserDTO  user)
+        public string Login(UserDTO  user)
         { 
             return BL.UserBl.Login(user.firstName, user.password);
             

@@ -3,8 +3,12 @@
         <input type="text" placeholder="Username" id="username" [(ngModel)]="name" >  
       <input type="password" placeholder="password" id="password" [(ngModel)]="password">  
         <a href="#" class="forgot">forgot password?</a> 
-      <input type="submit" value="Sign In" (click)="login()">
+        <div   *ngIf="checkNewUser()==true" >
+         <p id="no" >!המשתמש לא נמצא</p>
+      </div> 
+      <input id="login" type="submit" value="Sign In" (click)="login()">
       <a routerLink="/newteacher" class="new">הרשם כמורה</a> 
       <a routerLink="/newStudent" class="new">הרשם כתלמידה</a> 
+     
     </div>
     <div class="shadow"></div>

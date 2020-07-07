@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
    private key='currnetUser'
-   private user :any
+   private user :any;
+   private kind:string;
    Url = 'http://localhost:59802/User';
   constructor(private http:HttpClient,private  router:Router) { }
   login( user:BaseUser)
@@ -20,17 +21,23 @@ export class AuthService {
     //      }
         
     this.user=user;
-        return  this.http.put<any>(this.Url + "/Login", user).subscribe(i=>{this.check(i)});
+    this.http.put<any>(this.Url + "/Login", user).subscribe(i=>{this.check(i), console.log(i), this.kind = i});
+    if(this.kind!= null)
+    return true;
+    return false;
   }
       check(i: any) {
         console.log(i);
-        if(i==true)
+        if(i!=null)
         {
           localStorage.setItem(this.key, JSON.stringify(this.user));
+          if(i=="teacher")
+          this.router.navigate(['/teacher']);
+          else
           this.router.navigate(['/student']);
         }
-        else
-        this.router.navigate(['/newuser']);
+        // else
+        // this.router.navigate(['/newuser']);
       }
         // .subscribe((i)=>{ localStorage.setItem(this.key, JSON.stringify(user))},(i2)=>{this.router.navigate(['/newuser'])});
      currnetUser()

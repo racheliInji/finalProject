@@ -21,7 +21,7 @@ namespace DAL
             this.HoursForTeachers = new HashSet<HoursForTeacher>();
         }
     
-        public int userId { get; set; }
+        public int id { get; set; }
         public string tz { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }

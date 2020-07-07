@@ -18,7 +18,7 @@ namespace BL.Converters
             User.lastName = UserDto.lastName;
             User.email = UserDto.email;
             User.tz = UserDto.tz;
-            User.userId = UserDto.userId;
+            User.id = UserDto.userId;
             User.password = UserDto.password;
             User.phone = UserDto.phone;
             User.street = UserDto.street;
@@ -33,7 +33,7 @@ namespace BL.Converters
             UserDTO.lastName = User.lastName;
             UserDTO.email = User.email;
             UserDTO.tz = User.tz;
-            UserDTO.userId = User.userId;
+            UserDTO.userId = User.id;
             UserDTO.password = User.password;
             UserDTO.phone = User.phone;
             UserDTO.street = User.street;

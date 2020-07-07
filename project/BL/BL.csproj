@@ -64,6 +64,8 @@
     <Compile Include="Converters\UserConvert.cs" />
     <Compile Include="Converters\VacationConvert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentBL.cs" />
+    <Compile Include="TeacherBL.cs" />
     <Compile Include="UserBl.cs" />
   </ItemGroup>
   <ItemGroup>

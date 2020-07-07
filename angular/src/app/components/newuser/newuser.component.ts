@@ -26,8 +26,9 @@ export class NewuserComponent implements OnInit {
   }
   adduser()
 {
-  this.userService.adduser(new User(this.tz,this.firstName,this.lastName,this.city,this.street,this.numhouse,
+  this.userService.adduser(new User(22,this.tz,this.firstName,this.lastName,this.city,this.street,this.numhouse,
     this.email,this.password,this.phone));
     this.router.navigate(['/student']);
 }
+
 }

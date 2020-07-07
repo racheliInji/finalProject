@@ -120,21 +120,33 @@
     <Compile Include="Schedule.cs">
       <DependentUpon>database.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Student.cs">
       <DependentUpon>database.tt</DependentUpon>
     </Compile>
+    <Compile Include="StudentDAL.cs" />
     <Compile Include="Subject.cs">
       <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="SubjectToTeacher.cs">
       <DependentUpon>database.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Teacher.cs">
       <DependentUpon>database.tt</DependentUpon>
     </Compile>
+    <Compile Include="TeacherDAL.cs" />
     <Compile Include="User.cs">
       <DependentUpon>database.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserAndTeacher.cs" />
     <Compile Include="UserDal.cs" />
     <Compile Include="Vacation.cs">
       <DependentUpon>database.tt</DependentUpon>
@@ -153,7 +165,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="database.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>database.Designer.cs</LastGenOutput>

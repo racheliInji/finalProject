@@ -33,6 +33,7 @@
         <AssociationConnector Association="RacheliandDiniModel1.FK__SubjectTo__Teach__534D60F1" ManuallyRouted="false" />
         <AssociationConnector Association="RacheliandDiniModel1.FK__Teacher__Teacher__5070F446" ManuallyRouted="false" />
         <AssociationConnector Association="RacheliandDiniModel1.FK__Vacation__Teache__6754599E" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RacheliandDiniModel1.sysdiagram" Width="1.5" PointX="3.125" PointY="2.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,5 +1,5 @@
 export class User {
-
+      public userId : number
     public  tz:string
     public  firstName:string  
     public lastName: string;
@@ -9,10 +9,10 @@ export class User {
     public  email:string 
     public password : string ;
     public  phone:string ;  
-    constructor(   tz:string, firstName:string ,lastName: string, city:string ,street:string,numhouse :number
+    constructor(   userId : number, tz:string, firstName:string ,lastName: string, city:string ,street:string,numhouse :number
          ,email:string ,password : string,phone:string  )
   {
-        // this.userId  = userId;
+        this.userId  = userId;
         this.tz = tz;
         this.firstName = firstName;
         this.lastName = lastName;

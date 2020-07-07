@@ -18,13 +18,6 @@ namespace WebApi.Controllers
             return BL.UserBl.Login(user.firstName, user.password);
             
         }
-        [Route("checkUser")]
-        [HttpPost]
-        public string checkUser(UserDTO user)
-        {
-            return BL.UserBl.checkUser(user.firstName, user.password);
-
-        }
         [HttpGet]
         [Route("alluser")]
         public IHttpActionResult GetUser()

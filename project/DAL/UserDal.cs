@@ -25,20 +25,12 @@ namespace DAL
             }
         }
 
-      
-
-        public static List<Student> getstudent()
+        public static void AddTeacher(Teacher teacher)
         {
             using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
             {
-                return db.Students.ToList();
-            }
-        }
-        public static List<Teacher> getTeacher()
-        {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
-            {
-                return db.Teachers.ToList();
+                db.Teachers.Add(teacher);
+                db.SaveChanges();
             }
         }
     }

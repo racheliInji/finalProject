@@ -8,9 +8,10 @@ namespace DTO
 {
    public class SubjectToTeacherDTO
     {
-        public int TeacherId { get; set; }
-        public int SubjectId { get; set; }
-        public decimal PriceForLesson { get; set; }
+        public string teacherName { get; set; }
+        public string password { get; set; }
+        public string SubjectName{ get; set; }
+        public int PriceForLesson { get; set; }
         public int LessonLength { get; set; }
         public string GradesRange { get; set; }
 

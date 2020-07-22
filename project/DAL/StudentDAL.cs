@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTO;
 
 namespace DAL
 {
@@ -40,10 +41,44 @@ namespace DAL
 
         public static List<Student> GetStudents()
         {
-            using(RacheliandDiniEntities1 db =new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
             {
                 return db.Students.ToList();
             }
+        }
+
+        public static void updateStudent(StudentDTO.UserAndStudentDTO userAndStudentDTO, int id)
+        {
+            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            {
+                foreach (var user in db.Users)
+                {
+                    if (user.id == id)
+                    {
+                        user.firstName = userAndStudentDTO.firstName;
+                        user.city = userAndStudentDTO.city;
+                        user.lastName = userAndStudentDTO.lastName;
+                        user.street = userAndStudentDTO.street;
+                        user.numhouse = userAndStudentDTO.numhouse;
+                        user.phone = userAndStudentDTO.phone;
+                        user.password = userAndStudentDTO.password;
+                        user.email = userAndStudentDTO.email;
+                        user.tz = userAndStudentDTO.tz;
+
+                    };
+                }
+                foreach (var student in db.Students)
+                {
+                    if (student.StudentId == id)
+                    {
+                        student.IdGrade = userAndStudentDTO.IdGrade;
+                        student.Level = userAndStudentDTO.Level;
+                    }
+                }
+
+                db.SaveChanges();
+            }
+            
         }
     }
 }

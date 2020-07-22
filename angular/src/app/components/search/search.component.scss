@@ -1,0 +1,30 @@
+
+
+body {
+    direction: rtl;
+  margin: 2rem;
+}
+#teacher{
+ 
+  border: solid;
+  border-color: darkblue;
+  margin:4%;
+  
+
+}
+#teacher:hover{
+  background-color:lightgrey;
+}
+#name{
+  direction: rtl;
+  margin-left: 70%;
+}
+.detail{
+  direction: rtl;
+  margin-left: 80%;
+ 
+}
+img{
+  width: 10%;
+  height: 10%;
+}

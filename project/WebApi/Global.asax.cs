@@ -13,24 +13,26 @@ namespace WebApi
     {
         protected void Application_Start()
         {
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-        protected void Application_BeginRequest()
-        {
-            Response.AddHeader("Access-Control-Allow-Origin", "*");
-            Response.AddHeader("Access-Control-Allow-Methods", "PUT,POST");
-            Response.AddHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        //protected void Application_BeginRequest()
+        //{
+        //    Response.AddHeader("Access-Control-Allow-Origin", "*");
+        //    Response.AddHeader("Access-Control-Allow-Methods", "PUT,POST,DELETE,GET");
+        //    Response.AddHeader("Access-Control-Allow-Headers", "Content-Type, Accept, Pragma, Cache-Control, Authorization ");
 
-            if (Request.Headers.AllKeys.Contains("Origin", StringComparer.CurrentCultureIgnoreCase)
-                && Request.HttpMethod == "OPTIONS")
-            {
-                Response.End();
-            }
+        //    if (Request.Headers.AllKeys.Contains("Origin", StringComparer.CurrentCultureIgnoreCase)
+        //      && Request.HttpMethod == "OPTIONS")
+        //    {
+        //        Response.End();
+        //    }
 
-        }
+
+        //}
     }
 }

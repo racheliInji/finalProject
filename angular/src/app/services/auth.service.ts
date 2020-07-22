@@ -32,7 +32,7 @@ export class AuthService {
         {
           localStorage.setItem(this.key, JSON.stringify(this.user));
           if(i=="teacher")
-          this.router.navigate(['/teacher']);
+          this.router.navigate(['/calander']);
           else
           this.router.navigate(['/student']);
         }

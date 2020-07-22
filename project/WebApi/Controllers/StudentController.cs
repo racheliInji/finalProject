@@ -44,5 +44,41 @@ namespace WebApi.Controllers
             }
 
         }
+        [HttpPut]
+        [Route("getIdStudent")]
+        public IHttpActionResult getIdStudent(UserDTO.userLogin user)
+        {
+
+            try
+            {
+                var student = BL.StudentBL.getIdStudent(user);
+                if (student != null)
+                    return Ok(student);
+                return NotFound();
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+
+        }
+        [HttpPut]
+        [Route("updateStudent")]
+        public IHttpActionResult updateStudent(StudentDTO.UserAndStudentDTO userAndStudentDTO)
+        {
+
+            try
+            {
+                 BL.StudentBL.updateStudent(userAndStudentDTO);
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+
+        }
     }
 }

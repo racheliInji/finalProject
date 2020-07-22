@@ -146,6 +146,7 @@ C:\Users\USER\Desktop\myproject\project\DAL\bin\Debug\System.IO.Compression.dll
 C:\Users\USER\Desktop\myproject\project\DAL\bin\Debug\System.Threading.Tasks.Dataflow.dll
 C:\Users\USER\Desktop\myproject\project\DAL\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\USER\Desktop\myproject\project\DAL\bin\Debug\DTO.pdb
+C:\Users\USER\Desktop\myproject\project\DAL\bin\Debug\DTO.dll.config
 C:\Users\USER\Desktop\myproject\project\DAL\bin\Debug\EntityFramework.xml
 C:\Users\USER\Desktop\myproject\project\DAL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\USER\Desktop\myproject\project\DAL\bin\Debug\Newtonsoft.Json.xml

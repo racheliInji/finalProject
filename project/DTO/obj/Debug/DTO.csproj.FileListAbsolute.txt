@@ -37,6 +37,7 @@ C:\Users\USER\Desktop\10.6.20\project\DTO\obj\Debug\DTO.csproj.CoreCompileInputs
 C:\Users\USER\Desktop\10.6.20\project\DTO\obj\Debug\DTO.csproj.CopyComplete
 C:\Users\USER\Desktop\10.6.20\project\DTO\obj\Debug\DTO.dll
 C:\Users\USER\Desktop\10.6.20\project\DTO\obj\Debug\DTO.pdb
+C:\Users\USER\Desktop\myproject\project\DTO\bin\Debug\DTO.dll.config
 C:\Users\USER\Desktop\myproject\project\DTO\bin\Debug\DTO.dll
 C:\Users\USER\Desktop\myproject\project\DTO\bin\Debug\DTO.pdb
 C:\Users\USER\Desktop\myproject\project\DTO\bin\Debug\Newtonsoft.Json.dll

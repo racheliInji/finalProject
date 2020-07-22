@@ -1,2 +1,26 @@
-<input  type="text"  placeholder="מקצוע">
-<input  type="text"  placeholder="מקצוע">
+<!-- <select class="select-css">
+    <option value="הכל">הכל</option>
+    <option value="אנגלית"> אנגלית</option>
+    <option value="מתמטיקה">מתמטיקה</option>
+    <option value="דקדוק">דקדוק </option>
+    <option value="הבעה">הבעה</option>
+    <option value="קריאה">קריאה</option>
+    <option value="תכנות">תכנות</option>
+    <option value="פיזיקה">פיזיקה</option>
+</select> -->
+<input type="text" placeholder="מקצוע" [(ngModel)]="subject">
+<input type="text" placeholder="עיר" [(ngModel)]="city">
+<input type="text" placeholder="רחוב" [(ngModel)]="street">
+<input type="button" value="חפש" (click)="getTeachers()">
+<div *ngFor="let teacher of teacherList" id="teacher">
+    <h1 id="name" class="detail">{{teacher.firstName}} {{ teacher.lastName}}</h1>
+    <p class="detail">{{teacher.SubjectName}}</p>
+    <p class="detail">מחיר: {{teacher.PriceForLesson}} ש"ח</p>
+    <p class="detail">פלאפון: {{teacher.phone}}</p>
+    <!-- {{teacher.Qualifications}} -->
+
+    <div *ngIf="check(teacher)==true">
+        <img src="assets/{{teacher.Qualifications}}">
+    </div>
+    <input type="button" value="לקביעת שיעור" (click)="addLesson()">
+</div>

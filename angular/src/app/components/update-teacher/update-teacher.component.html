@@ -1,0 +1,123 @@
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+<div class="container">
+<!-- <br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
+<hr> -->
+
+
+
+
+
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<form>
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="firstName"  class="form-control" placeholder="שם פרטי" type="text"  #firstName2="ngModel" [(ngModel)]="firstName" >
+    </div>
+    <div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input  name="lastName"class="form-control" placeholder="שם משפחה"  type="text"  #lastName2="ngModel"  [(ngModel)]="lastName" >
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="tz" class="form-control" placeholder="ת.ז"  type="text"  #tz2="ngModel" [(ngModel)]="tz" >
+    </div>
+
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="email" class="form-control" placeholder="Email address" type="email"  #email2="ngModel" [(ngModel)]="email" >
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+		</div>
+		<select class="custom-select" style="max-width: 120px;">
+		    <option selected="">+971</option>
+		    <option value="1">+972</option>
+		    <option value="2">+198</option>
+		    <option value="3">+701</option>
+		</select>
+    	<input name="phone" class="form-control" placeholder="Phone number" type="text"  #phone2="ngModel" [(ngModel)]="phone" >
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i>  </span>
+		</div>
+		<select name="city" class="form-control"   #city2="ngModel" [(ngModel)]="city" >
+            <option value="בני ברק">בני ברק</option>
+            <option value="ירושלים">ירושלים</option>
+            <option value="חיפה">חיפה</option>
+            <option value="פתח תקוה"> פתח תקוה</option>
+            <option value="תל אביב">תל אביב </option>
+            <option value="בית שמש">בית שמש</option>
+            <option value="אשדוד">אשדוד</option>
+            <option value="אלעד"> אלעד</option>
+            <option value="ביתר"> ביתר </option>
+            <option value="גבעתיים"> גבעתיים </option>
+            <option value="הרצליה"> הרצליה </option>
+            <option value="זכרון יעקב"> זכרון יעקב </option>
+            <option value="חדרה"> חדרה </option>
+            <option value="טבריה"> טבריה </option>
+            <option value="נתניה"> נתניה </option>
+            <option value="עפולה"> עפולה </option>
+            <option value="צפת"> צפת </option>
+            <option value="אילת"> אילת </option>
+            <option value="ביתר"> ביתר </option>
+            <option value="קרית ספר"> קרית ספר </option>
+            <option value="דימונה"> דימונה </option>
+            <option value="רעננה"> רעננה </option>
+		</select>
+    </div> 
+    <div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
+		 </div>
+        <input name="street" class="form-control" placeholder="רחוב"  type="text"  #street2="ngModel" [(ngModel)]="street" > 
+    </div>
+    <div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
+		 </div>
+        <input name="numhouse" class="form-control" placeholder="מספר בית"  type="number"  #numhouse2="ngModel" [(ngModel)]="numhouse" >
+    </div>
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control" name="password"  placeholder="Create password" type="password"  #password2="ngModel" [(ngModel)]="password" >
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input  name="checkpassword" class="form-control" placeholder="Repeat password" type="password"  [(ngModel)]="checkpassword" >
+    </div> <!-- form-group// -->                                      
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block" (click)="updateTeacher()" >אישור </button>
+    </div> 
+                                                              
+</form>
+</article>
+</div> <!-- card.// -->
+
+</div> 
+
+

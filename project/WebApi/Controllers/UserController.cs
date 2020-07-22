@@ -30,10 +30,9 @@ namespace WebApi.Controllers
                     return Ok(q);
                 return NotFound();
             }
-            catch (Exception)
+            catch 
             {
-
-                throw;
+                return BadRequest();
             }
            
         }

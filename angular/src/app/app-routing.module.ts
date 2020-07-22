@@ -9,6 +9,12 @@ import { NewTeacherComponent } from './components/new-teacher/new-teacher.compon
 import { NewStudentComponent } from './components/new-student/new-student.component';
 import { CalanderComponent } from './components/calander/calander.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
+import { DeterminingLessonsComponent } from './components/determining-lessons/determining-lessons.component';
+import { FileComponent } from './components/file/file.component';
+import { UpdateStudentComponent } from './components/update-student/update-student.component';
+import { UpdateTeacherComponent } from './components/update-teacher/update-teacher.component';
+import { SearchComponent } from './components/search/search.component';
+import { AddLessonComponent } from './components/add-lesson/add-lesson.component';
 
 
 
@@ -20,7 +26,13 @@ const routes: Routes = [
   {path:'user',component:UserComponent},
   {path:'newteacher',component:NewTeacherComponent},
   {path:'newStudent',component:NewStudentComponent},
-  {path:'calander',component:CalanderComponent}
+  {path:'calander',component:CalanderComponent},
+  {path:'determineLessons',component:DeterminingLessonsComponent},
+  {path:'file',component:FileComponent},
+  {path:'updateStudent',component:UpdateStudentComponent},
+  {path:'updateTeacher',component:UpdateTeacherComponent},
+  {path:'search',component:SearchComponent},
+  {path:'addlesson',component:AddLessonComponent}
 ];
 
 @NgModule({

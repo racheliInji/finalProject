@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -19,7 +19,14 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './components/search/search.component';
 import { TeacherComponent } from './components/teacher/teacher.component';
-
+import {MatCheckboxModule, MAT_CHECKBOX_CLICK_ACTION} from '@angular/material/checkbox';
+import { DeterminingLessonsComponent } from './components/determining-lessons/determining-lessons.component';
+import { MatCardModule } from '@angular/material/card';
+import { FileComponent } from './components/file/file.component';
+import { UpdateStudentComponent } from './components/update-student/update-student.component';
+import {MatInputModule} from '@angular/material/input';
+import { UpdateTeacherComponent } from './components/update-teacher/update-teacher.component';
+import { AddLessonComponent } from './components/add-lesson/add-lesson.component';
 
 
 @NgModule({
@@ -33,18 +40,27 @@ import { TeacherComponent } from './components/teacher/teacher.component';
     NewStudentComponent,
     CalanderComponent,
     SearchComponent,
-    TeacherComponent
+    TeacherComponent,
+    DeterminingLessonsComponent,
+    FileComponent,
+    UpdateStudentComponent,
+    UpdateTeacherComponent,
+    AddLessonComponent
   ],
   imports: [
     BrowserModule,
+    MatCardModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     CommonModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     NgbModalModule,
+    MatInputModule,
+    MatCheckboxModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
@@ -52,7 +68,7 @@ import { TeacherComponent } from './components/teacher/teacher.component';
     }),
   ],
   
-  // providers: [],
+   providers: [{provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}],
   // bootstrap: [AppComponent]
   // declarations: [AppComponent],
   // exports: [AppComponent],

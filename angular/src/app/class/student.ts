@@ -10,7 +10,7 @@ export class Student {
        public password : string ;
        public  phone:string ;  
        public IdGrade:number;
-       public level:string;
+       public Level:string;
         
        constructor(    tz:string, firstName:string ,lastName: string, city:string ,street:string,numhouse :number
         ,email:string ,password : string,phone:string ,IdGrade:number,level:string)
@@ -26,7 +26,7 @@ export class Student {
        this.password=password;
        this.phone=phone;
        this.IdGrade=IdGrade;
-       this.level= level
+       this.Level= level
     }
     
 }

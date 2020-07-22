@@ -3,6 +3,7 @@ import { TeacherService } from 'src/app/services/teacher.service';
 import { User } from 'src/app/class/user';
 import { Router } from '@angular/router';
 import { Teacher } from 'src/app/class/teacher';
+import { BaseUser } from 'src/app/class/base-user';
 
 @Component({
   selector: 'app-new-teacher',
@@ -19,7 +20,9 @@ export class NewTeacherComponent implements OnInit {
    phone:string ;  
    numhouse :number;
    street :string;
-  
+   private key='currnetUser'
+   private user :any;
+   private kind:string;
   constructor(private  TeacherService : TeacherService,private  router:Router) { }
 count=20;
 teachers:Teacher[]=[];
@@ -30,9 +33,10 @@ teachers:Teacher[]=[];
     console.log(this.city);
     this.count=this.count+1;
     this.TeacherService
-    .adduser(new Teacher(this.tz,this.firstName,this.lastName,this.city,this.street,this.numhouse,
+    .addTeacher(new Teacher(this.tz,this.firstName,this.lastName,this.city,this.street,this.numhouse,
       this.email,this.password,this.phone," "));
-      this.router.navigate(['/student']);
+      this.router.navigate(['/determineLessons']);
+      localStorage.setItem(this.key, JSON.stringify(new BaseUser(this.firstName,this.password)));
   }
   GetTeacher(){
     this.TeacherService.getTeachers().subscribe((teacherList:Teacher[])=>{this.teachers=teacherList, console.log(this.teachers)});

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTO;
 
 namespace DAL
 {
@@ -44,46 +45,43 @@ namespace DAL
 
             using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
             {
-
-                //var q = (from o in db.Users
-                //         join od in db.Teachers on o.id equals od.TeacherId
-                //         select new
-                //         {
-                //             o.id,
-                //             o.firstName,
-                //             o.lastName,
-                //             o.email,
-                //             o.numhouse,
-                //             o.street,
-                //             o.city,
-                //             o.password,
-                //             o.phone,
-                //             o.tz,
-                //             od.Qualifications,
-                //         }).ToList();
-                //foreach (object o in q)
-                //{
-
-                //  foreach(var x in)
-
-
-                //}
-
-                //var query = from user in db.Users
-                //            join teacher in db.Teachers on user.id equals teacher.TeacherId 
-                //            select new { user.id ,user.lastName,user.firstName,user.city,user.email,
-                //            user.numhouse,user.password, user.phone, user.street,user.tz, teacher.Qualifications};
-                //List<UserAndTeacher> UserAndTeacher = new List<UserAndTeacher>();
-                //foreach (var v in query)
-                //{
-                //  UserAndTeacher userAndTeachers = new UserAndTeacher()
-                //  {
-
-                //  }
-                //}
                 return db.Teachers.ToList();
             }
         }
+
+        public static void updateTeacher(TeacherDTO.UserAndTeacherDTO userAndTeacherDTO, int id)
+        {
+            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            {
+                foreach (var user in db.Users)
+                {
+                    if (user.id == id)
+                    {
+                        user.firstName = userAndTeacherDTO.firstName;
+                        user.city = userAndTeacherDTO.city;
+                        user.lastName = userAndTeacherDTO.lastName;
+                        user.street = userAndTeacherDTO.street;
+                        user.numhouse = userAndTeacherDTO.numhouse;
+                        user.phone = userAndTeacherDTO.phone;
+                        user.password = userAndTeacherDTO.password;
+                        user.email = userAndTeacherDTO.email;
+                        user.tz = userAndTeacherDTO.tz;
+
+                    };
+                }
+                foreach (var teacher in db.Teachers)
+                {
+                    if (teacher.TeacherId == id)
+                    {
+                        teacher.Qualifications = userAndTeacherDTO.Qualifications;
+     
+                    }
+                }
+
+                db.SaveChanges();
+            }
+        }
+
 
 
         //public static UserAndTeacher GetTeacher(int id)

@@ -141,12 +141,12 @@ namespace WebApi.Controllers
                     }
                     //BL.TeacherBL.addFile(path);
                 }
-                return Ok("success!!!!");
+                return Ok("הקובץ נשמר בהצלחה!!!!");
             }
             catch (Exception ex)
             {
 
-                return BadRequest(ex.ToString());
+                return BadRequest("יש תקלה בשמירת הקובץ נסה קובץ אחר");
             }
 
 

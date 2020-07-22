@@ -20,14 +20,20 @@ public nameFile:string;
    console.log(event);
    this.selectedfile =<File>event.target.files[0];
    console.log(this.selectedfile);
-  }
-  upload(){
-       const fd = new FormData();
+   const fd = new FormData();
        fd.append('file',this.selectedfile,this.selectedfile.name);
        this.nameFile=this.selectedfile.name;
        this.teacherService.addfile(fd,this.selectedfile.name).subscribe(res=>{console.log(res),alert(res)});
 
        console.log(fd);
-       
   }
+  // upload(){
+  //      const fd = new FormData();
+  //      fd.append('file',this.selectedfile,this.selectedfile.name);
+  //      this.nameFile=this.selectedfile.name;
+  //      this.teacherService.addfile(fd,this.selectedfile.name).subscribe(res=>{console.log(res),alert(res)});
+
+  //      console.log(fd);
+       
+  // }
 }

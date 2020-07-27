@@ -17,14 +17,15 @@ namespace BL.Converters
             SubjectToTeacher.GradesRange = SubjectToTeacherDTO.GradesRange;
             //SubjectToTeacher.LessonLength = SubjectToTeacherDTO.LessonLength;
             SubjectToTeacher.PriceForLesson = SubjectToTeacherDTO.PriceForLesson;
-            foreach (var item in DAL.UserDal.GetUsers())
-            {
-                if (SubjectToTeacherDTO.password == item.password && SubjectToTeacherDTO.teacherName == item.firstName)
-                {
-                    SubjectToTeacher.TeacherId = item.id;
-                }
-            }
-            foreach(var item in DAL.SubjectToTeacherDAL.GetSubjects())
+            SubjectToTeacher.TeacherId = SubjectToTeacherDTO.TeacherId;
+            //foreach (var item in DAL.UserDal.GetUsers())
+            //{
+            //    if (SubjectToTeacherDTO.password == item.password && SubjectToTeacherDTO.teacherName == item.firstName)
+            //    {
+            //        SubjectToTeacher.TeacherId = item.id;
+            //    }
+            //}
+            foreach (var item in DAL.SubjectToTeacherDAL.GetSubjects())
             {
                 if (item.SubjectName == SubjectToTeacherDTO.SubjectName)
                 {

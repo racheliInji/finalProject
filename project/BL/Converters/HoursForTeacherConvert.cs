@@ -17,13 +17,15 @@ namespace BL.Converters
             HoursForTeacher.Day = HoursForTeacherDto.Day;
             HoursForTeacher.Starttime = TimeSpan.Parse(HoursForTeacherDto.Starttime);
             HoursForTeacher.Endtime = TimeSpan.Parse(HoursForTeacherDto.Endtime);
-            foreach (var item in DAL.UserDal.GetUsers())
-            {
-                if (HoursForTeacherDto.password == item.password && HoursForTeacherDto.teacherName == item.firstName)
-                {
-                    HoursForTeacher.TeacherId = item.id;
-                }
-            }
+            HoursForTeacher.TeacherId = HoursForTeacherDto.TeacherId;
+
+            //foreach (var item in DAL.UserDal.GetUsers())
+            //{
+            //    if (HoursForTeacherDto.password == item.password && HoursForTeacherDto.teacherName == item.firstName)
+            //    {
+            //        HoursForTeacher.TeacherId = item.id;
+            //    }
+            //}
             return HoursForTeacher;
 
 
@@ -41,14 +43,16 @@ namespace BL.Converters
             HoursForTeacherDTO.Day = HoursForTeacher.Day;
             HoursForTeacherDTO.Starttime = HoursForTeacher.Starttime.ToString();
             HoursForTeacherDTO.Endtime = HoursForTeacher.Endtime.ToString();
-            foreach (var item in DAL.UserDal.GetUsers())
-            {
-                if (item.id == HoursForTeacher.TeacherId)
-                {
-                    HoursForTeacherDTO.password = item.password;
-                    HoursForTeacherDTO.teacherName = item.firstName;
-                }
-            }
+            HoursForTeacherDTO.TeacherId = HoursForTeacher.TeacherId;
+
+            //foreach (var item in DAL.UserDal.GetUsers())
+            //{
+            //    if (item.id == HoursForTeacher.TeacherId)
+            //    {
+            //        HoursForTeacherDTO.password = item.password;
+            //        HoursForTeacherDTO.teacherName = item.firstName;
+            //    }
+            //}
             return HoursForTeacherDTO;
         }
         public static List<HoursForTeacher> HoursForTeacherList(List<DTO.HoursForTeacherDTO> list)

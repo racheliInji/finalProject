@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  
+  URL:'http://localhost:59802',
+  links :['כניסה', 'חיפוש', 'אודות']
   
 };
 

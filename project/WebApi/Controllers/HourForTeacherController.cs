@@ -8,7 +8,8 @@ using System.Web.Http.Cors;
 using DTO;
 namespace WebApi.Controllers
 {
-    [RoutePrefix("HoursForTeacher")]
+    
+       [RoutePrefix("HoursForTeacher")]
     public class HourForTeacherController : ApiController
     {
         [HttpPost]
@@ -49,12 +50,32 @@ namespace WebApi.Controllers
             }
 
         }
+        [HttpPost]
+        [Route("getTeachersDaysAndHours")]
+        public IHttpActionResult getTeachersDaysAndHours(TeacherDTO.TeacherAndSubjectDTO TeacherAndSubjectDTO)
+        {
+            try
+            {
+                var q = BL.HoursForTeacherBL.getTeachersDaysAndHours(TeacherAndSubjectDTO);
+                if (q != null)
+                    return Ok(q);
+                else
+                    return NotFound();
+            }
+            catch
+            {
+                return BadRequest();
+
+            }
+
+
+        }
         [HttpPut]
         [Route("getIdHour")]
         public int getIdHour(HoursForTeacherDTO HoursForTeacherDTO)
         {
-           
-               int x= BL.HoursForTeacherBL.getIdHour(HoursForTeacherDTO);
+
+            int x = BL.HoursForTeacherBL.getIdHour(HoursForTeacherDTO);
             return x;
         }
         [HttpDelete]

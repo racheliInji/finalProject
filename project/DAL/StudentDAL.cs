@@ -80,5 +80,26 @@ namespace DAL
             }
             
         }
+
+        public static void DeleteStudent(int id)
+        {
+            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            {
+                foreach (var item in db.Students)
+                {
+                    if (item.StudentId == id)
+                    {
+                        db.Students.Remove(item);
+                    }
+                }
+                foreach (var item in db.Users)
+                {
+                    if (item.id == id)
+                    {
+                        db.Users.Remove(item);
+                    }
+                }
+            }
+        }
     }
 }

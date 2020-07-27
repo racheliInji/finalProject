@@ -19,7 +19,7 @@ namespace BL
                     {
                         if(item.userId== t.TeacherId)
                         {
-                            return "teacher";
+                            return '0'+(item.userId*2).ToString()+"as";
                         }
                     }
 
@@ -28,7 +28,7 @@ namespace BL
                     {
                         if (item.userId == s.StudentId)
                         {
-                            return "student";
+                            return '1' + (item.userId * 2).ToString() + "as";
                         }
                     }
                 }
@@ -45,6 +45,18 @@ namespace BL
         public  static List<UserDTO> GetUsers()
         {
             return Converters.UserConvert.DtoUserList(DAL.UserDal.GetUsers());
+        }
+
+        public static UserDTO GetUserById(int id)
+        {
+            foreach(var user in DAL.UserDal.GetUsers())
+            {
+                if (user.id == id)
+                {
+                    return Converters.UserConvert.GetUserDTO(user);
+                }
+            }
+            return null;
         }
 
         public static void AddUser(UserDTO user)

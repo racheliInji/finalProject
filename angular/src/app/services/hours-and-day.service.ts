@@ -12,11 +12,12 @@ export class HoursAndDayService {
   Url = 'http://localhost:59802/HoursForTeacher'
 
   constructor(private http: HttpClient) { }
-  
+
   addHourandDay(hourandDay: HourandDay) {
     console.log(hourandDay);
     return this.http.post<any>(this.Url + '/addHourandDay', hourandDay);
   }
+
   getHourandDay() {
     return this.http.get<HourandDay[]>(this.Url + '/hoursAndDaysForTeacher');
   }
@@ -26,13 +27,14 @@ export class HoursAndDayService {
   }
 
   addSubjectToTeacher(item: SubjectForTeacher) {
+    console.log(item);
     return this.http.post<any>("http://localhost:59802/SubjectToTeacher/addSubjectToTeacher", item);
 
   }
 
   removeHourAndDay(id: any) {
     console.log(id);
-
     return this.http.delete<any>(`${this.Url + '/removeHourAndDay'}/${id}`);
   }
+
 }

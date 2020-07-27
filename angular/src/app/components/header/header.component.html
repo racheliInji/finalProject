@@ -1,0 +1,13 @@
+<nav mat-tab-nav-bar [backgroundColor]="background" class="nav">
+    <a mat-tab-link *ngFor="let link of links" class="link"
+       (click)="activeLink = link"
+       [routerLink]="link"> {{link}} </a>
+   <img src="assets/logo.png">
+  </nav>
+  
+  <!-- <button mat-raised-button class="example-action-button" (click)="toggleBackground()">
+    Toggle background
+  </button>
+  <button mat-raised-button class="example-action-button" (click)="addLink()">
+    Add link
+  </button> -->

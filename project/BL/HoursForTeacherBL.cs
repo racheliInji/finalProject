@@ -29,7 +29,7 @@ namespace BL
         {
             foreach(var item in Converters.HoursForTeacherConvert.DTOHoursForTeacherList(DAL.HoursForTeacherDAL.GetHoursForTeacher()))
             {
-                if(item.teacherName== hoursForTeacherDTO.teacherName&&item.password == hoursForTeacherDTO.password)
+                if(item.TeacherId== hoursForTeacherDTO.TeacherId)
                 {
                     if(item.Day== hoursForTeacherDTO.Day&&item.Endtime== hoursForTeacherDTO.Endtime&&item.Starttime== hoursForTeacherDTO.Starttime)
                     {
@@ -39,6 +39,19 @@ namespace BL
                 }
             }
             return 0;
+        }
+
+        public static List<HoursForTeacherDTO> getTeachersDaysAndHours(TeacherDTO.TeacherAndSubjectDTO teacherAndSubjectDTO)
+        {
+            List<HoursForTeacherDTO> list = new List<HoursForTeacherDTO>();
+            foreach(var teacher in DAL.HoursForTeacherDAL.GetHoursForTeacher())
+            {
+                if(teacher.TeacherId== teacherAndSubjectDTO.userId)
+                {
+                    list.Add( Converters.HoursForTeacherConvert.GetHoursForTeacherDTO(teacher));
+                }
+            }
+            return list;
         }
     }
 

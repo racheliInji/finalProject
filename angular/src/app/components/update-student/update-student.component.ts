@@ -3,6 +3,7 @@ import { BaseUser } from 'src/app/class/base-user';
 import { Student } from 'src/app/class/student';
 import { StudentService } from 'src/app/services/student.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-update-student',
@@ -25,11 +26,14 @@ export class UpdateStudentComponent implements OnInit {
   student: Student;
   id: number;
   @ViewChild('fname', { static: true }) fname: ElementRef;
-  constructor(private StudentService: StudentService) { }
+  constructor(private StudentService: StudentService, private UserService: UserService) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem("currnetUser"));
-    this.StudentService.getIdStudent(this.user).subscribe(res => { this.student = res, console.log(this.student), this.putValue() })
+
+    if (localStorage.getItem("token")) {
+      this.id = this.UserService.getIdByToken();
+    }
+    this.StudentService.getStudentById(this.id).subscribe(res => { this.student = res, console.log(this.student), this.putValue() })
 
   }
   putValue() {
@@ -39,17 +43,22 @@ export class UpdateStudentComponent implements OnInit {
     this.city = this.student.city;
     this.street = this.student.street;
     this.numhouse = this.student.numhouse;
-    this.email = this.student.email; 
+    this.email = this.student.email;
     this.phone = this.student.phone;
     this.password = this.student.password;
     this.level = this.student.Level;
-    this.grade = this.student.IdGrade; 
+    this.grade = this.student.IdGrade;
     this.tz = this.student.tz;
 
   }
-  updateStudent(){
-    this.StudentService.updateStudent(new Student(this.tz,this.firstName, this.lastName ,this.city,this.street,this.numhouse,
-      this.email,this.password,this.phone,this.grade,this.level)).subscribe();
+  updateStudent() {
+    this.StudentService.updateStudent(new Student(this.tz, this.firstName, this.lastName, this.city, this.street, this.numhouse,
+      this.email, this.password, this.phone, this.grade, this.level)).subscribe();
   }
+
+  deleteStudent(){
+    this.StudentService.deleteStudent(9);
+  }
+
 
 }

@@ -1,3 +1,14 @@
 <!-- <app-login></app-login> -->
 <!-- <app-user></app-user> -->
-<router-outlet></router-outlet>
+<div *ngIf="newUser()==true">
+  <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+</div>
+<div *ngIf="isTeacher()==true">
+  <app-teacher-header (sidenavToggle)="sidenav.toggle()"></app-teacher-header>
+</div>
+<div *ngIf="isStudent()==true">
+  <app-student-header (sidenavToggle)="sidenav.toggle()"></app-student-header>
+</div>
+<main>
+  <router-outlet></router-outlet>
+</main>

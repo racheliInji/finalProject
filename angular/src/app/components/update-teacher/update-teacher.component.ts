@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeacherService } from 'src/app/services/teacher.service';
 import { BaseUser } from 'src/app/class/base-user';
 import { Teacher } from 'src/app/class/teacher';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-update-teacher',
@@ -19,12 +20,18 @@ export class UpdateTeacherComponent implements OnInit {
   numhouse: number;
   street: string;
   user: BaseUser;
-  teacher: Teacher
-  constructor(private TeacherService: TeacherService) { }
+  teacher: Teacher;
+  id: number
+  constructor(private TeacherService: TeacherService, private UserService: UserService) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem("currnetUser"));
-    this.TeacherService.getTeacher(this.user).subscribe(res => { this.teacher = res, console.log(this.teacher), this.putValue() })
+    console.log("hiiiiiii")
+    if (localStorage.getItem("token")) {
+      this.id = this.UserService.getIdByToken();
+      console.log(this.id);
+      this.TeacherService.getTeacherById(this.id).subscribe(res => { this.teacher = res, console.log(this.teacher), this.putValue() })
+   
+    }
   }
   putValue() {
 
@@ -41,6 +48,6 @@ export class UpdateTeacherComponent implements OnInit {
   }
   updateTeacher() {
     this.TeacherService.updateStudent(new Teacher(this.tz, this.firstName, this.lastName, this.city, this.street, this.numhouse,
-      this.email, this.password, this.phone,'')).subscribe();
+      this.email, this.password, this.phone, '')).subscribe();
   }
 }

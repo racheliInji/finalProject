@@ -47,7 +47,7 @@ namespace BL
                     {
                         UserAndStudentDTO.Add(new StudentDTO.UserAndStudentDTO()
                         {
-                            //userId = u.id,
+                            userId = u.id,
                             firstName = u.firstName,
                             lastName = u.lastName,
                             city = u.city,
@@ -67,6 +67,40 @@ namespace BL
                 }
             }
             return UserAndStudentDTO;
+        }
+
+        public static void DeleteTeacher(int id)
+        {
+            DAL.StudentDAL.DeleteStudent(id);
+        }
+
+        public static StudentDTO.UserAndStudentDTO getStudentAndUserById(int id)
+        {
+
+            foreach (var student in DAL.StudentDAL.GetStudents())
+            {
+                if (student.StudentId == id)
+                {
+                   var u= DAL.UserDal.GetUsers().Find(i => i.id == id);
+                    StudentDTO.UserAndStudentDTO userAndStudentDTO = new StudentDTO.UserAndStudentDTO()
+                    {
+                        userId = u.id,
+                        firstName = u.firstName,
+                        lastName = u.lastName,
+                        city = u.city,
+                        street = u.street,
+                        numhouse = u.numhouse,
+                        phone = u.phone,
+                        password = u.password,
+                        email = u.email,
+                        tz = u.tz,
+                        IdGrade = student.IdGrade,
+                        Level = student.Level
+                    };
+                    return userAndStudentDTO;
+                }
+            }
+            return null;
         }
 
         public static void updateStudent(StudentDTO.UserAndStudentDTO userAndStudentDTO)

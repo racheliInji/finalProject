@@ -35,8 +35,8 @@ namespace BL
             DAL.TeacherDAL.addTeacher(Converters.TeacherConver.GetTeacher(teacherDTO), Converters.UserConvert.GetUser(userDTO));
         }
 
-      
-    
+
+
 
         public static TeacherDTO getTeacherById(int id)
         {
@@ -47,6 +47,34 @@ namespace BL
             }
             return null;
         }
+
+        public static TeacherDTO.UserAndTeacherDTO getTeacherAndUserById(int id)
+        {
+            foreach (var teacher in DAL.TeacherDAL.GetTeachers())
+            {
+                if (teacher.TeacherId == id)
+                {
+                    var u = DAL.UserDal.GetUsers().Find(i => i.id == id);
+                    TeacherDTO.UserAndTeacherDTO UserAndTeacherDTO = new TeacherDTO.UserAndTeacherDTO()
+                    {
+                        userId = u.id,
+                        firstName = u.firstName,
+                        lastName = u.lastName,
+                        city = u.city,
+                        street = u.street,
+                        numhouse = u.numhouse,
+                        phone = u.phone,
+                        password = u.password,
+                        email = u.email,
+                        tz = u.tz,
+                        Qualifications = teacher.Qualifications
+                    };
+                    return UserAndTeacherDTO;
+                }
+            }
+            return null;
+        }
+
         public static object getTeacher(UserDTO.userLogin baseUser)
         {
             foreach (var user in DAL.UserDal.GetUsers())
@@ -66,7 +94,7 @@ namespace BL
                         password = user.password,
                         email = user.email,
                         tz = user.tz
-                       
+
                     };
                     return userAndTeacherDTO;
 
@@ -118,7 +146,7 @@ namespace BL
                         });
 
                     }
-                 
+
                 }
             }
 
@@ -130,9 +158,9 @@ namespace BL
 
         public static int GetTeacherId(HoursForTeacherDTO item)
         {
-           foreach(var i in GetTeachers())
+            foreach (var i in GetTeachers())
             {
-                if(i.password==item.password&&i.firstName==item.teacherName)
+                if (i.userId == item.TeacherId)
                 {
                     return i.userId;
                 }
@@ -144,7 +172,7 @@ namespace BL
             var q = DAL.TeacherDAL.GetTeachers();
             var q2 = GetUsers();
             var q3 = DAL.SubjectToTeacherDAL.GetSubjectToTeachers();
-            List<TeacherDTO.TeacherAndSubjectDTO> teacherAndSubjecList = new List<TeacherDTO.TeacherAndSubjectDTO>();
+            List<TeacherDTO.TeacherAndSubjectDTO> teacherAndSubjecList = new List<TeacherDTO.TeacherAndSubjectDTO>() { };
             foreach (var u in q2)
             {
                 foreach (var t in q)
@@ -155,8 +183,9 @@ namespace BL
                         {
                             if (s.TeacherId == u.userId)
                             {
-                                teacherAndSubjecList.Add(new TeacherDTO.TeacherAndSubjectDTO()
-                                {
+                                
+                                TeacherDTO.TeacherAndSubjectDTO teacherAndSubjectDTO = new TeacherDTO.TeacherAndSubjectDTO()
+                                { 
                                     userId = u.userId,
                                     firstName = u.firstName,
                                     lastName = u.lastName,
@@ -168,9 +197,22 @@ namespace BL
                                     email = u.email,
                                     GradesRange = s.GradesRange,
                                     PriceForLesson = (int)s.PriceForLesson,
-                                    SubjectName = DAL.SubjectToTeacherDAL.GetSubjects().Find(i => i.SubjectId == s.SubjectId).SubjectName,
+                                    
+          
+                                    //DAL.SubjectToTeacherDAL.GetSubjects().Find(i => i.SubjectId == s.SubjectId).SubjectName,
                                     Qualifications = t.Qualifications
-                                });
+                                };
+                                foreach (var i in DAL.SubjectToTeacherDAL.GetSubjects())
+                                {
+                                    if (i.SubjectId == s.SubjectId)
+                                    {
+                                        teacherAndSubjectDTO.SubjectName = i.SubjectName;
+                                    }
+                                };
+                                teacherAndSubjecList.Add(teacherAndSubjectDTO);
+
+
+
                             }
                         }
                     }

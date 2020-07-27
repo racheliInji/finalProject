@@ -10,7 +10,9 @@ export class SearchComponent implements OnInit {
   city: string;
   street: string;
   subject: string;
-  teacherList: any[] = []
+  teacherList: any[] = [];
+  flag = false;
+  teacher:any;
   src = "C:\Users\USER\Desktop\myproject\project\WebApi\ResourcesFiles"
   constructor(private TeacherService: TeacherService) { }
 
@@ -20,13 +22,23 @@ export class SearchComponent implements OnInit {
     this.TeacherService.getTeacherAndSubject().subscribe(res => { this.teacherList = res, console.log(this.teacherList) });
   }
   check(teacher: any) {
-    console.log(teacher.Qualifications);
-    if (teacher.Qualifications != null && teacher.Qualifications !="") {
-      console.log("true");
+    // console.log(teacher.Qualifications);
+    if (teacher.Qualifications != null && teacher.Qualifications != "") {
+      // console.log("true");
       return true;
     }
 
     console.log("false")
+    return false;
+  }
+  addLesson(teacher) {
+    this.flag = true;
+    this.teacher=teacher;
+    this.TeacherService.teacherDetails(teacher);
+  }
+  IsChossen() {
+    if (this.flag == true)
+      return true;
     return false;
   }
 }

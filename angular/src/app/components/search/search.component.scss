@@ -5,12 +5,13 @@ body {
   margin: 2rem;
 }
 #teacher{
- 
+ width: 40%;
+ height: 40%;
   border: solid;
   border-color: darkblue;
   margin:4%;
-  
-
+  position: relative;
+  float: left;
 }
 #teacher:hover{
   background-color:lightgrey;

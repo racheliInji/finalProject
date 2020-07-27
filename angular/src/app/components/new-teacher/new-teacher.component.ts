@@ -4,6 +4,7 @@ import { User } from 'src/app/class/user';
 import { Router } from '@angular/router';
 import { Teacher } from 'src/app/class/teacher';
 import { BaseUser } from 'src/app/class/base-user';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-new-teacher',
@@ -11,35 +12,42 @@ import { BaseUser } from 'src/app/class/base-user';
   styleUrls: ['./new-teacher.component.scss']
 })
 export class NewTeacherComponent implements OnInit {
-  tz:string
-   firstName:string  
-   lastName: string;
-   city:string
-   email:string 
-   password : string ;
-   phone:string ;  
-   numhouse :number;
-   street :string;
-   private key='currnetUser'
-   private user :any;
-   private kind:string;
-  constructor(private  TeacherService : TeacherService,private  router:Router) { }
-count=20;
-teachers:Teacher[]=[];
+  tz: string
+  firstName: string
+  lastName: string;
+  city: string
+  email: string
+  password: string;
+  phone: string;
+  numhouse: number;
+  street: string;
+  private key = 'token'
+  private user: any;
+  private kind: string;
+  teachers: Teacher[] = [];
+  constructor(private TeacherService: TeacherService, private router: Router, private auth: AuthService) { }
+
+
   ngOnInit() {
   }
-  addTeacher()
-  {
+
+  addTeacher() {
     console.log(this.city);
-    this.count=this.count+1;
     this.TeacherService
-    .addTeacher(new Teacher(this.tz,this.firstName,this.lastName,this.city,this.street,this.numhouse,
-      this.email,this.password,this.phone," "));
-      this.router.navigate(['/determineLessons']);
-      localStorage.setItem(this.key, JSON.stringify(new BaseUser(this.firstName,this.password)));
+      .addTeacher(new Teacher(this.tz, this.firstName, this.lastName, this.city, this.street, this.numhouse,
+        this.email, this.password, this.phone, " ")).subscribe(res => {
+          this.auth.login(this.firstName, this.password).subscribe((token: string) => {
+            if (token != "notfound") {
+              localStorage.setItem(this.key, token);
+            }
+
+          });
+        });
+    this.router.navigate(['/determineLessons']);
   }
-  GetTeacher(){
-    this.TeacherService.getTeachers().subscribe((teacherList:Teacher[])=>{this.teachers=teacherList, console.log(this.teachers)});
-    
+
+  GetTeacher() {
+    this.TeacherService.getTeachers().subscribe((teacherList: Teacher[]) => { this.teachers = teacherList, console.log(this.teachers) });
+
   }
 }

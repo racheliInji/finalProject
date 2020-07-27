@@ -45,10 +45,29 @@ namespace WebApi.Controllers
                     return Ok(q);
                 return NotFound();
             }
+            catch (Exception e)
+            {
+
+                return BadRequest();
+            }
+
+        }
+        [HttpGet]
+        [Route("getTeacherById/{id}")]
+        public IHttpActionResult getTeacherById(int id)
+        {
+
+            try
+            {
+                var student = BL.TeacherBL.getTeacherAndUserById(id);
+                if (student != null)
+                    return Ok(student);
+                return NotFound();
+            }
             catch (Exception)
             {
 
-                throw;
+                return BadRequest();
             }
 
         }
@@ -66,7 +85,7 @@ namespace WebApi.Controllers
             catch (Exception)
             {
 
-                throw;
+                return BadRequest();
             }
 
         }
@@ -78,7 +97,7 @@ namespace WebApi.Controllers
             try
             {
                 var teacher = BL.TeacherBL.getTeacher(user);
-               
+
                 if (teacher != null)
                     return Ok(teacher);
                 return NotFound();
@@ -121,7 +140,7 @@ namespace WebApi.Controllers
                     //HttpContext.Current.Server.MapPath("~/ResourcesFiles")
                     var fileName = Path.GetFileName(file.FileName);
                     var path = Path.Combine("C: \\Users\\USER\\Desktop\\myproject\\angular\\src\\assets"
-             , fileName );
+             , fileName);
 
                     try
                     {

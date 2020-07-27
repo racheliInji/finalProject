@@ -40,7 +40,7 @@ namespace DTO
             public string phone { get; set; }
             public string SubjectName { get; set; }
             public int PriceForLesson { get; set; }
-            public int lessonlength { get; set; }
+            //public int lessonlength { get; set; }
             public string GradesRange { get; set; }
         }
 

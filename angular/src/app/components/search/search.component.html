@@ -8,6 +8,7 @@
     <option value="תכנות">תכנות</option>
     <option value="פיזיקה">פיזיקה</option>
 </select> -->
+<!-- <app-header (sidenavToggle)="sidenav.toggle()"></app-header> -->
 <input type="text" placeholder="מקצוע" [(ngModel)]="subject">
 <input type="text" placeholder="עיר" [(ngModel)]="city">
 <input type="text" placeholder="רחוב" [(ngModel)]="street">
@@ -22,5 +23,8 @@
     <div *ngIf="check(teacher)==true">
         <img src="assets/{{teacher.Qualifications}}">
     </div>
-    <input type="button" value="לקביעת שיעור" (click)="addLesson()">
+    <input type="button" value="לקביעת שיעור" (click)="addLesson(teacher)">
+</div>
+<div *ngIf="IsChossen()==true">
+    <app-add-lesson></app-add-lesson>
 </div>

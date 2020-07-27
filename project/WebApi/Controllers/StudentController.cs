@@ -44,14 +44,14 @@ namespace WebApi.Controllers
             }
 
         }
-        [HttpPut]
-        [Route("getIdStudent")]
-        public IHttpActionResult getIdStudent(UserDTO.userLogin user)
+        [HttpGet]
+        [Route("getStudentById/{id}")]
+        public IHttpActionResult getStudentById(int id)
         {
 
             try
             {
-                var student = BL.StudentBL.getIdStudent(user);
+                var student = BL.StudentBL.getStudentAndUserById(id);
                 if (student != null)
                     return Ok(student);
                 return NotFound();
@@ -80,5 +80,24 @@ namespace WebApi.Controllers
             }
 
         }
+
+          [HttpDelete]
+        [Route("deleteStudent/{id}")]
+        public IHttpActionResult Delete(int id)
+        {
+
+            try
+            {
+                BL.StudentBL.DeleteTeacher(id);
+                return Ok("בוצעה בהצלחה");
+            }
+            catch
+            {
+                return BadRequest("יש תקלה");
+
+            }
+
+        }
+
     }
 }

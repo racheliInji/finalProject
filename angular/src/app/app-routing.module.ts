@@ -15,24 +15,32 @@ import { UpdateStudentComponent } from './components/update-student/update-stude
 import { UpdateTeacherComponent } from './components/update-teacher/update-teacher.component';
 import { SearchComponent } from './components/search/search.component';
 import { AddLessonComponent } from './components/add-lesson/add-lesson.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 
 const routes: Routes = [
-  {path:'',component:LoginComponent},
-  {path:'newuser',component:NewuserComponent},
-  {path:'student',component:StudentComponent, canActivate:[AuthGuard] },
-  {path:'teacher',component:TeacherComponent, canActivate:[AuthGuard] },
-  {path:'user',component:UserComponent},
-  {path:'newteacher',component:NewTeacherComponent},
-  {path:'newStudent',component:NewStudentComponent},
-  {path:'calander',component:CalanderComponent},
-  {path:'determineLessons',component:DeterminingLessonsComponent},
-  {path:'file',component:FileComponent},
-  {path:'updateStudent',component:UpdateStudentComponent},
-  {path:'updateTeacher',component:UpdateTeacherComponent},
-  {path:'search',component:SearchComponent},
-  {path:'addlesson',component:AddLessonComponent}
+  { path: '', component: LoginComponent },
+  { path: 'כניסה', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'newuser', component: NewuserComponent },
+  { path: 'student', component: StudentComponent, canActivate: [AuthGuard] },
+  { path: 'teacher', component: TeacherComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserComponent },
+  { path: 'newteacher', component: NewTeacherComponent },
+  { path: 'newStudent', component: NewStudentComponent },
+  { path: 'לוח שנה', component: CalanderComponent },
+  { path: 'calander', component: CalanderComponent },
+  { path: 'determineLessons', component: DeterminingLessonsComponent },
+  { path: 'לוח שעות', component: DeterminingLessonsComponent },
+  { path: 'file', component: FileComponent },
+  { path: 'updateStudent', component: UpdateStudentComponent },
+  { path: 'עדכון תלמידה', component: UpdateStudentComponent },
+  { path: 'עדכון מורה', component: UpdateTeacherComponent },
+  { path: 'search', component: SearchComponent },
+  { path: 'חיפוש', component: SearchComponent },
+  { path: 'אודות', component: AboutComponent },
+  { path: 'addlesson', component: AddLessonComponent }
 ];
 
 @NgModule({

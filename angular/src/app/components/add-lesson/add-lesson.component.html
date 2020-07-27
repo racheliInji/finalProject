@@ -1,20 +1,19 @@
+<!-- <app-header (sidenavToggle)="sidenav.toggle()"></app-header> -->
+<div id="wrapdiv" >
 <div class="container">
     <form action="action_page.php">
 
         <label for="chooseDay">בחר יום:</label>
-        <select id="day" name="day " >
-          <option value="ראשון">ראשון</option>
-          <option value="שני">שני</option>
-          <option value="שלישי">שלישי</option>
-          <option value="רביעי">רביעי</option>
-          <option value="חמישי">חמישי</option>
+        <select id="days" name="day">
+          <option value="ראשון" class="day" #sunday>ראשון</option>
+          <option value="שני" class="day" #monday> שני</option>
+          <option value="שלישי" class="day" #tuesday>שלישי</option>
+          <option value="רביעי" class="day" #wednesday>רביעי</option>
+          <option value="חמישי" class="day" #thursday>חמישי</option>
         </select>
       <label for="lname">בחר שעה</label>
       <input type="time" id="time" name="time" placeholder="0000">
-  
-     
-  
-      
-  
+      <input type="submit"  value="אישור" name="sumbit" (click)="addLesson()"> 
     </form>
   </div>
+</div>

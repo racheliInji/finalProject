@@ -16,7 +16,14 @@ namespace DTO
         public string Starttime { get; set; }
         public string Endtime { get; set; }
 
-
+        public class AvailableHours
+        {
+            public int TeacherId { get; set; }
+            public string Day { get; set; }
+            public DateTime Date { get; set; }
+            public string Starttime { get; set; }
+            public int timeInNUm { get; set; }
+        }
 
         //public System.TimeSpan Starttime { get; set; }
         //public System.TimeSpan Endtime { get; set; }

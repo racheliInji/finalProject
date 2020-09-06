@@ -7,8 +7,9 @@ import { SubjectForTeacher } from '../class/subject-for-teacher';
   providedIn: 'root'
 })
 export class HoursAndDayService {
+  
 
-
+hoursForTeacherList:any[]=[];
   Url = 'http://localhost:59802/HoursForTeacher'
 
   constructor(private http: HttpClient) { }
@@ -21,7 +22,9 @@ export class HoursAndDayService {
   getHourandDay() {
     return this.http.get<HourandDay[]>(this.Url + '/hoursAndDaysForTeacher');
   }
-
+  getHourandDayById(id: number) {
+    return this.http.get<HourandDay[]>(`${this.Url + '/hoursAndDaysForTeacherById'}/${id}`).subscribe(res=>this.hoursForTeacherList=res);
+  }
   getIdteacher(item: HourandDay) {
     return this.http.put<any>(this.Url + "/getIdHour", item);
   }

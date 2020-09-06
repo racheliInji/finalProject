@@ -34,13 +34,14 @@ export class UserService {
   }
   getIdByToken() {
     this.token = localStorage.getItem("token");
-    for (var i = 1; i < this.token.length; i++) {
-      if (this.token[i] == 'a') {
-        this.id = this.token.slice(1, i);
+    if (this.token != null) {
+      for (var i = 1; i < this.token.length; i++) {
+        if (this.token[i] == 'a') {
+          this.id = this.token.slice(1, i);
+        }
       }
     }
-    console.log(this.id/2);
-   return this.id/2;
-
+    console.log(this.id / 2);
+    return this.id / 2;
   }
 }

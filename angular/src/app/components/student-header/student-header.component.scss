@@ -1,11 +1,28 @@
 .nav{
-    background-color: darkcyan;
-    margin-top: 5%;
-    
-
+    background-color: #06050b;
+    margin-top:1%;
+    color: white
+}
+.mat-tab-links{
+font-family: Georgia, 'Times New Roman', Times, serif;
+color:white !important;
 }
 .link{
-    color:white;
-    font-weight: 200;
-    font-size: large
+    // #06050b
+    opacity:100% !important;
+    color:white !important;
+    font-weight:800;
+    font-size:120%;
+    margin-left:3%;
+    padding: 3%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+
+
+img{
+    width:15%;
+    height:92%;
+    margin-left: 80%;
+   position: absolute;
 }

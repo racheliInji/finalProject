@@ -8,10 +8,9 @@ namespace DTO
 {
    public class HourDTO
     {
-        public int Id { get; set; }
         public int TeacherId { get; set; }
-        public string Day { get; set; }
-        public System.TimeSpan Starttime { get; set; }
-        public System.TimeSpan Endtime { get; set; }
+        public DateTime Date { get; set; }
+        public string Starttime { get; set; }
+       // public System.TimeSpan Endtime { get; set; }
     }
 }

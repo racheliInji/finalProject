@@ -14,7 +14,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TeacherId" Type="int" Nullable="false" />
-    <Property Name="Day" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
     <Property Name="Starttime" Type="time" Precision="7" Nullable="false" />
     <Property Name="Endtime" Type="time" Precision="7" Nullable="false" />
   </EntityType>
@@ -138,7 +138,7 @@
     <Property Name="describe" Type="nvarchar" MaxLength="50" />
     <Property Name="StudentId" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Hours__TeacherId__3B75D760">
+  <Association Name="FK__Hours__TeacherId__3C34F16F">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="Hours" Type="Self.Hours" Multiplicity="*" />
     <ReferentialConstraint>
@@ -376,7 +376,7 @@
     <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vacation" EntityType="Self.Vacation" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Hours__TeacherId__3B75D760" Association="Self.FK__Hours__TeacherId__3B75D760">
+    <AssociationSet Name="FK__Hours__TeacherId__3C34F16F" Association="Self.FK__Hours__TeacherId__3C34F16F">
       <End Role="Users" EntitySet="Users" />
       <End Role="Hours" EntitySet="Hours" />
     </AssociationSet>

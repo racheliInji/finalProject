@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { User } from '../class/user';
 import { HttpClient } from '@angular/common/http';
 import { Teacher } from '../class/teacher';
@@ -10,14 +10,12 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class TeacherService {
-
+  flag = false;
   teacher: any;
   nameFile: string;
-
-
-
-  Url = 'http://localhost:59802/Teacher'
-
+  hoursForteacherList: any[] = []
+  Url = 'http://localhost:59802'
+  @Input() wrapper: any
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
@@ -31,15 +29,12 @@ export class TeacherService {
     return this.http.get<Teacher[]>(environment.URL + '/Teacher/GetTeachers');
   }
 
-  // getTeacher(user: BaseUser) {
-  //   return this.http.put<any>(environment.URL + "/Teacher/getTeacher", user);
-  // }
   getTeacherById(id) {
     console.log("id");
-    return this.http.get<any>(`${this.Url +'/getTeacherById'}/${id}`);
+    return this.http.get<any>(`${environment.URL + '/Teacher/getTeacherById'}/${id}`);
   }
 
-  updateStudent(teacher: Teacher) {
+  updateTeacher(teacher: Teacher) {
     return this.http.put<any>(environment.URL + "/Teacher/updateTeacher", teacher);
   }
 
@@ -53,10 +48,24 @@ export class TeacherService {
   }
 
   getTeachersDays() {
-    return this.http.post<any>(environment.URL + '/HoursForTeacher/getTeachersDaysAndHours', this.teacher);
+    return this.http.post<any>(environment.URL + '/HoursForTeacher/getTeachersDaysAndHours', this.teacher).subscribe(res => {
+      this.hoursForteacherList = res; console.log("getTeachersDays");
+      console.log(this.hoursForteacherList);
+      this.flag=true;
+    }
+    );
   }
 
   teacherDetails(teacher: any) {
     this.teacher = teacher;
+    console.log(this.teacher)
+  }
+  IsChossen() {
+    if (this.flag == true) {
+      // console.log("flag " +this.flag)
+      //  this.wrapper.nativeElement.setAttribute("style", "position:fixed");
+      return true;
+    }
+    return false;
   }
 }

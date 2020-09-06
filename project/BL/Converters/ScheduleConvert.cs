@@ -16,10 +16,10 @@ namespace BL.Converters
             Schedule Schedule = new Schedule();
             Schedule.Date = ScheduleDto.Date;
             Schedule.TeacherId = ScheduleDto.TeacherId;
-            Schedule.Hour = ScheduleDto.Hour;
+            Schedule.Hour = ScheduleDto.starTtime;
             Schedule.StudentId = ScheduleDto.StudentId;
-            Schedule.SubjectId = ScheduleDto.SubjectId;
-            Schedule.ScheduleId = ScheduleDto.ScheduleId;
+            Schedule.SubjectId = DAL.SubjectToTeacherDAL.GetSubjects().Find(i => i.SubjectName == ScheduleDto.Subject).SubjectId;
+          //  Schedule.ScheduleId = ScheduleDto.ScheduleId;
             return Schedule;
         }
         public static ScheduleDTO GetScheduleDTO(Schedule Schedule)
@@ -27,12 +27,29 @@ namespace BL.Converters
             ScheduleDTO ScheduleDTO = new ScheduleDTO();
             ScheduleDTO.Date = Schedule.Date;
             ScheduleDTO.TeacherId = Schedule.TeacherId;
-            ScheduleDTO.Hour = Schedule.Hour;
+            ScheduleDTO.starTtime = Schedule.Hour;
             ScheduleDTO.StudentId = Schedule.StudentId;
-            ScheduleDTO.SubjectId = Schedule.SubjectId;
+            ScheduleDTO.Subject = DAL.SubjectToTeacherDAL.GetSubjects().Find(i => i.SubjectId == Schedule.SubjectId).SubjectName;
             ScheduleDTO.ScheduleId = Schedule.ScheduleId;
-           
             return ScheduleDTO;
+        }
+        public static List<Schedule> ScheduleList(List<DTO.ScheduleDTO> list)
+        {
+            List<Schedule> Schedules = new List<Schedule>();
+            foreach (var item in list)
+            {
+                Schedules.Add(GetSchedule(item));
+            }
+            return Schedules;
+        }
+        public static List<ScheduleDTO> DtoScheduleList(List<Schedule> list)
+        {
+            List<ScheduleDTO> Schedules = new List<ScheduleDTO>();
+            foreach (var item in list)
+            {
+                Schedules.Add(GetScheduleDTO(item));
+            }
+            return Schedules;
         }
 
     }

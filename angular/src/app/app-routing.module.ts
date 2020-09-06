@@ -16,6 +16,8 @@ import { UpdateTeacherComponent } from './components/update-teacher/update-teach
 import { SearchComponent } from './components/search/search.component';
 import { AddLessonComponent } from './components/add-lesson/add-lesson.component';
 import { AboutComponent } from './components/about/about.component';
+import { HomeComponent } from './components/home/home.component';
+import { ExitComponent } from './components/exit/exit.component';
 
 
 
@@ -40,7 +42,10 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'חיפוש', component: SearchComponent },
   { path: 'אודות', component: AboutComponent },
-  { path: 'addlesson', component: AddLessonComponent }
+  { path: 'addlesson', component: AddLessonComponent },
+  { path: 'בית', component: HomeComponent },
+  { path: 'יציאה', component: ExitComponent }
+
 ];
 
 @NgModule({

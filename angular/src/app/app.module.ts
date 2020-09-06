@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserComponent } from './components/user/user.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NewuserComponent } from './components/newuser/newuser.component';
 import { StudentComponent } from './components/student/student.component';
 import { NewTeacherComponent } from './components/new-teacher/new-teacher.component';
@@ -35,8 +35,16 @@ import { AboutComponent } from './components/about/about.component';
 import { TeacherHeaderComponent } from './components/teacher-header/teacher-header.component';
 import { StudentHeaderComponent } from './components/student-header/student-header.component';
 import { MatToolbarModule, MatProgressSpinnerModule, MatMenuModule, MatIconModule } from '@angular/material';
-import { NavbarModule, WavesModule, ButtonsModule, MDBBootstrapModule } from 'ng-uikit-pro-standard'
-
+import { NavbarModule, WavesModule, ButtonsModule, MDBBootstrapModule } from 'ng-uikit-pro-standard';
+import { HomeComponent } from './components/home/home.component'
+import { AuInterceptor } from './services/auth.interceptor';
+import { DatePipe } from '@angular/common';
+import { FilterPipe } from './filter.pipe';
+import { ExitComponent } from './components/exit/exit.component';
+// import { ViewChildComponent } from './components/view-child/view-child.component';
+// import { HighlightPipe } from './highlight.pipe';
+// import { HighlightDirective } from './highlight.directive';
+// import{CalendarWeekHoursViewModule}from'angular-calendar-week-hours-view'
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,12 +65,18 @@ import { NavbarModule, WavesModule, ButtonsModule, MDBBootstrapModule } from 'ng
     HeaderComponent,
     AboutComponent,
     TeacherHeaderComponent,
-    StudentHeaderComponent
+    StudentHeaderComponent,
+    HomeComponent,
+    FilterPipe,
+    ExitComponent,
+    
   ],
   imports: [
     MatButtonModule,
+    // CalendarWeekHoursViewModule,
+    // CalendarWeekHoursViewModule,
     NavbarModule,
-    WavesModule, 
+    WavesModule,
     ButtonsModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -95,10 +109,12 @@ import { NavbarModule, WavesModule, ButtonsModule, MDBBootstrapModule } from 'ng
     }),
   ],
 
-  providers: [{ provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check' }],
-  // bootstrap: [AppComponent]
-  // declarations: [AppComponent],
-  // exports: [AppComponent],
+  providers: [ DatePipe,{ provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check' },
+  { 
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuInterceptor,
+    multi: true
+  },],
 
   bootstrap: [AppComponent]
 })

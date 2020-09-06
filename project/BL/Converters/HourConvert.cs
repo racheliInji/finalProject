@@ -13,11 +13,11 @@ namespace BL.Converters
         public static Hour GetHour(DTO.HourDTO HourDto)
         {
             Hour Hour = new Hour();
-            Hour.Id = HourDto.Id;
+         //   Hour.Id = HourDto.TeacherId;
             Hour.TeacherId = HourDto.TeacherId;
-            Hour.Day = HourDto.Day;
-            Hour.Starttime = HourDto.Starttime;
-            Hour.Endtime = HourDto.Endtime;
+            Hour.Date = HourDto.Date;
+            Hour.Starttime = TimeSpan.Parse(HourDto.Starttime);
+          //  Hour.Endtime = HourDto.Endtime;
 
             return Hour;
 
@@ -26,11 +26,11 @@ namespace BL.Converters
         public static HourDTO GetHourDTO(Hour Hour)
         {
             HourDTO HourDTO = new HourDTO();
-            HourDTO.Id = Hour.Id;
+           // HourDTO.Id = Hour.Id;
             HourDTO.TeacherId = Hour.TeacherId;
-            HourDTO.Day = Hour.Day;
-            HourDTO.Starttime = Hour.Starttime;
-            HourDTO.Endtime = Hour.Endtime;
+            HourDTO.Date = Hour.Date;
+            HourDTO.Starttime = Hour.Starttime.ToString();
+           // HourDTO.Endtime = Hour.Endtime;
 
             return HourDTO;
         }

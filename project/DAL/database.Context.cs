@@ -28,7 +28,6 @@ namespace DAL
         }
     
         public virtual DbSet<Grade> Grades { get; set; }
-        public virtual DbSet<Hour> Hours { get; set; }
         public virtual DbSet<HoursForTeacher> HoursForTeachers { get; set; }
         public virtual DbSet<Lesson> Lessons { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
@@ -41,6 +40,7 @@ namespace DAL
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Vacation> Vacations { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Hour> Hours { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

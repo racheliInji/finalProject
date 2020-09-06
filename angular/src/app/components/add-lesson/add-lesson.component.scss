@@ -1,97 +1,137 @@
-input[type=text], select, textarea{
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    resize: vertical;
-    opacity: 4.0;
-  }
-  .day{
-    visibility: hidden;
-  }
-  /* Style the label to display next to the inputs */
-  label {
-    padding: 12px 12px 12px 0;
-    display: inline-block;
-    font-weight: 700;
-    opacity: 4.0;
-    color: white;
-  }
+// input[type=text], select, textarea{
+//     width: 100%;
+//     padding: 12px;
+//     border: 1px solid #ccc;
+//     border-radius: 4px;
+//     box-sizing: border-box;
+//     resize: vertical;
+//     opacity: 4.0;
+//   }
+//   .day{
+//     visibility: hidden;
+//   }
+//   /* Style the label to display next to the inputs */
+//   label {
+//     padding: 12px 12px 12px 0;
+//     display: inline-block;
+//     font-weight: 700;
+//     opacity: 4.0;
+//     color: white;
+//   }
   
-  /* Style the submit button */
-  input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    float: right;
-    opacity: 4.0;
-    // z-index: 2
-  }
+//   /* Style the submit button */
+//   input[type=submit] {
+//     background-color: #4CAF50;
+//     color: white;
+//     padding: 12px 20px;
+//     border: none;
+//     border-radius: 4px;
+//     cursor: pointer;
+//     float: right;
+//     opacity: 4.0;
+//     // z-index: 2
+//   }
   #wrapdiv{
-    background-color:dimgray;
-    position:absolute;
-    //  position:fixed;
+    background-color:white;
+    // position:absolute;
+    position:fixed;
+    overflow: hidden scroll; 
+    // height:100%;
+    widows: 100%;
     top:0px;
     right:0px;
     bottom:0px;
     left:0px;
-    opacity: 0.6;
-    height: 100%; 
-    overflow: hidden;
-    position: fixed;
-    top: 30px;
-  left: 10px;
-  --scroll-y:10px;
-  height: 100vh;
-  overflow-y: hidden;
-  padding-right: 15px;
-    // z-index: 2
-  }
-  /* Style the container */
-  .container {
-    border-radius: 5px;
-    background-color:darkcyan;
-    padding: 20px;
-    width: 30%;
-    margin-top: 20%;
-    opacity: 4.0;
-    height: 40%;
-    border: solid crimson 10px
-    // opacity: 5.0;
-  }
+    // position: fixed;
+    // overflow-y: hidden;
   
-  /* Floating column for labels: 25% width */
-  .col-25 {
-    float: left;
-    width: 25%;
-    margin-top: 6px;
-    opacity: 4.0;
+    // height: 100%; 
+    // overflow: hidden;
+    // position: fixed;
+    // top: 30px;
+    // left: 10px;
+  // --scroll-y:10px;
+    height: 100vh;
+    // overflow-y: hidden;
+  // padding-right: 15px;
+   z-index:auto !important;
   }
-  
-  /* Floating column for inputs: 75% width */
-  .col-75 {
-    float: left;
-    width: 75%;
-    margin-top: 6px;
-    opacity: 4.0;
+  // .swal-text {
+  //   // background-color: #FEFAE3;
+  //   padding: 17px;
+  //   border: 1px solid #F0E1A1;
+  //   display: block;
+  //   margin: 22px;
+  //   text-align: center;
+  //   font-size: xx-large;
+  //   color:blue;
+  // }
+  #close{
+    position: absolute;
+    margin-left: 93%;
+    margin-top: 23%;
+    font-size: 200%;
   }
+//   /* Style the container */
+//   .container 
+//     border-radius: 5px;
+//     background-color:darkcyan;
+//     padding: 20px;
+//     width: 30%;
+//     margin-top: 20%;
+//     opacity: 4.0;
+//     height: 40%;
+//     border: solid crimson 10px
+//     // opacity: 5.0;
+//   }
   
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-    opacity: 4.0;
+//   /* Floating column for labels: 25% width */
+//   .col-25 {
+//     float: left;
+//     width: 25%;
+//     margin-top: 6px;
+//     opacity: 4.0;
+//   }
+  
+//   /* Floating column for inputs: 75% width */
+//   .col-75 {
+//     float: left;
+//     width: 75%;
+//     margin-top: 6px;
+//     opacity: 4.0;
+//   }
+  
+//   /* Clear floats after the columns */
+//   .row:after {
+//     content: "";
+//     display: table;
+//     clear: both;
+//     opacity: 4.0;
+//   }
+  
+//   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+//   @media screen and (max-width: 600px) {
+//     .col-25, .col-75, input[type=submit] {
+//       width: 100%;
+//       margin-top: 0;
+//     }
+//   }
+  #icon{
+    font-size: 200%;
+    border:none !important;
   }
-  
-  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 600px) {
-    .col-25, .col-75, input[type=submit] {
-      width: 100%;
-      margin-top: 0;
-    }
+  #arrow{
+    position: absolute;
+    margin-left: -38% !important;
+    margin-top: 35% !important;
+  }
+  #board{
+    margin-top: 7% !important;
+    width: 70%;
+    margin-left: 13%;
+
+  }
+  #title{
+    margin-top: 5%;
+    margin-bottom: -27%;
   }

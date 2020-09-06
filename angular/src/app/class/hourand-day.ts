@@ -1,9 +1,6 @@
 import { Time } from '@angular/common';
 
 export class HourandDay {
-
-    // public  teacherName:string;
-    // public password:string 
     public TeacherId:number;
     public  day:string
     public  starttime :string

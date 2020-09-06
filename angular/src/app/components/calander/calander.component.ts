@@ -1,24 +1,10 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-calander',
-//   templateUrl: './calander.component.html',
-//   styleUrls: ['./calander.component.scss']
-// })
-// export class CalanderComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
 
 import {
   Component,
   ChangeDetectionStrategy,
   ViewChild,
   TemplateRef,
+  OnInit,
 } from '@angular/core';
 import {
   startOfDay,
@@ -29,7 +15,8 @@ import {
   isSameDay,
   isSameMonth,
   addHours,
-} from   'date-fns';
+} from 'date-fns';
+import swal from 'sweetalert';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
@@ -38,6 +25,8 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarView,
 } from 'angular-calendar';
+import { CalanderService } from 'src/app/services/calander.service';
+import { Router } from '@angular/router';
 
 const colors: any = {
   red: {
@@ -54,18 +43,14 @@ const colors: any = {
   },
 };
 
-  // selector: 'app-root',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
-  // templateUrl: './app.component.html',
-  // styleUrls: ['./app.component.css']
-  @Component({
+@Component({
   selector: 'app-calander', changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './calander.component.html',
   styleUrls: ['./calander.component.scss']
 })
-export class CalanderComponent  {
+export class CalanderComponent implements OnInit {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
-
+  lessonList: any[] = [];
   view: CalendarView = CalendarView.Month;
 
   CalendarView = CalendarView;
@@ -76,7 +61,28 @@ export class CalanderComponent  {
     action: string;
     event: CalendarEvent;
   };
+  ngOnInit() {
+    console.log(this.calanderService.lessonList);
+    
+  }
+  getLesson() {
+    this.calanderService.getLesson();
+    this.lessonList = this.calanderService.lessonList;
+    this.putlesson();
 
+  }
+  putlesson() {
+    this.lessonList.forEach(i => {
+      this.events.push(
+        {
+          start: startOfDay(new Date(i.Date)),
+          title:i.StudentName+': בשעה:'+ i.starTtime,
+          color: colors.yellow,
+          actions: this.actions,
+        }
+      )
+    })
+  }
   actions: CalendarEventAction[] = [
     {
       label: '<i class="fas fa-fw fa-pencil-alt"></i>',
@@ -85,64 +91,68 @@ export class CalanderComponent  {
         this.handleEvent('Edited', event);
       },
     },
-    {
-      label: '<i class="fas fa-fw fa-trash-alt"></i>',
-      a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      },
-    },
+    // {
+    //   label: '<i class="fas fa-fw fa-trash-alt"></i>',
+    //   a11yLabel: 'Delete',
+    //   onClick: ({ event }: { event: CalendarEvent }): void => {
+    //     this.events = this.events.filter((iEvent) => iEvent !== event);
+    //     this.handleEvent('Deleted', event);
+    //   },
+    // },
   ];
 
   refresh: Subject<any> = new Subject();
 
   events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
+    // {
+    //   start: subDays(startOfDay(new Date()), 1),
+    //   end: addDays(new Date(), 1),
+    //   title: 'A 3 day event',
+    //   color: colors.red,
+    //   actions: this.actions,
+    //   allDay: true,
+    //   resizable: {
+    //     beforeStart: true,
+    //     afterEnd: true,
+    //   },
+    //   draggable: true,
+    // },
+    // {
+    //   start: startOfDay(new Date()),
+    //   title: 'An event with no end date',
+    //   color: colors.yellow,
+    //   actions: this.actions,
+    // },
+    // {
+    //   start: subDays(endOfMonth(new Date()), 3),
+    //   end: addDays(endOfMonth(new Date()), 3),
+    //   title: 'A long event that spans 2 months',
+    //   color: colors.blue,
+    //   allDay: true,
+    // },
+    // {
+    //   start: addHours(startOfDay(new Date()), 2),
+    //   end: addHours(new Date(), 2),
+    //   title: 'A draggable and resizable event',
+    //   color: colors.yellow,
+    //   actions: this.actions,
+    //   resizable: {
+    //     beforeStart: true,
+    //     afterEnd: true,
+    //   },
+    //   draggable: true,
+    // },
   ];
 
-  activeDayIsOpen: boolean = true;
+  activeDayIsOpen: boolean = false;
 
-  constructor(private modal: NgbModal) {}
+  constructor(private router: Router, private calanderService: CalanderService, private modal: NgbModal) {
+    this.getLesson();
+    console.log(this.events);
+  }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    // alert("hi");
     if (isSameMonth(date, this.viewDate)) {
       if (
         (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
@@ -150,17 +160,24 @@ export class CalanderComponent  {
       ) {
         this.activeDayIsOpen = false;
       } else {
-        this.activeDayIsOpen = true;
+        // this.activeDayIsOpen = true;
+        swal( {
+          text:"התלמידה: "+events[0].title,
+          buttons: [false]
+        })
+        console.log(events[0].title);
       }
       this.viewDate = date;
     }
   }
+
 
   eventTimesChanged({
     event,
     newStart,
     newEnd,
   }: CalendarEventTimesChangedEvent): void {
+   
     this.events = this.events.map((iEvent) => {
       if (iEvent === event) {
         return {

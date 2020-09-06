@@ -12,7 +12,7 @@ export class StudentHeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-  links = ['כניסה', 'לוח שנה', 'עדכון תלמידה'];
+  links = ['בית', 'לוח שנה','חיפוש', 'עדכון תלמידה'];
   activeLink = this.links[0];
   background: ThemePalette = undefined;
 

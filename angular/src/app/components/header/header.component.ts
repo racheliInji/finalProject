@@ -25,6 +25,5 @@ export class HeaderComponent implements OnInit {
   toggleBackground() {
     this.background = this.background ? undefined : 'warn';
   }
-
-
+  
 }

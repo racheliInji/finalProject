@@ -10,17 +10,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Hours">
-      <EntityTypeMapping TypeName="RacheliandDiniModel1.Hour">
-        <MappingFragment StoreEntitySet="Hours">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="Starttime" ColumnName="Starttime" />
-          <ScalarProperty Name="Endtime" ColumnName="Endtime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="HoursForTeachers">
       <EntityTypeMapping TypeName="RacheliandDiniModel1.HoursForTeacher">
         <MappingFragment StoreEntitySet="HoursForTeacher">
@@ -176,5 +165,16 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="RacheliandDiniModel1.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="RacheliandDiniModel1.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="Hours">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.Hour">
+        <MappingFragment StoreEntitySet="Hours">
+          <ScalarProperty Name="Endtime" ColumnName="Endtime" />
+          <ScalarProperty Name="Starttime" ColumnName="Starttime" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

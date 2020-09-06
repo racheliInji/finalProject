@@ -69,8 +69,10 @@
     <Compile Include="Converters\TeacherConver.cs" />
     <Compile Include="Converters\UserConvert.cs" />
     <Compile Include="Converters\VacationConvert.cs" />
+    <Compile Include="HourBL.cs" />
     <Compile Include="HoursForTeacherBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScheduleBL.cs" />
     <Compile Include="StudentBL.cs" />
     <Compile Include="SubjectToTeacherBL.cs" />
     <Compile Include="TeacherBL.cs" />

@@ -25,16 +25,19 @@ export class UpdateTeacherComponent implements OnInit {
   constructor(private TeacherService: TeacherService, private UserService: UserService) { }
 
   ngOnInit() {
-    console.log("hiiiiiii")
+    this.load();
+  }
+
+  load(){
     if (localStorage.getItem("token")) {
       this.id = this.UserService.getIdByToken();
       console.log(this.id);
       this.TeacherService.getTeacherById(this.id).subscribe(res => { this.teacher = res, console.log(this.teacher), this.putValue() })
-   
+
     }
   }
-  putValue() {
 
+  putValue() {
     this.firstName = this.teacher.firstName;
     this.lastName = this.teacher.lastName;
     this.city = this.teacher.city;
@@ -46,8 +49,9 @@ export class UpdateTeacherComponent implements OnInit {
     this.tz = this.teacher.tz;
 
   }
+
   updateTeacher() {
-    this.TeacherService.updateStudent(new Teacher(this.tz, this.firstName, this.lastName, this.city, this.street, this.numhouse,
-      this.email, this.password, this.phone, '')).subscribe();
+    this.TeacherService.updateTeacher(new Teacher(this.tz, this.firstName, this.lastName, this.city, this.street, this.numhouse,
+      this.email, this.password, this.phone, '')).subscribe(i=>{this.load()});
   }
 }

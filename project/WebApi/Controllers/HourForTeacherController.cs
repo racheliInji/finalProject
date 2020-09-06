@@ -50,6 +50,25 @@ namespace WebApi.Controllers
             }
 
         }
+        [HttpGet]
+        [Route("hoursAndDaysForTeacherById/{id}")]
+        public IHttpActionResult GetHoursForTeacherById(int id)
+        {
+
+            try
+            {
+                var q = BL.HoursForTeacherBL.GetHoursForTeacherById(id);
+                if (q != null)
+                    return Ok(q);
+                return NotFound();
+            }
+            catch
+            {
+                return BadRequest();
+
+            }
+
+        }
         [HttpPost]
         [Route("getTeachersDaysAndHours")]
         public IHttpActionResult getTeachersDaysAndHours(TeacherDTO.TeacherAndSubjectDTO TeacherAndSubjectDTO)

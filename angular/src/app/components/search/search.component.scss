@@ -1,31 +1,67 @@
 
 
 body {
-    direction: rtl;
+    // direction: rtl;
   margin: 2rem;
 }
+// #id{
+//   position:fixed;
+//   overflow: hidden scroll; 
+
+// }
+#close{
+  position: absolute;
+  margin-right: 10%;
+  margin-top: 1%;
+  font-size: 270%
+}
+#wrapdiv{
+  background-color:white;
+  // position:absolute;
+  position:fixed;
+   overflow: hidden scroll; 
+  height:100%;
+  widows: 100%;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  height: 100vh;
+ z-index:auto !important;
+}
 #teacher{
- width: 40%;
+direction: rtl;
+ width: 60%;
  height: 40%;
   border: solid;
-  border-color: darkblue;
-  margin:4%;
-  position: relative;
-  float: left;
+  // border-color:gray;
+  margin-left: 20%;
+  // margin:4%;
+
+  // position: relative;
+  // float: left;
+}
+.show{
+  position: fixed;
+  overflow-y: hidden; 
 }
 #teacher:hover{
   background-color:lightgrey;
 }
 #name{
   direction: rtl;
-  margin-left: 70%;
+  margin-left: 30%;
+  color: midnightblue
 }
 .detail{
   direction: rtl;
-  margin-left: 80%;
+  //  margin-left: 50%;
  
 }
 img{
-  width: 10%;
-  height: 10%;
+  width: 100%;
+  height: 100%;
+}
+#i{
+  
 }

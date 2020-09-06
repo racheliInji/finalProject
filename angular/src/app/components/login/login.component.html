@@ -1,16 +1,13 @@
-<!-- <app-header (sidenavToggle)="sidenav.toggle()"></app-header> -->
 <div class="login">
   <p>
     <mat-form-field appearance="legacy" id="username">
       <mat-label>הכנס שם</mat-label>
       <input matInput placeholder="" [(ngModel)]="name">
-      <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
-      <!-- <mat-hint>Hint</mat-hint> -->
     </mat-form-field>
   </p>
 
   <div class="example-container" id="password">
-    <mat-form-field appearance="fill" id="fill" >
+    <mat-form-field appearance="fill" id="fill">
       <mat-label>הכנס סיסמא</mat-label>
       <input matInput [type]="hide ? 'password' : 'text'" id="password" [(ngModel)]="password">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
@@ -18,12 +15,9 @@
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
-
-    <!-- <input type="text" placeholder="הכנס שם" id="username" [(ngModel)]="name" >   -->
-    <!-- <input type="password" placeholder="הכנס סיסמא" id="password" [(ngModel)]="password">   -->
     <a href="#" class="forgot">forgot password?</a>
     <div *ngIf="checkNewUser()==true">
-      <p id="no">!המשתמש לא נמצא</p>
+      <p id="no">{{massage}}</p>
     </div>
     <input id="login" type="submit" value="הכנס" (click)="login()">
     <a routerLink="/newteacher" class="new">הרשם כמורה</a>

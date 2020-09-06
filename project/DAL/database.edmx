@@ -19,7 +19,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TeacherId" Type="int" Nullable="false" />
-          <Property Name="Day" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Starttime" Type="time" Precision="7" Nullable="false" />
           <Property Name="Endtime" Type="time" Precision="7" Nullable="false" />
         </EntityType>
@@ -143,7 +143,7 @@
           <Property Name="describe" Type="nvarchar" MaxLength="50" />
           <Property Name="StudentId" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Hours__TeacherId__3B75D760">
+        <Association Name="FK__Hours__TeacherId__3C34F16F">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Hours" Type="Self.Hours" Multiplicity="*" />
           <ReferentialConstraint>
@@ -381,7 +381,7 @@
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vacation" EntityType="Self.Vacation" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Hours__TeacherId__3B75D760" Association="Self.FK__Hours__TeacherId__3B75D760">
+          <AssociationSet Name="FK__Hours__TeacherId__3C34F16F" Association="Self.FK__Hours__TeacherId__3C34F16F">
             <End Role="Users" EntitySet="Users" />
             <End Role="Hours" EntitySet="Hours" />
           </AssociationSet>
@@ -458,17 +458,6 @@
           <Property Name="Level" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Grade1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Students" Relationship="Self.FK__Student__IdGrade__59063A47" FromRole="Grade" ToRole="Student" />
-        </EntityType>
-        <EntityType Name="Hour">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TeacherId" Type="Int32" Nullable="false" />
-          <Property Name="Day" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Starttime" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="Endtime" Type="Time" Nullable="false" Precision="7" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Hours__TeacherId__3B75D760" FromRole="Hours" ToRole="Users" />
         </EntityType>
         <EntityType Name="HoursForTeacher">
           <Key>
@@ -587,10 +576,10 @@
           <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Hours" Relationship="Self.FK__Hours__TeacherId__3B75D760" FromRole="Users" ToRole="Hours" />
           <NavigationProperty Name="HoursForTeachers" Relationship="Self.FK__HoursForT__Teach__3E52440B" FromRole="Users" ToRole="HoursForTeacher" />
           <NavigationProperty Name="Student" Relationship="Self.FK__Student__Student__5812160E" FromRole="Users" ToRole="Student" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK__Teacher__Teacher__5070F446" FromRole="Users" ToRole="Teacher" />
+          <NavigationProperty Name="Hours" Relationship="RacheliandDiniModel1.FK__Hours__TeacherId__3C34F16F" FromRole="User" ToRole="Hour" />
         </EntityType>
         <EntityType Name="Vacation">
           <Key>
@@ -617,18 +606,6 @@
             </Principal>
             <Dependent Role="Student">
               <PropertyRef Name="IdGrade" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Hours__TeacherId__3B75D760">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Hours" Type="Self.Hour" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Hours">
-              <PropertyRef Name="TeacherId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -790,7 +767,6 @@
         </Association>
         <EntityContainer Name="RacheliandDiniEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Grades" EntityType="Self.Grade" />
-          <EntitySet Name="Hours" EntityType="Self.Hour" />
           <EntitySet Name="HoursForTeachers" EntityType="Self.HoursForTeacher" />
           <EntitySet Name="Lessons" EntityType="Self.Lesson" />
           <EntitySet Name="Messages" EntityType="Self.Message" />
@@ -805,10 +781,6 @@
           <AssociationSet Name="FK__Student__IdGrade__59063A47" Association="Self.FK__Student__IdGrade__59063A47">
             <End Role="Grade" EntitySet="Grades" />
             <End Role="Student" EntitySet="Students" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Hours__TeacherId__3B75D760" Association="Self.FK__Hours__TeacherId__3B75D760">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Hours" EntitySet="Hours" />
           </AssociationSet>
           <AssociationSet Name="FK__HoursForT__Teach__3E52440B" Association="Self.FK__HoursForT__Teach__3E52440B">
             <End Role="Users" EntitySet="Users" />
@@ -893,6 +865,11 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Hours" EntityType="RacheliandDiniModel1.Hour" />
+          <AssociationSet Name="FK__Hours__TeacherId__3C34F16F" Association="RacheliandDiniModel1.FK__Hours__TeacherId__3C34F16F">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Hour" EntitySet="Hours" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="sysdiagram">
           <Key>
@@ -915,6 +892,29 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Hour">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Starttime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Endtime" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="User" Relationship="RacheliandDiniModel1.FK__Hours__TeacherId__3C34F16F" FromRole="Hour" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Hours__TeacherId__3C34F16F">
+          <End Type="RacheliandDiniModel1.User" Role="User" Multiplicity="1" />
+          <End Type="RacheliandDiniModel1.Hour" Role="Hour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Hour">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -927,17 +927,6 @@
                 <ScalarProperty Name="IdGrade" ColumnName="IdGrade" />
                 <ScalarProperty Name="Level" ColumnName="Level" />
                 <ScalarProperty Name="Grade1" ColumnName="Grade" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Hours">
-            <EntityTypeMapping TypeName="RacheliandDiniModel1.Hour">
-              <MappingFragment StoreEntitySet="Hours">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
-                <ScalarProperty Name="Day" ColumnName="Day" />
-                <ScalarProperty Name="Starttime" ColumnName="Starttime" />
-                <ScalarProperty Name="Endtime" ColumnName="Endtime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1096,6 +1085,17 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="RacheliandDiniModel1.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="RacheliandDiniModel1.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Hours">
+            <EntityTypeMapping TypeName="RacheliandDiniModel1.Hour">
+              <MappingFragment StoreEntitySet="Hours">
+                <ScalarProperty Name="Endtime" ColumnName="Endtime" />
+                <ScalarProperty Name="Starttime" ColumnName="Starttime" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

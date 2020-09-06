@@ -41,7 +41,16 @@ namespace DAL
             }
         }
 
-        
+        //public static List<HoursForTeacherDTO> GetHoursForTeacherById(int id)
+        //{
+        //    using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+        //    {
+                
+        //        return db.HoursForTeachers.ToList();
+        //    }
+        //}
+
+
 
 
 

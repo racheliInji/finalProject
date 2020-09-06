@@ -13,7 +13,7 @@ export class TeacherHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  links =  ['כניסה', 'לוח שנה','לוח שעות', 'עדכון מורה'];
+  links =  ['יציאה','כניסה','בית',  'לוח שנה','לוח שעות', 'עדכון מורה'];
   activeLink = this.links[0];
   background: ThemePalette = undefined;
 

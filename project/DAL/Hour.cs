@@ -16,7 +16,7 @@ namespace DAL
     {
         public int Id { get; set; }
         public int TeacherId { get; set; }
-        public string Day { get; set; }
+        public System.DateTime Date { get; set; }
         public System.TimeSpan Starttime { get; set; }
         public System.TimeSpan Endtime { get; set; }
     

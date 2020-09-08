@@ -41,10 +41,11 @@ import { AuInterceptor } from './services/auth.interceptor';
 import { DatePipe } from '@angular/common';
 import { FilterPipe } from './filter.pipe';
 import { ExitComponent } from './components/exit/exit.component';
-// import { ViewChildComponent } from './components/view-child/view-child.component';
-// import { HighlightPipe } from './highlight.pipe';
-// import { HighlightDirective } from './highlight.directive';
-// import{CalendarWeekHoursViewModule}from'angular-calendar-week-hours-view'
+///////////////////google map
+import { AgmCoreModule } from '@agm/core';
+// import { AgmDirectionModule } from 'agm-direction';
+import {GooglePlaceModule} from 'ngx-google-places-autocomplete'
+import {NgxLoadingModule, ngxLoadingAnimationTypes} from 'ngx-loading';
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,6 +104,22 @@ import { ExitComponent } from './components/exit/exit.component';
     MatTabsModule,
     MDBBootstrapModule.forRoot(),
     FlatpickrModule.forRoot(),
+    GooglePlaceModule,
+   
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.threeBounce,
+      backdropBackgroundColour: 'rgba(0,0,0,0)', 
+      backdropBorderRadius: '0.01px',
+      primaryColour: 'green', 
+      secondaryColour: 'green', 
+      tertiaryColour: 'green'
+    }),
+    AgmCoreModule.forRoot(  {
+      // 'AIzaSyAXOIyi-qEZPy2bPZPfnYys00P5-nftEQI'
+      apiKey: 'AIzaSyBbIq37gLwEao0cp13EOEylr-laFoY2eiI'
+      ,
+     libraries: ["places"]
+    }),
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,

@@ -21,6 +21,7 @@ export class SearchComponent implements OnInit {
   searchFirstName: string = '';
   searchLastName: string = '';
   searchPrice: string = '';
+  searchPlace:string='';
   userFilter: any = { name: '' };
   src = "C:\Users\USER\Desktop\myproject\project\WebApi\ResourcesFiles"
   constructor(private TeacherService: TeacherService, private AddLessonService: AddLessonService) { }
@@ -28,7 +29,14 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.getTeachers();
   }
-
+  DownloadCVFile(teacher){
+    console.log(teacher);
+    this.TeacherService.DownloadCVFile(teacher).subscribe(res=>{
+      var url = window.URL.createObjectURL(res);
+      window.open(url);
+      console.log("download result ", res);
+    });
+  }
   getTeachers() {
     this.TeacherService.getTeacherAndSubject().subscribe(res => { this.teacherList = res, console.log(this.teacherList) });
     // this.searchText=

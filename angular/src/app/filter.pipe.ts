@@ -1,23 +1,25 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SubjectToTeacher } from './class/subject-to-teacher';
-
+import { SearchTeacher } from './class/searchTeacher';
 @Pipe({ name: 'appFilter' })
 export class FilterPipe implements PipeTransform {
   /**
    * Transform
    *
-   * @param {SubjectToTeacher[]} items
+   * @param {SearchTeacher[]} items
    * @param {string} searchText
    * @param {string} searchPrice
-   * @returns {SubjectToTeacher[]}
+   * @param {string} searchPlace
+   * @returns {SearchTeacher[]}
    */
   //  searchPhone: string, searchFirstName: string, searchLastName: string,
-  transform(items: SubjectToTeacher[], searchText: string, searchPrice: string): any[] {
+  transform(items: SearchTeacher[], searchText: string, searchPrice: string,searchPlace: string): any[] {
     if (!items) {
       return [];
     }
+
+
     //  !searchPhone && !searchFirstName && !searchLastName &&
-    if (!searchText && !searchPrice) {
+    if (!searchText && !searchPrice&& !searchPlace) {
       return items;
     }
     searchText = searchText.toLocaleLowerCase();
@@ -25,6 +27,7 @@ export class FilterPipe implements PipeTransform {
     // searchLastName = searchLastName.toLocaleLowerCase();
     // searchFirstName = searchFirstName.toLocaleLowerCase();
     searchPrice = searchPrice.toLocaleLowerCase();
+    searchPlace = searchPlace.toLocaleLowerCase();
     return items.filter(it => {
       if (it.SubjectName == null)
        return it.PriceForLesson.toString().includes(searchPrice);
@@ -34,6 +37,7 @@ export class FilterPipe implements PipeTransform {
           // it.firstName.toLocaleLowerCase().includes(searchFirstName) &&
           // it.lastName.toLocaleLowerCase().includes(searchLastName) &&
           it.PriceForLesson.toString().includes(searchPrice);
+          // it..toString().includes(searchPrice);
       }
     });
   }
@@ -46,9 +50,9 @@ export class FilterPipe implements PipeTransform {
   //   public  GradesRange :string
 
 
-  // transform(value: SubjectToTeacher[], filterBy : string) : any[] {
+  // transform(value: SearchTeacher[], filterBy : string) : any[] {
   //     filterBy = filterBy ? filterBy.toLocaleLowerCase(): null;
-  //     return filterBy? value.filter((teacher : SubjectToTeacher)=>
+  //     return filterBy? value.filter((teacher : SearchTeacher)=>
   //     teacher.teacherName.toLocaleLowerCase().indexOf(filterBy) ! ==-1) : value; 
   //  }
 

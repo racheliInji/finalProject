@@ -31,6 +31,21 @@ namespace WebApi.Controllers
                 return e.ToString();
             }
         }
+        [Route("sendEmails")]
+        [HttpGet]
+        public IHttpActionResult sendEmails(string firstName, string lastName,string email)
+        {
+           
+            try
+            {
+                 BL.UserBl.sendEmails(firstName, lastName, email);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
         //[Route("GetByToken")]
         //[HttpGet]
         //public int GetByToken(string token)

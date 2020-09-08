@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../class/user';
 import { BaseUser } from '../class/base-user';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -43,5 +44,8 @@ export class UserService {
     }
     console.log(this.id / 2);
     return this.id / 2;
+  }
+  sendEmails(firstName: string, lastName: string, email: string) {
+    return this.http.get<any>(environment.URL+ '/User/sendEmails',{ params: { firstName,lastName,email } });
   }
 }

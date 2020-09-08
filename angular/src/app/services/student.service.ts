@@ -18,7 +18,6 @@ export class StudentService {
   addStudent(student: Student) {
     console.log("hiiiiiiiiiiiiiiiii");
     console.log(student);
-    debugger;
     return this.http.post<any>(this.Url + 'Student/AddStudent', student);
   }
   getStudent() {

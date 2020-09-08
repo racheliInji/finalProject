@@ -93,16 +93,12 @@ export class DeterminingLessonsComponent implements OnInit {
   isChecked521: any;
 
   ngOnInit() {
-    this.isChecked109 = 309;
     if (localStorage.getItem("token")) {
       console.log("token")
       this.id = this.UserService.getIdByToken();
       console.log(this.id);
-      // this.getHourandDay()
       this.hoursAndDayList = this.HoursAndDayService.hoursForTeacherList;
-      // console.log(this.hoursAndDayList);
       this.putValus();
-      this.d509 = this.checkValue
     }
   }
   s: string;

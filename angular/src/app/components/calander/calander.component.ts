@@ -63,7 +63,7 @@ export class CalanderComponent implements OnInit {
   };
   ngOnInit() {
     console.log(this.calanderService.lessonList);
-    
+
   }
   getLesson() {
     this.calanderService.getLesson();
@@ -76,7 +76,7 @@ export class CalanderComponent implements OnInit {
       this.events.push(
         {
           start: startOfDay(new Date(i.Date)),
-          title:i.StudentName+': בשעה:'+ i.starTtime,
+          title: i.StudentName + ': בשעה:' + i.starTtime,
           color: colors.yellow,
           actions: this.actions,
         }
@@ -150,7 +150,7 @@ export class CalanderComponent implements OnInit {
     this.getLesson();
     console.log(this.events);
   }
-
+  s: string;
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     // alert("hi");
     if (isSameMonth(date, this.viewDate)) {
@@ -160,12 +160,18 @@ export class CalanderComponent implements OnInit {
       ) {
         this.activeDayIsOpen = false;
       } else {
-        // this.activeDayIsOpen = true;
-        swal( {
-          text:"התלמידה: "+events[0].title,
+        this.s = "";
+        console.log(events)
+        this.activeDayIsOpen = true;
+        events.forEach(i => {
+          console.log(this.s);
+          this.s += "התלמידה: " + i.title+"\n"
+        })
+        swal({
+          text: this.s,
           buttons: [false]
         })
-        console.log(events[0].title);
+
       }
       this.viewDate = date;
     }
@@ -177,7 +183,7 @@ export class CalanderComponent implements OnInit {
     newStart,
     newEnd,
   }: CalendarEventTimesChangedEvent): void {
-   
+
     this.events = this.events.map((iEvent) => {
       if (iEvent === event) {
         return {

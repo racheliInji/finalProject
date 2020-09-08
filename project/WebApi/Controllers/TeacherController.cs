@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using DTO;
@@ -71,6 +72,7 @@ namespace WebApi.Controllers
             }
 
         }
+       
         [HttpPost]
         [Route("addTeacher")]
         public IHttpActionResult AddUser(TeacherDTO.UserAndTeacherDTO teacher)
@@ -169,9 +171,30 @@ namespace WebApi.Controllers
             }
 
 
-            //return file != null ? "/ResourcesFiles/" + file.FileName : null;
+        }
+        [HttpGet]
+        [Route("GetCVFile/{id}")]
+        public HttpResponseMessage GetCVFile(int id)
+        {
+            string file = BL.TeacherBL.GetTeacherById(id);
+            string filesDir = "C:\\Users\\USER\\Desktop\\myproject\\angular\\src\\assets";
+            byte[] documentData = File.ReadAllBytes(Path.Combine(filesDir, file));
 
+            var dataStream = new MemoryStream(documentData);
 
+            var response = new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StreamContent(dataStream)
+            };
+
+            response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            {
+                FileName = file
+            };
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
+
+            return response;
 
         }
     }

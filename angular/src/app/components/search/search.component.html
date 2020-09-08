@@ -38,31 +38,22 @@
     <mat-label>מחיר</mat-label>
     <input matInput   aria-describedby="search-text"[(ngModel)]="searchPrice">
   </mat-form-field></td>
-  </table>
+
+  <td><mat-form-field class="example-full-width">
+    <mat-label>כתובת</mat-label>
+    <input matInput   ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleSourceChange($event)" [(ngModel)]="searchPlace"
+       >
+    <!-- <input   matInput aria-describedby="search-text"[(ngModel)]="searchPrice"> -->
+  </mat-form-field></td>
+ </table>
 <div class="content" role="main">
     <div class="card">
       <div class="form-group">
-        <!-- <label for="search-text">Search Text</label> -->
-        <!-- <input type="text" class="form-control" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText"
-          placeholder="Enter subject" autofocus> -->
-  
-        <!-- <label for="search-text">phone</label> -->
-        <!-- <input type="text" class="form-control" id="search-text" aria-describedby="search-text" [(ngModel)]="searchPhone"
-          placeholder="Enter phone" autofocus> -->
-  
-          <!-- <input type="text" class="form-control" id="search-text" aria-describedby="search-text" [(ngModel)]="searchFirstName"
-          placeholder="Enter firstName" autofocus>
-  
-          <input type="text" class="form-control" id="search-text" aria-describedby="search-text" [(ngModel)]="searchLastName"
-          placeholder="Enter lastName" autofocus>
-   -->
-          <!-- <input type="text" class="form-control" id="search-text" aria-describedby="search-text" [(ngModel)]="searchPrice"
-          placeholder="Enter price" autofocus>
-   -->
+       
       </div>
       <ul class="list-group list-group-flush">
   
-        <li class="list-group-item" *ngFor="let teacher of teacherList | appFilter: searchText:searchPhone:searchFirstName:searchLastName:searchPrice">
+        <li class="list-group-item" *ngFor="let teacher of teacherList | appFilter: searchText:searchPrice:searchPlace">
           <h1>{{teacher.firstName}} {{ teacher.lastName}}</h1>
           <p>{{teacher.SubjectName}}</p>
           <p>מחיר: {{teacher.PriceForLesson}} ש"ח</p>
@@ -77,6 +68,8 @@
                 </div>
             </div>
         </div> -->
+        <button matButton (click)="DownloadCVFile(teacher)">הצג קובץ קו"ח</button>  
+
           <button mat-stroked-button color="primary" (click)="addLesson(teacher)"><i class="fa fa-calendar"></i>
             לקביעת שיעור אונלין</button>
             <div *ngIf="TeacherService.IsChossen()==true">

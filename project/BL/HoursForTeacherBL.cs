@@ -132,9 +132,9 @@ namespace BL
             }
             if (isInVacation(date, teacherId) == false)
                 return false;
-            foreach (var item in DAL.HourDAL.getHours())
+            foreach (var item in DAL.ScheduleDAL.GetLessons())
             {
-                if (item.TeacherId == teacherId && item.Date == date)
+                if (item.TeacherId == teacherId && item.Date == date.Date)
                 {
                     return false;
                 }

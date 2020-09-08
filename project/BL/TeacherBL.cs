@@ -75,6 +75,11 @@ namespace BL
             return null;
         }
 
+        public static int getId(TeacherDTO.UserAndTeacherDTO teacher)
+        {
+            return DAL.UserDal.GetUsers().FirstOrDefault(i => i.password == teacher.password).id;
+        }
+
         public static object getTeacher(UserDTO.userLogin baseUser)
         {
             foreach (var user in DAL.UserDal.GetUsers())
@@ -156,6 +161,13 @@ namespace BL
             //return Converters.TeacherConver.DtoTeacherList(DAL.TeacherDAL.GetTeachers());
         }
 
+        public static string GetTeacherById(int id)
+        {
+
+           var file= DAL.TeacherDAL.GetTeachers().FirstOrDefault(i => i.TeacherId == id).Qualifications;
+            return file;
+        }
+
         public static int GetTeacherId(HoursForTeacherDTO item)
         {
             foreach (var i in GetTeachers())
@@ -183,9 +195,9 @@ namespace BL
                         {
                             if (s.TeacherId == u.userId)
                             {
-                                
+
                                 TeacherDTO.TeacherAndSubjectDTO teacherAndSubjectDTO = new TeacherDTO.TeacherAndSubjectDTO()
-                                { 
+                                {
                                     userId = u.userId,
                                     firstName = u.firstName,
                                     lastName = u.lastName,
@@ -197,8 +209,8 @@ namespace BL
                                     email = u.email,
                                     GradesRange = s.GradesRange,
                                     PriceForLesson = (int)s.PriceForLesson,
-                                    
-          
+
+
                                     //DAL.SubjectToTeacherDAL.GetSubjects().Find(i => i.SubjectId == s.SubjectId).SubjectName,
                                     Qualifications = t.Qualifications
                                 };

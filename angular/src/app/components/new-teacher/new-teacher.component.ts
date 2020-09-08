@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Teacher } from 'src/app/class/teacher';
 import { BaseUser } from 'src/app/class/base-user';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-new-teacher',
@@ -21,31 +22,51 @@ export class NewTeacherComponent implements OnInit {
   phone: string;
   numhouse: number;
   street: string;
+  checkpassword: string;
   private key = 'token'
   private user: any;
   private kind: string;
   teachers: Teacher[] = [];
-  constructor(private TeacherService: TeacherService, private router: Router, private auth: AuthService) { }
+  constructor(private TeacherService: TeacherService, private userService: UserService, private router: Router, private auth: AuthService) { }
 
 
   ngOnInit() {
   }
-
-  addTeacher() {
-    console.log(this.city);
-    this.TeacherService
-      .addTeacher(new Teacher(this.tz, this.firstName, this.lastName, this.city, this.street, this.numhouse,
-        this.email, this.password, this.phone, " ")).subscribe(res => {
-          this.auth.login(this.firstName, this.password).subscribe((token: string) => {
-            if (token != "notfound") {
-              localStorage.setItem(this.key, token);
-            }
-
-          });
-        });
-    this.router.navigate(['/determineLessons']);
+  flag = false
+  check() {
+    return this.flag;
   }
+  checkPassword() {
+    if (this.checkpassword != this.password) {
+      alert("הסיסמת איתות לא זהה לסיסמא");
+      this.flag = false
+      return false;
+    }
+    else {
+      this.flag = true;
+    }
+    return true;
+  }
+  addTeacher() {
+    if (this.checkPassword() == true) {
+      console.log(this.city);
 
+      this.TeacherService
+        .addTeacher(new Teacher(this.tz, this.firstName, this.lastName, this.city, this.street, this.numhouse,
+          this.email, this.password, this.phone, " ")).subscribe(res => {
+            this.auth.login(this.firstName, this.password).subscribe((token: string) => {
+              if (token != "notfound") {
+                localStorage.setItem(this.key, token);
+              }
+            }
+            );
+            this.userService.sendEmails(this.firstName, this.lastName, this.email).subscribe();
+          });
+
+      this.router.navigate(['/determineLessons']);
+    }
+
+  }
   GetTeacher() {
     this.TeacherService.getTeachers().subscribe((teacherList: Teacher[]) => { this.teachers = teacherList, console.log(this.teachers) });
 

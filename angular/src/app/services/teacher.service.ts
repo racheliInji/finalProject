@@ -10,6 +10,8 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class TeacherService {
+
+
   flag = false;
   teacher: any;
   nameFile: string;
@@ -33,6 +35,14 @@ export class TeacherService {
     console.log("id");
     return this.http.get<any>(`${environment.URL + '/Teacher/getTeacherById'}/${id}`);
   }
+  // getId(teacher) {
+  //   return this.http.post<any>(environment.URL + '/Teacher/getId', teacher).subscribe(res=> console.log(res));
+  // }
+  DownloadCVFile(teacher: any) {
+  
+  console.log(teacher.userId);
+    return this.http.get(`${environment.URL}/Teacher/GetCVFile/${teacher.userId}`, { responseType: "blob" });
+  }
 
   updateTeacher(teacher: Teacher) {
     return this.http.put<any>(environment.URL + "/Teacher/updateTeacher", teacher);
@@ -51,7 +61,7 @@ export class TeacherService {
     return this.http.post<any>(environment.URL + '/HoursForTeacher/getTeachersDaysAndHours', this.teacher).subscribe(res => {
       this.hoursForteacherList = res; console.log("getTeachersDays");
       console.log(this.hoursForteacherList);
-      this.flag=true;
+      this.flag = true;
     }
     );
   }

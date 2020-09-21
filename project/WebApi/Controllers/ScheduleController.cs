@@ -48,5 +48,29 @@ namespace WebApi.Controllers
             }
 
         }
+
+        [HttpDelete]
+        [Route("DeleteLesson/{id}")]
+        public IHttpActionResult DeleteLesson(int id)
+
+        {
+
+            try
+            {
+                ScheduleDTO schedule = BL.ScheduleBL.deleteLesson(id);
+                if (schedule != null)
+                {
+                    BL.ScheduleBL.sendEmail(schedule);
+                    return Ok();
+                }
+                return NotFound();
+            }
+            catch
+            {
+                return BadRequest();
+
+            }
+
+        }
     }
 }

@@ -1,4 +1,4 @@
-
+import 'sweetalert2/dist/sweetalert2.min.css';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -27,6 +27,8 @@ import {
 } from 'angular-calendar';
 import { CalanderService } from 'src/app/services/calander.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { MyDialogComponent } from 'src/app/my-dialog/my-dialog.component';
 
 const colors: any = {
   red: {
@@ -42,7 +44,8 @@ const colors: any = {
     secondary: '#FDF1BA',
   },
 };
-
+// require('sweetalert2/dist/sweetalert2.min.css');
+// const {ngSweetAlert2} = require('angular-h-sweetalert');
 @Component({
   selector: 'app-calander', changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './calander.component.html',
@@ -79,26 +82,97 @@ export class CalanderComponent implements OnInit {
           title: i.StudentName + ': בשעה:' + i.starTtime,
           color: colors.yellow,
           actions: this.actions,
+          meta: i.ScheduleId
         }
       )
     })
   }
+  openDialog() {
+    const dialogRef = this.dialog.open(MyDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  };
   actions: CalendarEventAction[] = [
     {
       label: '<i class="fas fa-fw fa-pencil-alt"></i>',
       a11yLabel: 'Edit',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
+
+        swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this imaginary file!",
+         
+        })
+        .then((willDelete) => {
+    
+            if(willDelete.value){
+                 swal("Success");
+            }else{
+              swal("Fail");
+            }
+    
+          console.log(willDelete)
+        });
+        // swal(
+        //   {
+
+        //     title: "הוספת הערה",
+        //     content: {
+        //       element: "input",
+        //       attributes: {
+        //         // placeholder: "אני ממליצה........",
+        //         // name: "recomandation",
+        //         id: "recomandation",
+        //         style: " height: 100px",
+        //       },
+
+        //     },
+
+        //     buttons: ["ביטול", "אישור"],
+        //   }
+        // )
+        //   .then((value) => {
+        //     console.log(value);
+        //   });
+        // this.handleEvent('Edited', event);
       },
     },
-    // {
-    //   label: '<i class="fas fa-fw fa-trash-alt"></i>',
-    //   a11yLabel: 'Delete',
-    //   onClick: ({ event }: { event: CalendarEvent }): void => {
-    //     this.events = this.events.filter((iEvent) => iEvent !== event);
-    //     this.handleEvent('Deleted', event);
-    //   },
-    // },
+    {
+      label: '<i class="fas fa-fw fa-trash-alt"></i>',
+      a11yLabel: 'Delete',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        swal({
+          title: "האם לבטל את השיעור",
+          icon: "warning",
+          // dangerMode: true,
+          buttons: ["ביטול", "אישור"],
+        }).then(
+          i => {
+            if (i != null) {
+              console.log(event.meta);
+              this.calanderService.deleteLesson(event.meta).subscribe(res => this.calanderService.getLesson());
+              this.events = this.events.filter((iEvent) => iEvent !== event);
+              this.handleEvent('Deleted', event);
+            }
+          }
+        );
+        // swal({
+        //   title: "Are you sure?",
+        //   text: "Your will not be able to recover this imaginary file!",
+        //   type: "warning",
+        //   showCancelButton: true,
+        //   confirmButtonClass: "btn-danger",
+        //   confirmButtonText: "Yes, delete it!",
+        //   closeOnConfirm: false
+        // },
+        // function(){
+        //   swal("Deleted!", "Your imaginary file has been deleted.", "success");
+        // });
+
+      },
+    },
   ];
 
   refresh: Subject<any> = new Subject();
@@ -146,7 +220,7 @@ export class CalanderComponent implements OnInit {
 
   activeDayIsOpen: boolean = false;
 
-  constructor(private router: Router, private calanderService: CalanderService, private modal: NgbModal) {
+  constructor(public dialog: MatDialog, private router: Router, private calanderService: CalanderService, private modal: NgbModal) {
     this.getLesson();
     console.log(this.events);
   }
@@ -163,14 +237,14 @@ export class CalanderComponent implements OnInit {
         this.s = "";
         console.log(events)
         this.activeDayIsOpen = true;
-        events.forEach(i => {
-          console.log(this.s);
-          this.s += "התלמידה: " + i.title+"\n"
-        })
-        swal({
-          text: this.s,
-          buttons: [false]
-        })
+        // events.forEach(i => {
+        //   console.log(this.s);
+        //   this.s += "התלמידה: " + i.title+"\n"
+        // })
+        // swal({
+        //   text: this.s,
+        //   buttons: [false]
+        // })
 
       }
       this.viewDate = date;

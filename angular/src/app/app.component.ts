@@ -16,7 +16,6 @@ export class AppComponent {
 
   isTeacher() {
     if (this.newUser() == false) {
-      // debugger;
       if (localStorage.getItem("token")[0] == '0') {
         // console.log("teacher");
         return true;

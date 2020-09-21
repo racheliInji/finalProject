@@ -23,10 +23,10 @@ export class AuthService {
       .get(`${environment.URL}/User/login`, { params: { name, password } });
   }
 
-  logout() {
-    localStorage.removeItem(this.key);
-    this.router.navigate(['/login']);
-  }
+  // logout() {
+  //   localStorage.removeItem(this.key);
+  //   this.router.navigate(['/login']);
+  // }
 
   token() {
     return localStorage.getItem(this.key);

@@ -3,6 +3,8 @@ import { StudentService } from 'src/app/services/student.service';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/class/student';
 import { AuthService } from 'src/app/services/auth.service';
+import { addLesson } from 'src/app/class/addLesson';
+import { AddLessonService } from 'src/app/services/add-lesson.service';
 
 @Component({
   selector: 'app-new-student',
@@ -22,10 +24,10 @@ export class NewStudentComponent implements OnInit {
   grade: number;
   level: string;
   key = "token";
-  constructor(private StudentService: StudentService, private router: Router, private auth: AuthService) { }
+  constructor(private StudentService: StudentService, private router: Router, private auth: AuthService, private addLesson: AddLessonService) { }
   count = 34;
   students: Student[] = [];
-  
+
   ngOnInit() {
   }
 
@@ -41,7 +43,12 @@ export class NewStudentComponent implements OnInit {
 
         });
       });
-    this.router.navigate(['/student']);
+    if (this.addLesson.newUser == true) {
+      this.router.navigate(['/חיפוש']);
+    }
+    else {
+      this.router.navigate(['/בית']);
+    }
   }
 
   GetStudent() {

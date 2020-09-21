@@ -19,6 +19,22 @@ namespace WebApi.Controllers
                 BL.StudentBL.AddStudent(student);
                 return Ok();
             }
+            catch(Exception e)
+            {
+                return BadRequest();
+            }
+
+        }
+
+        [HttpGet]
+        [Route("AddRecommendation")]
+        public IHttpActionResult AddRecommendation(string value,string id)
+        {
+            try
+            {
+                BL.StudentBL.AddRecommendation(value, Int32.Parse(id));
+                return Ok();
+            }
             catch
             {
                 return BadRequest();
@@ -94,6 +110,26 @@ namespace WebApi.Controllers
             catch
             {
                 return BadRequest("יש תקלה");
+
+            }
+
+        }
+        [HttpGet]
+        [Route("GetLessonsByStudentId/{id}")]
+        public IHttpActionResult GetLessonsByStudentId(int id)
+
+        {
+
+            try
+            {
+                var q = BL.StudentBL.GetLessonsByStudentId(id);
+                if (q != null)
+                    return Ok(q);
+                return NotFound();
+            }
+            catch
+            {
+                return BadRequest();
 
             }
 

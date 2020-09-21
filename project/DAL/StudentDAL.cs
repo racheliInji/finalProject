@@ -39,6 +39,23 @@ namespace DAL
             }
         }
 
+        public static void AddRecommendation(string value, int id)
+        {
+            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            {
+
+                Recommendation recommendation = new Recommendation()
+                {
+                    TeacherId = id,
+                    RecommendationContents = value,
+
+                };
+                db.Recommendations.Add(recommendation);
+                db.SaveChanges();
+            }
+
+        }
+
         public static List<Student> GetStudents()
         {
             using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())

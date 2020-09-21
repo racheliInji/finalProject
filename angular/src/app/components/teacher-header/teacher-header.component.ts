@@ -11,9 +11,16 @@ export class TeacherHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if (localStorage.getItem("token")) {
+      this.links = ['יציאה', 'לוח שנה', 'לוח שעות', 'פרופיל'];
+    }
+    else {
+      this.links = ['רישום', 'לוח שנה', 'לוח שעות', 'פרופיל'];
+
+    }
   }
 
-  links =  ['יציאה','כניסה','בית',  'לוח שנה','לוח שעות', 'עדכון מורה'];
+  links = [];
   activeLink = this.links[0];
   background: ThemePalette = undefined;
 

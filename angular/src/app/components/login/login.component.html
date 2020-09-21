@@ -1,3 +1,64 @@
+<!-- <form [formGroup]="form" (ngSubmit)="submitAccount(form)">
+  <div class="form-content">
+      <div class="form-field">
+          <mat-form-field>
+          <input matInput formControlName="email" placeholder="Email">
+          <mat-error *ngIf="form.get('email').hasError('required')">
+              E-mail is mandatory.
+          </mat-error>
+          <mat-error *ngIf="form.get('email').hasError('email')">
+              Incorrect E-mail.
+          </mat-error>
+          </mat-form-field>
+      </div>
+      <div class="form-field">
+          <mat-form-field>
+          <input matInput formControlName="password" placeholder="Password" type="password">
+          <mat-hint class="ac-form-field-description">Between 6 and 24 characters.</mat-hint>
+          <mat-error *ngIf="form.get('password').hasError('required')">
+              Password is mandatory.
+          </mat-error>
+          <mat-error *ngIf="form.get('password').hasError('minlength')">
+              Password with less than 6 characters.
+          </mat-error>
+          <mat-error *ngIf="form.get('password').hasError('maxlength')">
+              Password with more than 24 characters.
+          </mat-error>
+          </mat-form-field>
+      </div>
+      <div class="form-field">
+          <mat-form-field>
+          <input matInput formControlName="passwordAgain" placeholder="Confirm the password" type="password" [errorStateMatcher]="passwordsMatcher">
+          <mat-error *ngIf="form.hasError('passwordsNotEqual')" >Passwords are different. They should be equal!</mat-error>
+          </mat-form-field>
+      </div>
+      <div class="form-field">
+          <mat-checkbox name="acceptTerms" formControlName="acceptTerms">I accept terms and conditions</mat-checkbox>
+      </div>
+  </div>
+  <div class="form-bottom">
+      <button mat-raised-button [disabled]="!form.valid">Create Account</button>
+  </div>
+</form>
+
+
+<form [formGroup]="myForm">
+	<mat-form-field>
+		<input matInput placeholder="New password" formControlName="password" required>
+		<mat-error *ngIf="myForm.hasError('required', 'password')">
+			Please enter your newpassword
+		</mat-error>
+	</mat-form-field>
+
+	<mat-form-field>
+		<input matInput placeholder="Confirm password" formControlName="confirmPassword" [errorStateMatcher]="matcher">
+  		<mat-error *ngIf="myForm.hasError('notSame')">
+			Passwords do not match
+		</mat-error>  
+	</mat-form-field>
+</form> -->
+
+
 <div class="login">
   <p>
     <mat-form-field appearance="legacy" id="username">
@@ -5,7 +66,6 @@
       <input matInput placeholder="" [(ngModel)]="name">
     </mat-form-field>
   </p>
-
   <div class="example-container" id="password">
     <mat-form-field appearance="fill" id="fill">
       <mat-label>הכנס סיסמא</mat-label>
@@ -15,7 +75,7 @@
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
-    <!-- <a href="#" class="forgot">forgot password?</a> -->
+    <a href="#" class="forgot">forgot password?</a> 
     <div *ngIf="checkNewUser()==true">
       <p id="no">{{massage}}</p>
     </div>

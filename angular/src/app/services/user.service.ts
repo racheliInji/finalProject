@@ -10,6 +10,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UserService {
+ 
 
   // Login(name: string, password: string) {
   //   throw new Error("Method not implemented.");
@@ -35,6 +36,7 @@ export class UserService {
   }
   getIdByToken() {
     this.token = localStorage.getItem("token");
+    console.log("token"+this.token)
     if (this.token != null) {
       for (var i = 1; i < this.token.length; i++) {
         if (this.token[i] == 'a') {
@@ -47,5 +49,8 @@ export class UserService {
   }
   sendEmails(firstName: string, lastName: string, email: string) {
     return this.http.get<any>(environment.URL+ '/User/sendEmails',{ params: { firstName,lastName,email } });
+  }
+  getUserById(meta: any) {
+
   }
 }

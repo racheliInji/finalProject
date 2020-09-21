@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="RacheliandDiniModel1.Lesson" Width="1.5" PointX="10.5" PointY="17" IsExpanded="true" />
         <EntityTypeShape EntityType="RacheliandDiniModel1.Message" Width="1.5" PointX="13.5" PointY="13.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RacheliandDiniModel1.Recommendation" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="RacheliandDiniModel1.Schedule" Width="1.5" PointX="8.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel1.Schedule" Width="1.5" PointX="9.125" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="RacheliandDiniModel1.Student" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RacheliandDiniModel1.Subject" Width="1.5" PointX="6" PointY="13.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RacheliandDiniModel1.SubjectToTeacher" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-exit',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExitComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router :Router) { }
 
-  ngOnInit() {
+  ngOnInit() { 
+    this.router.navigate(['']);
+    localStorage.removeItem("token");
+
   }
 
 }

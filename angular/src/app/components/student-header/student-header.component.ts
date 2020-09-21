@@ -11,8 +11,14 @@ export class StudentHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if (localStorage.getItem("token")) {
+      this.links = ['יציאה','לוח שנה לתלמידה', 'חיפוש', 'עדכון פרופיל'];
+    }
+    else {
+      this.links = ['רישום',  'לוח שנה לתלמידה', 'חיפוש', 'עדכון פרופיל'];
+    }
   }
-  links = ['בית', 'לוח שנה','חיפוש', 'עדכון תלמידה'];
+  links = [];
   activeLink = this.links[0];
   background: ThemePalette = undefined;
 

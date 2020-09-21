@@ -68,7 +68,8 @@
                 </div>
             </div>
         </div> -->
-        <button matButton (click)="DownloadCVFile(teacher)">הצג קובץ קו"ח</button>  
+      
+        <button    *ngIf="check(teacher.Qualifications)==true" matButton (click)="DownloadCVFile(teacher)">הצג קובץ קו"ח</button>  
 
           <button mat-stroked-button color="primary" (click)="addLesson(teacher)"><i class="fa fa-calendar"></i>
             לקביעת שיעור אונלין</button>

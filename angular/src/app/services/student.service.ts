@@ -33,7 +33,6 @@ export class StudentService {
 
   deleteStudent(id: any) {
     console.log(id);
-    debugger;
     this.http.delete<any>(`${this.Url + 'Student/deleteStudent'}/${id}`).subscribe(res => { console.log(res), alert(res) },
     (error: any) => {
     alert(error)

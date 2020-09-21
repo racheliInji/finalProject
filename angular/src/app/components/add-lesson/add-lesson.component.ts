@@ -146,6 +146,7 @@ export class AddLessonComponent implements OnInit {
           }).then(
             i => {
               if (i != null) {
+                this.addLessonService.newUser=true;
                 this.router.navigate(['/newStudent']);
               }
             }

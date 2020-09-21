@@ -6,6 +6,8 @@ import { Teacher } from 'src/app/class/teacher';
 import { BaseUser } from 'src/app/class/base-user';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
+import { FormGroup, FormBuilder, FormControl,Validators } from '@angular/forms';
+import { RepeatPasswordValidator, RepeatPasswordEStateMatcher, EmailValidation, PasswordValidation } from '../validators';
 
 @Component({
   selector: 'app-new-teacher',
@@ -27,7 +29,16 @@ export class NewTeacherComponent implements OnInit {
   private user: any;
   private kind: string;
   teachers: Teacher[] = [];
-  constructor(private TeacherService: TeacherService, private userService: UserService, private router: Router, private auth: AuthService) { }
+  form: any;
+  passwordsMatcher = new RepeatPasswordEStateMatcher;
+  constructor(private formBuilder: FormBuilder,private TeacherService: TeacherService, private userService: UserService, private router: Router, private auth: AuthService) {
+    this.form = this.formBuilder.group({
+      email: new FormControl('', EmailValidation),
+      password: new FormControl('', PasswordValidation),
+      passwordAgain: new FormControl(''),
+      acceptTerms: new FormControl('', [Validators.requiredTrue])
+    }, { validator: RepeatPasswordValidator });
+   }
 
 
   ngOnInit() {

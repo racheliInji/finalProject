@@ -18,12 +18,15 @@ import { AddLessonComponent } from './components/add-lesson/add-lesson.component
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { ExitComponent } from './components/exit/exit.component';
+import { StudentCalanderComponent } from './components/student-calander/student-calander.component';
+import { StudentHomeComponent } from './components/student-home/student-home.component';
+import { TeacherhomeComponent } from './components/teacherhome/teacherhome.component';
 
 
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'כניסה', component: LoginComponent },
+  { path: '', component: HomeComponent },
+  { path: 'רישום', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'newuser', component: NewuserComponent },
   { path: 'student', component: StudentComponent, canActivate: [AuthGuard] },
@@ -37,14 +40,17 @@ const routes: Routes = [
   { path: 'לוח שעות', component: DeterminingLessonsComponent },
   { path: 'file', component: FileComponent },
   { path: 'updateStudent', component: UpdateStudentComponent },
-  { path: 'עדכון תלמידה', component: UpdateStudentComponent },
-  { path: 'עדכון מורה', component: UpdateTeacherComponent },
+  { path: 'עדכון פרופיל', component: UpdateStudentComponent },
+  { path: 'פרופיל', component: UpdateTeacherComponent },
   { path: 'search', component: SearchComponent },
   { path: 'חיפוש', component: SearchComponent },
   { path: 'אודות', component: AboutComponent },
   { path: 'addlesson', component: AddLessonComponent },
-  { path: 'בית', component: HomeComponent },
-  { path: 'יציאה', component: ExitComponent }
+  { path: 'בית', component: StudentHomeComponent },
+  { path: 'יציאה', component: ExitComponent },
+  { path: 'לוח שנה לתלמידה', component: StudentCalanderComponent },
+  { path: 'למורה בית', component: TeacherhomeComponent },
+  { path: 'teacherHome', component: TeacherhomeComponent }
 
 ];
 

@@ -6,6 +6,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { CalanderService } from 'src/app/services/calander.service';
 import { HoursAndDayService } from 'src/app/services/hours-and-day.service';
+import { FormGroup, FormBuilder, FormControl,Validators } from '@angular/forms';
+import { RepeatPasswordValidator, RepeatPasswordEStateMatcher, EmailValidation, PasswordValidation } from '../validators';
+// import { EmailValidation, PasswordValidation, RepeatPasswordEStateMatcher, RepeatPasswordValidator } from '';
 
 @Component({
   selector: 'app-login',
@@ -19,12 +22,22 @@ export class LoginComponent implements OnInit {
   isfound = true;
   key = "token";
   massage = "המשתמש לא נמצא"
-  constructor(private calanderService: CalanderService, private hoursAndDayService: HoursAndDayService ,private userService: UserService, private auth: AuthService, private router: Router) { }
+
+  constructor(private formBuilder: FormBuilder, private calanderService: CalanderService, private hoursAndDayService: HoursAndDayService, private userService: UserService, private auth: AuthService, private router: Router) {
+   
+  }
 
   ngOnInit() {
 
   }
+  form: any;
+  passwordsMatcher = new RepeatPasswordEStateMatcher;
+  // checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+  //   let pass = group.get('password').value;
+  //   let confirmPass = group.get('confirmPass').value;
 
+  //   return pass === confirmPass ? null : { notSame: true }
+  // }
   checkNewUser() {
     if (this.isfound == false)
       return true;
@@ -36,10 +49,16 @@ export class LoginComponent implements OnInit {
       if (token != "notfound") {
         localStorage.setItem(this.key, token);
         if (token.startsWith('0')) {
-          this.calanderService.getLesson();
           this.hoursAndDayService.getHourandDayById(this.userService.getIdByToken());
+          this.calanderService.getLesson();
+          this.router.navigate(['/teacherHome']);
+
         }
-        else { this.router.navigate(['/student']); }
+        else {
+          this.calanderService.getLessonForStudent();
+          this.router.navigate(['/בית']);
+
+        }
         this.userService.getIdByToken();
       }
       else {

@@ -24,5 +24,36 @@ namespace DAL
 
             }
         }
+
+        public static Schedule deleteLesson(int scheduleId)
+        {
+            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            {
+                Schedule schedule = new Schedule();
+                foreach (var item in db.Schedules)
+                {
+                    if (item.ScheduleId == scheduleId)
+                    {
+
+                         schedule = item;
+                        db.Schedules.Remove(item);
+                        if (schedule != null)
+                            break;
+
+                    }
+                }
+                try
+                {
+                    db.SaveChanges();
+                    return schedule;
+                }
+                catch(Exception e)
+                {
+                    return null;
+                }
+
+
+            }
+        }
     }
 }

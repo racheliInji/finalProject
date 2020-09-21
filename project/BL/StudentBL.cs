@@ -34,6 +34,11 @@ namespace BL
             DAL.StudentDAL.AddStudent(Converters.StudentConvert.GetStudent(StudentDTO), Converters.UserConvert.GetUser(userDTO));
         }
 
+        public static void AddRecommendation(string value, int id)
+        {
+            DAL.StudentDAL.AddRecommendation(value,id);
+        }
+
         public static List<StudentDTO.UserAndStudentDTO> GetStudents()
         {
             var q = DAL.StudentDAL.GetStudents();
@@ -72,6 +77,28 @@ namespace BL
         public static void DeleteTeacher(int id)
         {
             DAL.StudentDAL.DeleteStudent(id);
+        }
+
+        public static List<ScheduleForStudentDTO> GetLessonsByStudentId(int id)
+        {
+            List<ScheduleForStudentDTO> list = new List<ScheduleForStudentDTO>();
+            var q = Converters.ScheduleConvert.DtoScheduleList(DAL.ScheduleDAL.GetLessons()).Where(i => i.StudentId == id).ToList();
+            foreach (var i in q)
+            {
+                var q2 = DAL.UserDal.GetUsers().FirstOrDefault(e => e.id == i.StudentId);
+                var q3 = DAL.UserDal.GetUsers().FirstOrDefault(e => e.id == i.TeacherId);
+                ScheduleForStudentDTO ScheduleForStudent = new ScheduleForStudentDTO()
+                {
+                    Date = i.Date,
+                    starTtime = i.starTtime,
+                    Subject = i.Subject,
+                    TeacherId = i.TeacherId,
+                    StudentName = q2.firstName + ' ' + q2.lastName,
+                    TeacherName=q3.firstName+" "+q3.lastName
+                };
+                list.Add(ScheduleForStudent);
+            }
+            return list;
         }
 
         public static StudentDTO.UserAndStudentDTO getStudentAndUserById(int id)

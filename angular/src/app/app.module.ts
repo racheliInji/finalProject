@@ -41,11 +41,17 @@ import { AuInterceptor } from './services/auth.interceptor';
 import { DatePipe } from '@angular/common';
 import { FilterPipe } from './filter.pipe';
 import { ExitComponent } from './components/exit/exit.component';
+import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 ///////////////////google map
 import { AgmCoreModule } from '@agm/core';
 // import { AgmDirectionModule } from 'agm-direction';
 import {GooglePlaceModule} from 'ngx-google-places-autocomplete'
 import {NgxLoadingModule, ngxLoadingAnimationTypes} from 'ngx-loading';
+import { StudentCalanderComponent } from './components/student-calander/student-calander.component';
+import { DialogOverviewExampleDialogComponent } from './dialog-overview-example-dialog/dialog-overview-example-dialog.component';
+import { StudentHomeComponent } from './components/student-home/student-home.component';
+import { TeacherhomeComponent } from './components/teacherhome/teacherhome.component';
+import { MyDialogComponent } from './my-dialog/my-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,12 +76,17 @@ import {NgxLoadingModule, ngxLoadingAnimationTypes} from 'ngx-loading';
     HomeComponent,
     FilterPipe,
     ExitComponent,
+    StudentCalanderComponent,
+    DialogOverviewExampleDialogComponent,
+    StudentHomeComponent,
+    TeacherhomeComponent,
+    MyDialogComponent,
     
   ],
   imports: [
+    ReactiveFormsModule,
     MatButtonModule,
-    // CalendarWeekHoursViewModule,
-    // CalendarWeekHoursViewModule,
+    MatDialogModule,
     NavbarModule,
     WavesModule,
     ButtonsModule,
@@ -126,7 +137,7 @@ import {NgxLoadingModule, ngxLoadingAnimationTypes} from 'ngx-loading';
     }),
   ],
 
-  providers: [ DatePipe,{ provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check' },
+  providers: [  {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},DatePipe,{ provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check' },
   { 
     provide: HTTP_INTERCEPTORS,
     useClass: AuInterceptor,

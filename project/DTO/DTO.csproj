@@ -58,6 +58,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecommendationDTO.cs" />
     <Compile Include="ScheduleDTO.cs" />
+    <Compile Include="ScheduleForStudentDTO.cs" />
     <Compile Include="StudentDTO.cs" />
     <Compile Include="SubjectDTO.cs" />
     <Compile Include="SubjectToTeacherDTO.cs" />

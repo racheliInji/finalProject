@@ -42,7 +42,8 @@ export class SearchComponent implements OnInit {
     // this.searchText=
   }
   check(teacher: any) {
-    if (teacher.Qualifications != null && teacher.Qualifications != "") {
+    console.log(teacher);
+    if (teacher != null && teacher!= "") {
       return true;
     }
     return false;

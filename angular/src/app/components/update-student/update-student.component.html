@@ -1,4 +1,3 @@
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -9,137 +8,139 @@
 
 
 <div class="container">
-<!-- <br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
+    <!-- <br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
 <hr> -->
-<!-- <app-header (sidenavToggle)="sidenav.toggle()"></app-header> -->
-<div class="card bg-light">
-<article class="card-body mx-auto" style="max-width: 400px;">
-	<form>
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-		 </div>
-        <input  name="firstName"  class="form-control" #firstName2="ngModel" type="text"  [(ngModel)]="firstName" >
-    </div>
-    <div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-		 </div>
-        <input  name="lastName"class="form-control" #lastName2="ngModel"  placeholder="שם משפחה"  type="text"  [(ngModel)]="lastName" >
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-		 </div>
-        <input name="tz" class="form-control" placeholder="ת.ז"   #tz2="ngModel" type="text"  [(ngModel)]="tz" >
-    </div>
+    <!-- <app-header (sidenavToggle)="sidenav.toggle()"></app-header> -->
+    <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <form>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input name="firstName" class="form-control" #firstName2="ngModel" type="text"
+                        [(ngModel)]="firstName">
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input name="lastName" class="form-control" #lastName2="ngModel" placeholder="שם משפחה" type="text"
+                        [(ngModel)]="lastName">
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input name="tz" class="form-control" placeholder="ת.ז" #tz2="ngModel" type="text" [(ngModel)]="tz">
+                </div>
 
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-		 </div>
-        <input name="email" class="form-control"   #email2="ngModel" placeholder="Email address" type="email"  [(ngModel)]="email" >
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-		</div>
-		<select class="custom-select" style="max-width: 120px;">
-		    <option selected="" >+971</option>
-		    <option value="1">+972</option>
-		    <option value="2">+198</option>
-		    <option value="3">+701</option>
-		</select>
-    	<input name="phone" class="form-control" placeholder="Phone number" type="text"  [(ngModel)]="phone"  #phone2="ngModel">
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"><i class="fa fa-pencil" aria-hidden="true"></i>  </span>
-		</div>
-		<select name="grade" class="form-control"  [(ngModel)]="grade"   #grade2="ngModel">
-            <option value=1>א - ד יסודי</option>
-            <option value=2>ה- ו יסודי</option>
-            <option value=3>ז- ח יסודי</option>
-            <option value=4>תיכון</option>
-            <option value=5>השתלמות</option>
-		</select>
-    </div> 
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-		</div>
-		<select name="level" class="form-control"  [(ngModel)]="level"   #level2="ngModel">
-            <option value="רמה גבוה" >רמה גבוה</option>
-            <option value="רמה בנונית">רמה בנונית</option>
-            <option value="רמה נמוכה">רמה נמוכה</option>
-            <option value="low">low</option>
-		</select>
-    </div> 
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i> </span>
-		</div>
-		<select name="city" class="form-control"  [(ngModel)]="city"  #city2="ngModel" >
-            <option value="בני ברק">בני ברק</option>
-            <option value="ירושלים">ירושלים</option>
-            <option value="חיפה">חיפה</option>
-            <option value="פתח תקוה"> פתח תקוה</option>
-            <option value="תל אביב">תל אביב </option>
-            <option value="בית שמש">בית שמש</option>
-            <option value="אשדוד">אשדוד</option>
-            <option value="אלעד"> אלעד</option>
-            <option value="ביתר"> ביתר </option>
-            <option value="גבעתיים"> גבעתיים </option>
-            <option value="הרצליה"> הרצליה </option>
-            <option value="זכרון יעקב"> זכרון יעקב </option>
-            <option value="חדרה"> חדרה </option>
-            <option value="טבריה"> טבריה </option>
-            <option value="נתניה"> נתניה </option>
-            <option value="עפולה"> עפולה </option>
-            <option value="צפת"> צפת </option>
-            <option value="אילת"> אילת </option>
-            <option value="ביתר"> ביתר </option>
-            <option value="קרית ספר"> קרית ספר </option>
-            <option value="דימונה"> דימונה </option>
-            <option value="רעננה"> רעננה </option>
-		</select>
-    </div> 
-    <div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
-		 </div>
-        <input name="street" class="form-control" placeholder="רחוב"  type="text"  #street2="ngModel" [(ngModel)]="street" > 
-    </div>
-    <div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
-		 </div>
-        <input name="numhouse" class="form-control" placeholder="מספר בית"  type="number"  #numhouse2="ngModel" [(ngModel)]="numhouse" >
-    </div>
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
-        <input class="form-control" name="password"  placeholder="Create password" type="password"  #password2="ngModel" [(ngModel)]="password" >
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
-        <input  name="checkpassword" class="form-control" placeholder="Repeat password" type="password"  #checkpassword2="ngModel" [(ngModel)]="checkpassword" >
-    </div> <!-- form-group// -->                                      
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block" (click)="updateStudent()" >אישור </button>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block" (click)="deleteStudent()"> מחיקה </button>
-        </div>  
-    </div> 
-                                                                  
-</form>
-</article>
-</div> <!-- card.// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    <input name="email" class="form-control" #email2="ngModel" placeholder="Email address" type="email"
+                        [(ngModel)]="email">
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    </div>
+                    <select class="custom-select" style="max-width: 120px;">
+                        <option selected="">+971</option>
+                        <option value="1">+972</option>
+                        <option value="2">+198</option>
+                        <option value="3">+701</option>
+                    </select>
+                    <input name="phone" class="form-control" placeholder="Phone number" type="text" [(ngModel)]="phone"
+                        #phone2="ngModel">
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-pencil" aria-hidden="true"></i> </span>
+                    </div>
+                    <select name="grade" class="form-control" [(ngModel)]="grade" #grade2="ngModel">
+                        <option value=1>א - ד יסודי</option>
+                        <option value=2>ה- ו יסודי</option>
+                        <option value=3>ז- ח יסודי</option>
+                        <option value=4>תיכון</option>
+                        <option value=5>השתלמות</option>
+                    </select>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                    </div>
+                    <select name="level" class="form-control" [(ngModel)]="level" #level2="ngModel">
+                        <option value="רמה גבוה">רמה גבוה</option>
+                        <option value="רמה בנונית">רמה בנונית</option>
+                        <option value="רמה נמוכה">רמה נמוכה</option>
+                        <option value="low">low</option>
+                    </select>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i> </span>
+                    </div>
+                    <select name="city" class="form-control" [(ngModel)]="city" #city2="ngModel">
+                        <option value="בני ברק">בני ברק</option>
+                        <option value="ירושלים">ירושלים</option>
+                        <option value="חיפה">חיפה</option>
+                        <option value="פתח תקוה"> פתח תקוה</option>
+                        <option value="תל אביב">תל אביב </option>
+                        <option value="בית שמש">בית שמש</option>
+                        <option value="אשדוד">אשדוד</option>
+                        <option value="אלעד"> אלעד</option>
+                        <option value="ביתר"> ביתר </option>
+                        <option value="גבעתיים"> גבעתיים </option>
+                        <option value="הרצליה"> הרצליה </option>
+                        <option value="זכרון יעקב"> זכרון יעקב </option>
+                        <option value="חדרה"> חדרה </option>
+                        <option value="טבריה"> טבריה </option>
+                        <option value="נתניה"> נתניה </option>
+                        <option value="עפולה"> עפולה </option>
+                        <option value="צפת"> צפת </option>
+                        <option value="אילת"> אילת </option>
+                        <option value="ביתר"> ביתר </option>
+                        <option value="קרית ספר"> קרית ספר </option>
+                        <option value="דימונה"> דימונה </option>
+                        <option value="רעננה"> רעננה </option>
+                    </select>
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
+                    </div>
+                    <input name="street" class="form-control" placeholder="רחוב" type="text" #street2="ngModel"
+                        [(ngModel)]="street">
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
+                    </div>
+                    <input name="numhouse" class="form-control" placeholder="מספר בית" type="number"
+                        #numhouse2="ngModel" [(ngModel)]="numhouse">
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input class="form-control" name="password" placeholder="Create password" type="password"
+                        #password2="ngModel" [(ngModel)]="password">
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input name="checkpassword" class="form-control" placeholder="Repeat password" type="password"
+                        #checkpassword2="ngModel" [(ngModel)]="checkpassword">
+                </div> <!-- form-group// -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block" (click)="updateStudent()">אישור </button>
+                </div>
 
-</div> 
+            </form>
+        </article>
+    </div> <!-- card.// -->
 
-
-
+</div>

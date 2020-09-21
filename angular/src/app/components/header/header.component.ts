@@ -15,15 +15,21 @@ export class HeaderComponent implements OnInit {
   constructor(private UserService: UserService) { }
 
   ngOnInit() {
+    if (localStorage.getItem("token")) {
+      this.links = ['יציאה', 'חיפוש', 'אודות']
 
+    }
+    else {
+      this.links = ['רישום', 'חיפוש', 'אודות']
+    }
   }
 
-  links = ['כניסה', 'חיפוש', 'אודות'];
+  links = [];
   activeLink = this.links[0];
   background: ThemePalette = undefined;
 
   toggleBackground() {
     this.background = this.background ? undefined : 'warn';
   }
-  
+
 }

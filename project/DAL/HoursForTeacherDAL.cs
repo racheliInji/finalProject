@@ -36,6 +36,7 @@ namespace DAL
                     if (item.HoursForTeacherId == id)
                     {
                         db.HoursForTeachers.Remove(item);
+                        db.SaveChanges();
                     }
                 }
             }

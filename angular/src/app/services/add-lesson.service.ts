@@ -13,6 +13,7 @@ export class AddLessonService {
   teacherId: number;
   subject:string;
   studentId:any;
+  newUser=false;
   constructor(private UserService: UserService, private http: HttpClient) { }
   addLesson(formatedDate: any, starTtime: any) {
     console.log(formatedDate);

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -10,14 +10,6 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
-
-  @ViewChild('header', { static: true }) header: ElementRef;
-  @ViewChild('colorpicker', { static: true }) colorpicker: ElementRef;
-
-  settheadercolor() {
-    console.log("view");
-    this.header.nativeElement.setAttribute('style', `color: ${this.colorpicker.nativeElement.value}`)
   }
 
 }

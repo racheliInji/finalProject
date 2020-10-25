@@ -12,10 +12,10 @@ export class StudentHeaderComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem("token")) {
-      this.links = ['יציאה','לוח שנה לתלמידה', 'חיפוש', 'עדכון פרופיל'];
+      this.links = ['יציאה','לוח שנה לתלמידה', 'חיפוש', ' פרופיל '];
     }
     else {
-      this.links = ['רישום',  'לוח שנה לתלמידה', 'חיפוש', 'עדכון פרופיל'];
+      this.links = ['רישום/כניסה',  'לוח שנה לתלמידה', 'חיפוש', ' פרופיל '];
     }
   }
   links = [];

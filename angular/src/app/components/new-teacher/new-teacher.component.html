@@ -96,31 +96,6 @@
 		    <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i>  </span>
         </div>
         <input name="city"  ngx-google-places-autocomplete #placesRef="ngx-places" class="form-control" placeholder="עיר"  type="text" [(ngModel)]="city" > 
-
-		<!-- <select name="city" class="form-control"  [(ngModel)]="city" >
-            <option value="בני ברק">בני ברק</option>
-            <option value="ירושלים">ירושלים</option>
-            <option value="חיפה">חיפה</option>
-            <option value="פתח תקוה"> פתח תקוה</option>
-            <option value="תל אביב">תל אביב </option>
-            <option value="בית שמש">בית שמש</option>
-            <option value="אשדוד">אשדוד</option>
-            <option value="אלעד"> אלעד</option>
-            <option value="ביתר"> ביתר </option>
-            <option value="גבעתיים"> גבעתיים </option>
-            <option value="הרצליה"> הרצליה </option>
-            <option value="זכרון יעקב"> זכרון יעקב </option>
-            <option value="חדרה"> חדרה </option>
-            <option value="טבריה"> טבריה </option>
-            <option value="נתניה"> נתניה </option>
-            <option value="עפולה"> עפולה </option>
-            <option value="צפת"> צפת </option>
-            <option value="אילת"> אילת </option>
-            <option value="ביתר"> ביתר </option>
-            <option value="קרית ספר"> קרית ספר </option>
-            <option value="דימונה"> דימונה </option>
-            <option value="רעננה"> רעננה </option>
-		</select> -->
     </div> 
     <div class="form-group input-group">
 		<div class="input-group-prepend">
@@ -149,10 +124,7 @@
     <div class="form-group">
         <app-file></app-file>
         <button type="submit" class="btn btn-primary btn-block" (click)="addTeacher()" >לרישום </button>
-    </div> 
-    <div class="form-group">
-        <button  class="btn btn-primary btn-block" (click)="GetTeacher()" >AllTeachers </button>
-    </div>                                                                
+    </div>                                                               
 </form>
 </article>
 </div> <!-- card.// -->

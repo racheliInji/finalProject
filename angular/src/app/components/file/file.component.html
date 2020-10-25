@@ -1,3 +1,7 @@
 
-<input type="file" (change)="selectFile($event)" accept="application/pdf">
-<!-- <button type="button" (click)="upload()">upload</button> -->
+<div class="form-group">
+        <label for="file"><i class="material-icons" style="font-size:36px">file_upload</i></label>
+        <input type="file"
+               id="file"
+               (change)="selectFile($event)" accept="application/pdf" >
+    </div>

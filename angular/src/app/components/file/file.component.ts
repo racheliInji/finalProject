@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { TeacherService } from 'src/app/services/teacher.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-file',
@@ -17,13 +18,9 @@ export class FileComponent implements OnInit {
   }
 
   selectFile(event) {
-
-    //  console.log(event);
     this.selectedfile = <File>event.target.files[0];
-    //  console.log(this.selectedfile);
-
     if ((this.selectedfile.type != "application/pdf")) {
-      alert("ניתן לטעות רק קבצי PDF!!!!!")
+      swal("!!!!!!PDF ניתן לטעות רק קבצי ", "", "info")
     }
     else {
       const fd = new FormData();

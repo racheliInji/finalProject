@@ -94,9 +94,8 @@ export class DeterminingLessonsComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem("token")) {
-      console.log("token")
       this.id = this.UserService.getIdByToken();
-      console.log(this.id);
+      // console.log(this.id);
       this.hoursAndDayList = this.HoursAndDayService.hoursForTeacherList;
       this.putValus();
     }
@@ -104,13 +103,11 @@ export class DeterminingLessonsComponent implements OnInit {
   s: string;
   s2: string;
   putValus() {
-    console.log("put");
-    console.log(this.hoursAndDayList);
+    // console.log(this.hoursAndDayList);
     this.hoursAndDayList.forEach(element => {
-      console.log(element.Day);
+      // console.log(element.Day);
 
       this.s = this.convertDay(element.Day) + this.convertTime(element.Starttime);
-      console.log(this.s);
       this.s2 = "isChecked" + this.s;
       this.find(this.s2, this.s);
     });
@@ -323,19 +320,17 @@ export class DeterminingLessonsComponent implements OnInit {
   }
 
   removeHourAndDay() {
-    console.log('id' + this.id);
+    // console.log('id' + this.id);
     this.HoursAndDayService.removeHourAndDay(this.id).subscribe();
 
   }
 
   addHourandDay() {
-    console.log("hi");
-    console.log(this.id)
+    // console.log(this.id)
     this.HoursAndDayService.addHourandDay(new HourandDay(this.UserService.getIdByToken(), this.day, this.startHour, this.endHour)).subscribe(i => this.HoursAndDayService.getHourandDayById(this.id));
   }
 
   checkHour(num: number) {
-    console.log(num);
     if (num == 9 || num == 90) {
       this.startHour = '09:00:00'
       this.endHour = '10:00:00'

@@ -6,9 +6,11 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { CalanderService } from 'src/app/services/calander.service';
 import { HoursAndDayService } from 'src/app/services/hours-and-day.service';
-import { FormGroup, FormBuilder, FormControl,Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { RepeatPasswordValidator, RepeatPasswordEStateMatcher, EmailValidation, PasswordValidation } from '../validators';
 // import { EmailValidation, PasswordValidation, RepeatPasswordEStateMatcher, RepeatPasswordValidator } from '';
+// import swal from 'sweetalert';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-login',
@@ -24,11 +26,10 @@ export class LoginComponent implements OnInit {
   massage = "המשתמש לא נמצא"
 
   constructor(private formBuilder: FormBuilder, private calanderService: CalanderService, private hoursAndDayService: HoursAndDayService, private userService: UserService, private auth: AuthService, private router: Router) {
-   
+
   }
 
   ngOnInit() {
-
   }
   form: any;
   passwordsMatcher = new RepeatPasswordEStateMatcher;
@@ -38,6 +39,48 @@ export class LoginComponent implements OnInit {
 
   //   return pass === confirmPass ? null : { notSame: true }
   // }
+  forgot() {
+    console.log(this.name);
+    swal({
+      text: "לשיחזור הסיסמא הקש דואר אלקטרוני",
+      content: {
+        element: "input",
+        attributes: {
+          id: "email",
+          // title: "הקש מיל",
+          style: "border: none; border-bottom: 2px solid darkmagenta; width: 78%; margin-left: 10%;",
+        },
+      },
+      buttons: ["ביטול", "אישור"],
+    }).then(
+      value => {
+        if (value != null && value != "") {
+          console.log(value);
+          this.userService.forgetPassword(value).subscribe();
+
+          swal({
+            icon: "info",
+            title: "הסיסמא נשלחה למיל " + value
+          })
+        }
+        else if(value==""){
+          swal({
+            title:"לא הוקש דואר אלקטרוני",
+            text: "לשיחזור הסיסמא הקש דואר אלקטרוני",
+            content: {
+              element: "input",
+              attributes: {
+                id: "email",
+                // title: "הקש מיל",
+                style: "border: none; border-bottom: 2px solid darkmagenta; width: 78%; margin-left: 10%;",
+              },
+            },
+            buttons: ["ביטול", "אישור"],
+          })
+        }
+      }
+    );
+  }
   checkNewUser() {
     if (this.isfound == false)
       return true;

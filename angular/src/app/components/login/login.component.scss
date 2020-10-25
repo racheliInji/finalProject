@@ -1,16 +1,19 @@
 
+
 html { height: 100% }
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
-body { background-image: radial-gradient( cover, 0%,rgba(31,35,40,1) 100%), url('http://i.minus.com/io97fW9I0NqJq.png') }
+// body{background-image:url('asseets/pink.jpg') ;}
+ body { background-image: radial-gradient( cover, 0%,rgba(31,35,40,1) 100%), url('http://i.minus.com/io97fW9I0NqJq.png') }
 .login {
   // background: #eceeee;
-  border: 1px solid #42464b;
+  // border: 1px solid #42464b;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 6px;
-  height:10%;
+  height:70vh;
   margin:10px auto 0;
-  width: 34%;
-  margin-top: 10%;
+  width: 30%;
+  // margin-top:%;
   padding-bottom: 5%;
 }
 #no{
@@ -56,6 +59,7 @@ input.example-right-align {
   margin-top: 9%;
   margin-left: 18%;
   width: 64%;
+
   // background-color:
 }
 input[type="password"]:focus {
@@ -92,7 +96,12 @@ input[type="checkbox"]:checked + .toggle { background-position: 0 -16px }
   // float: left; 
 }
 #login{
-  margin-top: 1%;
+  margin-top: 2%;
+  height: 5vh;
+  // background-color:transparent ;
+  // border: 1px solid black; 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  // box-shadow: none;
 }
 .forgot:hover { color: #3b3b3b }
 input[type="submit"] {
@@ -113,8 +122,8 @@ input[type="submit"] {
   position:relative;
   cursor:pointer;
   border: none;  
-  background-color: #8700f59f;
-  background-image: linear-gradient(top,#3db0a6,#3111);
+  background-color: #aa137d;
+  // background-image: linear-gradient(top,#3db0a6,#3111);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -143,7 +152,8 @@ input[type="submit"]:active {
   margin-left: 6%;
 margin-top:2%;
 padding: 1%;
-padding-bottom:4%
+padding-bottom:4%;
+color:#aa137d ;
 //  margin-bottom: 20%;
 
 }
@@ -153,6 +163,7 @@ padding-bottom:4%
   height: 80%;
 
 }
+
 .mat-form-field-flex{
   background:none !important;
 }
@@ -164,4 +175,16 @@ padding-bottom:4%
 }
 .mat-form-field-appearance-fill .mat-form-field-flex {
   background:none;
+}
+.formDiv{
+  height:40vh ;
+  margin-top: 6vh;
+//  background-color:#920780;
+// #880e4f
+}
+
+
+
+.forgot,.matLabel,.matIcon{
+  color:#aa137d ;
 }

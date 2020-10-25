@@ -21,18 +21,19 @@ import { ExitComponent } from './components/exit/exit.component';
 import { StudentCalanderComponent } from './components/student-calander/student-calander.component';
 import { StudentHomeComponent } from './components/student-home/student-home.component';
 import { TeacherhomeComponent } from './components/teacherhome/teacherhome.component';
+import { AddTeacherComponent } from './components/add-teacher/add-teacher.component';
 
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'רישום', component: LoginComponent },
+  { path: 'רישום/כניסה', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'newuser', component: NewuserComponent },
   { path: 'student', component: StudentComponent, canActivate: [AuthGuard] },
   { path: 'teacher', component: TeacherComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserComponent },
-  { path: 'newteacher', component: NewTeacherComponent },
+  { path: 'newteacher', component: AddTeacherComponent },
   { path: 'newStudent', component: NewStudentComponent },
   { path: 'לוח שנה', component: CalanderComponent },
   { path: 'calander', component: CalanderComponent },
@@ -40,7 +41,7 @@ const routes: Routes = [
   { path: 'לוח שעות', component: DeterminingLessonsComponent },
   { path: 'file', component: FileComponent },
   { path: 'updateStudent', component: UpdateStudentComponent },
-  { path: 'עדכון פרופיל', component: UpdateStudentComponent },
+  { path: ' פרופיל ', component: UpdateStudentComponent },
   { path: 'פרופיל', component: UpdateTeacherComponent },
   { path: 'search', component: SearchComponent },
   { path: 'חיפוש', component: SearchComponent },

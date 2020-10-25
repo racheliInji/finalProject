@@ -48,10 +48,15 @@ import { AgmCoreModule } from '@agm/core';
 import {GooglePlaceModule} from 'ngx-google-places-autocomplete'
 import {NgxLoadingModule, ngxLoadingAnimationTypes} from 'ngx-loading';
 import { StudentCalanderComponent } from './components/student-calander/student-calander.component';
-import { DialogOverviewExampleDialogComponent } from './dialog-overview-example-dialog/dialog-overview-example-dialog.component';
+// import { DialogOverviewExampleDialogComponent } from './dialog-overview-example-dialog/dialog-overview-example-dialog.component';
 import { StudentHomeComponent } from './components/student-home/student-home.component';
 import { TeacherhomeComponent } from './components/teacherhome/teacherhome.component';
-import { MyDialogComponent } from './my-dialog/my-dialog.component';
+import { MyDialogComponent } from './components/my-dialog/my-dialog.component';
+import { FootrerComponent } from './components/footrer/footrer.component';
+import { AddTeacherComponent } from './components/add-teacher/add-teacher.component';
+import {MatStepperModule} from '@angular/material/stepper';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,10 +82,11 @@ import { MyDialogComponent } from './my-dialog/my-dialog.component';
     FilterPipe,
     ExitComponent,
     StudentCalanderComponent,
-    DialogOverviewExampleDialogComponent,
     StudentHomeComponent,
     TeacherhomeComponent,
     MyDialogComponent,
+    FootrerComponent,
+    AddTeacherComponent,
     
   ],
   imports: [
@@ -116,7 +122,7 @@ import { MyDialogComponent } from './my-dialog/my-dialog.component';
     MDBBootstrapModule.forRoot(),
     FlatpickrModule.forRoot(),
     GooglePlaceModule,
-   
+    MatStepperModule,
     NgxLoadingModule.forRoot({
       animationType: ngxLoadingAnimationTypes.threeBounce,
       backdropBackgroundColour: 'rgba(0,0,0,0)', 

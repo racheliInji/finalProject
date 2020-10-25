@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { FormGroup, FormBuilder, FormControl,Validators } from '@angular/forms';
 import { RepeatPasswordValidator, RepeatPasswordEStateMatcher, EmailValidation, PasswordValidation } from '../validators';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-new-teacher',
@@ -49,7 +50,8 @@ export class NewTeacherComponent implements OnInit {
   }
   checkPassword() {
     if (this.checkpassword != this.password) {
-      alert("הסיסמת איתות לא זהה לסיסמא");
+      swal("","הסיסמאות אינם זהות!" , "warning")
+      // alert("הסיסמת איתות לא זהה לסיסמא");
       this.flag = false
       return false;
     }
@@ -60,14 +62,13 @@ export class NewTeacherComponent implements OnInit {
   }
   addTeacher() {
     if (this.checkPassword() == true) {
-      console.log(this.city);
-
       this.TeacherService
         .addTeacher(new Teacher(this.tz, this.firstName, this.lastName, this.city, this.street, this.numhouse,
           this.email, this.password, this.phone, " ")).subscribe(res => {
             this.auth.login(this.firstName, this.password).subscribe((token: string) => {
               if (token != "notfound") {
                 localStorage.setItem(this.key, token);
+                swal("פרטיך נשמרו בהצלחה!", "", "success")
               }
             }
             );

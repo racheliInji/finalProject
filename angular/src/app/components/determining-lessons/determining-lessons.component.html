@@ -1,24 +1,38 @@
-
 <form id="form">
+  <div class="form-field">
     <mat-form-field appearance="fill">
         <mat-label>בחר מקצוע</mat-label>
-        <select matNativeControl required  name="subject" id="subject" class="form-control" [(ngModel)]="subject" >
-          <option value="אנגלית"> אנגלית</option>
-          <option value="מתמטיקה">מתמטיקה</option>
-          <option value="דקדוק">דקדוק </option>
-          <option value="הבעה">הבעה</option>
-          <option value="קריאה">קריאה</option>
-          <option value="תכנות">תכנות</option>
-          <option value="פיזיקה">פיזיקה</option>
-        </select>
-      </mat-form-field>
+        <select formControlName="subject" required  matNativeControl required  id="subject" class="form-control" [(ngModel)]="subject">
+            <option value="אנגלית"> אנגלית</option>
+            <option value="מתמטיקה">מתמטיקה</option>
+            <option value="דקדוק">דקדוק </option>
+            <option value="הבעה">הבעה</option>
+            <option value="קריאה">קריאה</option>
+            <option value="תכנות">תכנות</option>
+            <option value="פיזיקה">פיזיקה</option>
+          </select>
+        <!-- <input matInput placeholder="" formControlName="phone" required> -->
+    </mat-form-field>
+  </div>
+  <!-- <mat-form-field appearance="fill">
+    <mat-label>בחר מקצוע</mat-label>
+    <select matNativeControl required name="subject" id="subject" class="form-control" [(ngModel)]="subject">
+      <option value="אנגלית"> אנגלית</option>
+      <option value="מתמטיקה">מתמטיקה</option>
+      <option value="דקדוק">דקדוק </option>
+      <option value="הבעה">הבעה</option>
+      <option value="קריאה">קריאה</option>
+      <option value="תכנות">תכנות</option>
+      <option value="פיזיקה">פיזיקה</option>
+    </select>
+  </mat-form-field> -->
   <mat-form-field appearance="fill">
     <mat-label>סכום לשיעור</mat-label>
     <input matInput type="number" class="example-right-align" name="money" type="number" id="money" [(ngModel)]="money">
     <span matPrefix>ש"ח&nbsp;</span>
     <span matSuffix>.00</span>
   </mat-form-field>
-  
+
   <mat-form-field appearance="fill">
     <mat-label>בחר שכבה</mat-label>
     <select matNativeControl required name="grade" class="form-control" [(ngModel)]="grade">
@@ -29,11 +43,12 @@
       <option value=5>השתלמות</option>
     </select>
   </mat-form-field>
-  <button mat-raised-button color="primary"  name="ok" type="search" id="ok" value="אישור" (click)="addSubjectToTeacher()">אישור</button>
-    <!-- <div class="col-75">
+  <button mat-raised-button color="primary" name="ok" type="search" id="ok" value="אישור"
+    (click)="addSubjectToTeacher()">אישור</button>
+  <!-- <div class="col-75">
       <input name="ok" type="search" id="ok" value="אישור" (click)="addSubjectToTeacher()">
     </div> -->
- 
+
 </form>
 
 <p class="day" id="sunday">ראשון</p>
@@ -43,12 +58,13 @@
 <p class="day">חמישי</p>
 <div id="space"></div>
 <label class="container" id="Thursday">
-  <input  checked=checked type="checkbox" name="d509" [(ngModel)]="isChecked509" (change)="checkValue(isChecked509?509:5090)" />
+  <input checked=checked type="checkbox" name="d509" [(ngModel)]="isChecked509"
+    (change)="checkValue(isChecked509?509:5090)" />
   <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
   <span class="checkmark"></span>
 </label>
 <label class="container">
-  <input type="checkbox"   [(ngModel)]="isChecked409" (change)="checkValue(isChecked409?409:4090)">
+  <input type="checkbox" [(ngModel)]="isChecked409" (change)="checkValue(isChecked409?409:4090)">
   <span class="checkmark"></span>
 </label>
 

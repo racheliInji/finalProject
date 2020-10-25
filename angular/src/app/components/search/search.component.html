@@ -29,12 +29,12 @@
     </div>
 </div> -->
 
-<table class="example-full-width" cellspacing="0"><tr>
-  <td><mat-form-field class="example-full-width">
+<table class="example-full-width" cellspacing="0" dir="rtl"><tr>
+  <td dir="rtl"><mat-form-field class="example-full-width">
     <mat-label>מקצוע</mat-label>
     <input matInput   aria-describedby="search-text" [(ngModel)]="searchText">
   </mat-form-field></td>
-  <td><mat-form-field class="example-full-width">
+  <td dir="rtl"><mat-form-field class="example-full-width">
     <mat-label>מחיר</mat-label>
     <input matInput   aria-describedby="search-text"[(ngModel)]="searchPrice">
   </mat-form-field></td>
@@ -51,7 +51,7 @@
       <div class="form-group">
        
       </div>
-      <ul class="list-group list-group-flush">
+      <ul class="list-group list-group-flush" >
   
         <li class="list-group-item" *ngFor="let teacher of teacherList | appFilter: searchText:searchPrice:searchPlace">
           <h1>{{teacher.firstName}} {{ teacher.lastName}}</h1>
@@ -73,7 +73,7 @@
 
           <button mat-stroked-button color="primary" (click)="addLesson(teacher)"><i class="fa fa-calendar"></i>
             לקביעת שיעור אונלין</button>
-            <div *ngIf="TeacherService.IsChossen()==true">
+            <div *ngIf="TeacherService.IsChossen()==true" dir="ltr">
               <app-add-lesson></app-add-lesson>
           </div>
           <!-- <div *ngIf="check(teacher)==true">

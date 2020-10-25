@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
     }
     else {
-      this.links = ['רישום', 'חיפוש', 'אודות']
+      this.links = ['רישום/כניסה', 'חיפוש', 'אודות']
     }
   }
 

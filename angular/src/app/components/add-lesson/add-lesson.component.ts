@@ -31,6 +31,7 @@ import { Router } from '@angular/router';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { async } from 'q';
 import { AddLessonService } from 'src/app/services/add-lesson.service';
+import { CalanderService } from 'src/app/services/calander.service';
 
 const colors: any = {
   red: {
@@ -58,7 +59,7 @@ export class AddLessonComponent implements OnInit {
   hoursList: any[] = [];
   dayList: any[] = [];
 
-  constructor(private router: Router, private TeacherService: TeacherService, private modal: NgbModal, private datePipe: DatePipe, private addLessonService: AddLessonService) { }
+  constructor(private router: Router, private TeacherService: TeacherService, private modal: NgbModal, private datePipe: DatePipe, private addLessonService: AddLessonService, private calanderService:CalanderService) { }
 
   ngOnInit() {
     this.getTeachersDays();
@@ -75,7 +76,7 @@ export class AddLessonComponent implements OnInit {
     // });
   }
   close() {
-    console.log("close");
+    // console.log("close");
     this.TeacherService.flag = false;
     // this.wrapper.nativeElement.removeAttribute("style", "position:fixed");
     this.router.navigate['/חיפוש']
@@ -98,7 +99,7 @@ export class AddLessonComponent implements OnInit {
   }
   addAvailableHour() {
     // console.log("day" + new Date().getDay())
-    console.log(this.daysandHourList)
+    // console.log(this.daysandHourList)
     var m = 0;
     this.daysandHourList.forEach(element => {
       this.events.push({
@@ -135,7 +136,10 @@ export class AddLessonComponent implements OnInit {
         this.starTtime = event.title;
         // alert(this.formatedDate + ' ' + event.title)
         if (localStorage.getItem("token") != null) {
+          this.events = this.events.filter((iEvent) => iEvent !== event);
+          this.handleEvent('Deleted', event);
           this.addLesson();
+          this.calanderService.getLesson();
         }
         else {
           swal( {

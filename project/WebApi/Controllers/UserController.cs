@@ -33,12 +33,29 @@ namespace WebApi.Controllers
         }
         [Route("sendEmails")]
         [HttpGet]
-        public IHttpActionResult sendEmails(string firstName, string lastName,string email)
+        public IHttpActionResult sendEmails(string firstName, string lastName, string email)
         {
-           
+
             try
             {
-                 BL.UserBl.sendEmails(firstName, lastName, email);
+                BL.UserBl.sendEmails(firstName, lastName, email);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
+
+       
+        [HttpGet]
+        [Route("forgetPassword")]
+        public IHttpActionResult ForgetPassword(string email)
+        {
+
+            try
+            {
+                BL.UserBl.ForgetPassword(email);
                 return Ok();
             }
             catch (Exception e)
@@ -65,7 +82,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                var q = BL.UserBl.GetUserById( id);
+                var q = BL.UserBl.GetUserById(id);
                 if (q != null)
                     return Ok(q);
                 return NotFound();
@@ -74,7 +91,7 @@ namespace WebApi.Controllers
             {
                 return BadRequest();
             }
-           
+
         }
         [HttpGet]
         [Route("token")]
@@ -163,3 +180,4 @@ namespace WebApi.Controllers
         //}
     }
 }
+

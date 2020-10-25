@@ -15,7 +15,7 @@ export class TeacherHeaderComponent implements OnInit {
       this.links = ['יציאה', 'לוח שנה', 'לוח שעות', 'פרופיל'];
     }
     else {
-      this.links = ['רישום', 'לוח שנה', 'לוח שעות', 'פרופיל'];
+      this.links = ['רישום/כניסה', 'לוח שנה', 'לוח שעות', 'פרופיל'];
 
     }
   }

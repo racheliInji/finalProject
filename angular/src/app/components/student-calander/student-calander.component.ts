@@ -71,7 +71,7 @@ export class StudentCalanderComponent implements OnInit {
     event: CalendarEvent;
   };
   ngOnInit() {
-    console.log(this.calanderService.lessonListForStudent);
+    // console.log(this.calanderService.lessonListForStudent);
 
   }
   getLesson() {
@@ -98,17 +98,71 @@ export class StudentCalanderComponent implements OnInit {
       label: '<i class="fas fa-fw fa-pencil-alt"></i>',
       a11yLabel: 'Edit',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
+
+        if (event.start < new Date()) {
+          swal(
+            {
+              title: "הוספת המלצה",
+              content: {
+                element: "input",
+                attributes: {
+                  // placeholder: "אני ממליצה........",
+                  // name: "recomandation",
+                  id: "recomandation",
+                  style: " height: 200px",
+                },
+              },
+              buttons: ["ביטול", "אישור"],
+            }
+          )
+            .then((value) => {
+              console.log(value);
+
+              this.calanderService.addRecommendation(value, event.meta).subscribe();
+            });
+        }
+        else {
+          swal({
+            title: " המורה " + this.teacherDetails.firstName + ' ' + this.teacherDetails.lastName,
+            text: this.s,
+
+            buttons: [false],
+          })
+        }
       },
     },
-    // {
-    //   label: '<i class="fas fa-fw fa-trash-alt"></i>',
-    //   a11yLabel: 'Delete',
-    //   onClick: ({ event }: { event: CalendarEvent }): void => {
-    //     this.events = this.events.filter((iEvent) => iEvent !== event);
-    //     this.handleEvent('Deleted', event);
-    //   },
-    // },
+    {
+      
+      label: '<i class="fas fa-fw fa-trash-alt"></i>',
+      a11yLabel: 'Delete',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        if (event.start >= new Date()) {
+          swal({
+            title: "האם לבטל את השיעור",
+            icon: "warning",
+            // dangerMode: true,
+            buttons: ["ביטול", "אישור"],
+          }).then(
+            i => {
+              if (i != null) {
+                this.calanderService.deleteLesson(event.meta).subscribe(res => this.calanderService.getLesson());
+                this.events = this.events.filter((iEvent) => iEvent !== event);
+                this.handleEvent('Deleted', event);
+              }
+            }
+          );
+        }
+        else{
+          swal({
+            title: "השיעור התקים",
+            icon: "info",
+            
+          })
+        }
+
+
+      },
+    },
   ];
 
   refresh: Subject<any> = new Subject();
@@ -158,7 +212,6 @@ export class StudentCalanderComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private router: Router, private teacherService: TeacherService, private calanderService: CalanderService, private modal: NgbModal) {
     this.getLesson();
-    console.log(this.events);
   }
   s: string;
   // openDialog(): void {
@@ -182,7 +235,6 @@ export class StudentCalanderComponent implements OnInit {
         this.activeDayIsOpen = false;
       } else {
         this.s = "";
-        console.log(events)
         this.activeDayIsOpen = true;
         // events.forEach(i => {
         //   console.log(this.s);
@@ -224,49 +276,13 @@ export class StudentCalanderComponent implements OnInit {
         this.s =
         "כתובת: " + this.teacherDetails.street + ' ' + this.teacherDetails.numhouse + "  " + this.teacherDetails.city + "\n" + this.teacherDetails.email + "   דואר אלקטרוני:  "
 
-      if (event.start < new Date()) {
-        // swal({
-        //   title:"הוספת המלצה",
-        //   content: {
-        //     element: "textarea",
-        //     attributes: {
-        //       placeholder: "אני ממליצה........",
-        //       name:"recomandation",
-        //     },
-        //   },
-        //   // buttons: ["ביטול", "אישור"],
-        // } ).then((value) => {
-        //  console.log(value);
-        // });
-        swal(
-          {
-            title: "הוספת המלצה",
-            content: {
-              element: "input",
-              attributes: {
-                // placeholder: "אני ממליצה........",
-                // name: "recomandation",
-                id: "recomandation",
-                style: " height: 200px",
-              },
-            },
-            buttons: ["ביטול", "אישור"],
-          }
-        )
-          .then((value) => {
-            console.log(value);
-          
-            this.calanderService.addRecommendation(value,event.meta).subscribe();
-          });
-      }
-      else {
-        swal({
-          title: " המורה " + this.teacherDetails.firstName + ' ' + this.teacherDetails.lastName,
-          text: this.s,
 
-          buttons: [false],
-        })
-      }
+      swal({
+        title: " המורה " + this.teacherDetails.firstName + ' ' + this.teacherDetails.lastName,
+        text: this.s,
+
+        buttons: [false],
+      })
 
     });
 

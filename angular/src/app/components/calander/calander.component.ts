@@ -28,7 +28,7 @@ import {
 import { CalanderService } from 'src/app/services/calander.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { MyDialogComponent } from 'src/app/my-dialog/my-dialog.component';
+import { MyDialogComponent } from 'src/app/components/my-dialog/my-dialog.component';
 
 const colors: any = {
   red: {
@@ -65,7 +65,7 @@ export class CalanderComponent implements OnInit {
     event: CalendarEvent;
   };
   ngOnInit() {
-    console.log(this.calanderService.lessonList);
+    // console.log(this.calanderService.lessonList);
 
   }
   getLesson() {
@@ -158,18 +158,7 @@ export class CalanderComponent implements OnInit {
             }
           }
         );
-        // swal({
-        //   title: "Are you sure?",
-        //   text: "Your will not be able to recover this imaginary file!",
-        //   type: "warning",
-        //   showCancelButton: true,
-        //   confirmButtonClass: "btn-danger",
-        //   confirmButtonText: "Yes, delete it!",
-        //   closeOnConfirm: false
-        // },
-        // function(){
-        //   swal("Deleted!", "Your imaginary file has been deleted.", "success");
-        // });
+
 
       },
     },
@@ -235,7 +224,7 @@ export class CalanderComponent implements OnInit {
         this.activeDayIsOpen = false;
       } else {
         this.s = "";
-        console.log(events)
+        // console.log(events)
         this.activeDayIsOpen = true;
         // events.forEach(i => {
         //   console.log(this.s);

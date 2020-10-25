@@ -30,11 +30,10 @@ export class SearchComponent implements OnInit {
     this.getTeachers();
   }
   DownloadCVFile(teacher){
-    console.log(teacher);
     this.TeacherService.DownloadCVFile(teacher).subscribe(res=>{
       var url = window.URL.createObjectURL(res);
       window.open(url);
-      console.log("download result ", res);
+      // console.log("download result ", res);
     });
   }
   getTeachers() {
@@ -42,7 +41,7 @@ export class SearchComponent implements OnInit {
     // this.searchText=
   }
   check(teacher: any) {
-    console.log(teacher);
+    // console.log(teacher);
     if (teacher != null && teacher!= "") {
       return true;
     }
@@ -91,7 +90,6 @@ export class SearchComponent implements OnInit {
   }
   IsChossen() {
     if (this.flag == true) {
-      console.log("falg");
       return true;
     }
     return false;

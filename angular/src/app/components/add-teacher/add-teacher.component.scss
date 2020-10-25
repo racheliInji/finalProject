@@ -1,0 +1,156 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  #icon{
+    margin-left:4%;
+    margin-right:2%;
+    font-size:xx-large;
+    margin-top: 1%;
+  }
+  .mat-form-field {
+    margin-top: 16px;
+  }
+  .container {
+    display: inline;
+    position: relative;
+    padding-left: 35px;
+    // margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-left: 2%;
+  }
+  #ok{
+    width: 40%;
+    display:table-column
+  }
+  .example-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+  #space{
+      padding: 1%;
+  }
+  #sunday{
+      margin-left: 4.4%;
+  }
+  #monday{
+      margin-left: 4%;
+  }
+  #Thursday{
+      margin-left: 4%;
+  }
+  .day{
+    display: inline;
+    margin-left: 3%;
+
+  }
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+//   ----------------------------------
+#subject{
+     
+  // display: block;
+  // position: absolute;
+  // margin-top: 10%;
+
+}
+// #money{
+// }
+#form{
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 70%;
+    // border-color: #2196F3;
+    // float: left;
+    display:block
+
+}
+// .col-25 {
+//         // float: right;
+//         width: 20%;
+//         margin-top: 6px;
+//       }
+//       input[type=text],input[type=number]{
+//     width: 100%;
+//     padding: 7px;
+//     border: 1px solid #ccc;
+//     border-radius: 4px;
+//     box-sizing: border-box;
+//     resize: vertical;
+//   }
+//   .col-75 {
+//         // float: r;
+//         width: 75%;
+//         margin-top: 6px;
+//       }
+//   label {
+//         padding: 12px 12px 12px 0;
+//         display: block;
+//       }

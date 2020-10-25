@@ -22,6 +22,7 @@ export class TeacherService {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   addTeacher(teacher: Teacher) {
+    
     teacher.Qualifications = this.nameFile;
     console.log(teacher);
     return this.http.post<any>(environment.URL + '/Teacher/addTeacher', teacher);

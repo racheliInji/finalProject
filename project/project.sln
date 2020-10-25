@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{2E990E5E-5D02-420E-A454-CB70F02890FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{37B6A229-1EBF-4363-8801-6535291A22A9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{2E990E5E-5D02-420E-A454-CB70F02890FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E990E5E-5D02-420E-A454-CB70F02890FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E990E5E-5D02-420E-A454-CB70F02890FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{37B6A229-1EBF-4363-8801-6535291A22A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{37B6A229-1EBF-4363-8801-6535291A22A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{37B6A229-1EBF-4363-8801-6535291A22A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{37B6A229-1EBF-4363-8801-6535291A22A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

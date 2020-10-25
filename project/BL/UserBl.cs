@@ -49,6 +49,40 @@ namespace BL
         {
             return Converters.UserConvert.DtoUserList(DAL.UserDal.GetUsers());
         }
+        public static UserDTO UserByEmail(string email)
+        {
+           var q=  DAL.UserDal.GetUsers().Find(i => i.email == email);
+            return Converters.UserConvert.GetUserDTO(q);
+        }
+        public static void ForgetPassword(string email)
+        {
+                UserDTO user = UserByEmail(email);
+                SmtpClient client = new SmtpClient();
+                client.Port = 587;
+                client.Host = "smtp.gmail.com";
+                client.EnableSsl = true;
+                client.Timeout = 1000000;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential("miniclass909@gmail.com", "diniracheli909");
+
+                try
+                {
+                    MailMessage mm = new MailMessage("miniclass909@gmail.com", email, "שיחזור סיסמא ", "");
+                    mm.Body = "<h2>"+" הי " + user.firstName + ' ' + user.lastName + "</h2>"+"                                                             "
+                   +"<h2>" +"     הסיסמא המשוחזרת:  " +user.password+"</h2>"+ "                                                      <a href='http://localhost:4200/login'>לדף הבית</a>";
+                    mm.BodyEncoding = UTF8Encoding.UTF8;
+                    //  mm. = MailFormat.Html;
+                    mm.IsBodyHtml = true;
+                    mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+
+                    client.Send(mm);
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
 
         public static UserDTO GetUserById(int id)
         {

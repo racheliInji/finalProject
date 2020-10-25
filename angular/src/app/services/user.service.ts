@@ -11,6 +11,7 @@ import { environment } from '../../environments/environment';
 })
 export class UserService {
  
+ 
 
   // Login(name: string, password: string) {
   //   throw new Error("Method not implemented.");
@@ -21,6 +22,7 @@ export class UserService {
 
   Url = 'http://localhost:59802/User';
 
+ 
   Login(user: BaseUser): Observable<any> {
 
     // islogin:Boolean;
@@ -47,6 +49,9 @@ export class UserService {
     console.log(this.id / 2);
     return this.id / 2;
   }
+  forgetPassword(email: any) {
+    return this.http.get<any>(environment.URL+ '/User/forgetPassword',{ params: {email} });
+   }
   sendEmails(firstName: string, lastName: string, email: string) {
     return this.http.get<any>(environment.URL+ '/User/sendEmails',{ params: { firstName,lastName,email } });
   }

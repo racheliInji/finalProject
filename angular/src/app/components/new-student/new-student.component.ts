@@ -5,6 +5,7 @@ import { Student } from 'src/app/class/student';
 import { AuthService } from 'src/app/services/auth.service';
 import { addLesson } from 'src/app/class/addLesson';
 import { AddLessonService } from 'src/app/services/add-lesson.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-new-student',
@@ -32,12 +33,12 @@ export class NewStudentComponent implements OnInit {
   }
 
   addStudent() {
-    console.log(this.city);
     this.count = this.count + 1;
     this.StudentService.addStudent(new Student(this.tz, this.firstName, this.lastName, this.city, this.street, this.numhouse, this.email,
       this.password, this.phone, this.grade, this.level)).subscribe(res => {
         this.auth.login(this.firstName, this.password).subscribe((token: string) => {
           if (token != "notfound") {
+            swal("פרטיך נשמרו בהצלחה!", "", "success")
             localStorage.setItem(this.key, token);
           }
 

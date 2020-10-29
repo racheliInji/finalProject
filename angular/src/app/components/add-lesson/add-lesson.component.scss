@@ -32,12 +32,13 @@
 //     // z-index: 2
 //   }
   #wrapdiv{
+    // margin-top: 5%;
     background-color:white;
     // position:absolute;
     position:fixed;
     overflow: hidden scroll; 
     // height:100%;
-    widows: 100%;
+    // widows: 100%;
     top:0px;
     right:0px;
     bottom:0px;
@@ -54,7 +55,7 @@
     height: 100vh;
     // overflow-y: hidden;
   // padding-right: 15px;
-   z-index:auto !important;
+   z-index:10 !important;
   }
   // .swal-text {
   //   // background-color: #FEFAE3;
@@ -68,67 +69,25 @@
   // }
   #close{
     position: absolute;
-    margin-left: 93%;
-    margin-top: 23%;
-    font-size: 200%;
+    margin-left: 75%;
+    margin-top: 2%;
+    font-size: 280%;
   }
-//   /* Style the container */
-//   .container 
-//     border-radius: 5px;
-//     background-color:darkcyan;
-//     padding: 20px;
-//     width: 30%;
-//     margin-top: 20%;
-//     opacity: 4.0;
-//     height: 40%;
-//     border: solid crimson 10px
-//     // opacity: 5.0;
-//   }
-  
-//   /* Floating column for labels: 25% width */
-//   .col-25 {
-//     float: left;
-//     width: 25%;
-//     margin-top: 6px;
-//     opacity: 4.0;
-//   }
-  
-//   /* Floating column for inputs: 75% width */
-//   .col-75 {
-//     float: left;
-//     width: 75%;
-//     margin-top: 6px;
-//     opacity: 4.0;
-//   }
-  
-//   /* Clear floats after the columns */
-//   .row:after {
-//     content: "";
-//     display: table;
-//     clear: both;
-//     opacity: 4.0;
-//   }
-  
-//   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-//   @media screen and (max-width: 600px) {
-//     .col-25, .col-75, input[type=submit] {
-//       width: 100%;
-//       margin-top: 0;
-//     }
-//   }
+
   #icon{
     font-size: 200%;
     border:none !important;
   }
   #arrow{
     position: absolute;
-    margin-left: -38% !important;
-    margin-top: 35% !important;
+    margin-left:10% !important;
+    margin-top: 5% !important;
   }
   #board{
     margin-top: 7% !important;
-    width: 70%;
-    margin-left: 13%;
+    width: 50%;
+    margin-left: 25%;
+    // height: 50vh;
 
   }
   #title{

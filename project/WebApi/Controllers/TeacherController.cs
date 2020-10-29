@@ -72,10 +72,29 @@ namespace WebApi.Controllers
             }
 
         }
-       
+        [HttpGet]
+        [Route("getRecrecommendationById/{id}")]
+        public IHttpActionResult GetRecrecommendationById(int id)
+        {
+
+            try
+            {
+                var recommendation = BL.TeacherBL.GetRecrecommendationById(id);
+                if (recommendation != null)
+                    return Ok(recommendation);
+                return NotFound();
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+
+        }
+
         [HttpPost]
         [Route("addTeacher")]
-        public IHttpActionResult AddUser(TeacherDTO.UserAndTeacherDTO teacher)
+        public IHttpActionResult AddTeacher(TeacherDTO.UserAndTeacherDTO teacher)
         {
 
             try

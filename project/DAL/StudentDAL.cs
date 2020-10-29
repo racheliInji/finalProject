@@ -39,6 +39,23 @@ namespace DAL
             }
         }
 
+        public static void AddNote(int id, string value, DateTime date)
+        {
+            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            {
+
+                db.Lessons.Add(new Lesson()
+                {
+                    ScheduleId = id,
+                    Date = date,
+                    LessonDescribe = value
+                });
+
+                db.SaveChanges();
+            }
+
+        }
+
         public static void AddRecommendation(string value, int id)
         {
             using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
@@ -95,7 +112,7 @@ namespace DAL
 
                 db.SaveChanges();
             }
-            
+
         }
 
         public static void DeleteStudent(int id)

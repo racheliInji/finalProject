@@ -8,6 +8,7 @@ import { addLesson } from '../class/addLesson';
 })
 
 export class CalanderService {
+  
   addRecommendation(value: string, id: string) {
     console.log(id);
     return this.http.get(environment.URL+ '/Student/AddRecommendation', { params:{value,id } });
@@ -34,6 +35,10 @@ export class CalanderService {
     // debugger;
     var id=ScheduleId;
     return this.http.delete<any>(`${environment.URL + '/Schedule/DeleteLesson'}/${id}`);
+  }
+  AddNote(value: any, id: any,date:any) {
+    return this.http.get<any>(`${environment.URL + '/Student/AddNote'}/${id}`, { params:{value,date}});
+
   }
 
 }

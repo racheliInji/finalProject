@@ -1,19 +1,23 @@
-<mat-horizontal-stepper [linear]="isLinear" #stepper >
-    <mat-step [stepControl]="firstFormGroup" >
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup" (ngSubmit)="submitAccount(firstFormGroup)">
-            <ng-template matStepLabel >פרטים אישיים</ng-template>
+            <ng-template matStepLabel>פרטים אישיים</ng-template>
             <div class="form-field">
                 <i class="fa fa-user" id="icon"></i>
                 <mat-form-field>
                     <mat-label>שם פרטי</mat-label>
-                    <input matInput placeholder=" " formControlName="firstName" required>
+                    <input matInput placeholder=" "  formControlName="firstName" required>
+                    <!-- <mat-error *ngIf="firstFormGroup.get('firstName').hasError('pattern')">
+                        שדה זה מכיל רק אותיות </mat-error> -->
                 </mat-form-field>
             </div>
             <div class="form-field">
                 <i class="fa fa-user" id="icon"></i>
                 <mat-form-field>
                     <mat-label>משפחה</mat-label>
-                    <input matInput placeholder="" formControlName="lastName" required>
+                    <input matInput placeholder="" formControlName="lastName"  required>
+                    <!-- <mat-error *ngIf="firstFormGroup.get('lastName').hasError('pattern') [pattern]="'^[a-zA-Z']$'"">
+                        שדה זה מכיל רק אותיות </mat-error> -->
                 </mat-form-field>
             </div>
             <div class="form-field">
@@ -34,7 +38,14 @@
                 <i class="fa fa-id-card" id="icon"></i>
                 <mat-form-field>
                     <mat-label>ת.ז</mat-label>
-                    <input matInput placeholder="" formControlName="tz" required>
+                    <input matInput placeholder=""  formControlName="tz" required>
+                    <!-- <mat-error *ngIf="firstFormGroup.get('tz').hasError('pattern')">
+                        שדה זה מכיל רק מספרים </mat-error> -->
+                        <!-- maxlength="9" minlength="9" -->
+                    <!-- <mat-error *ngIf="firstFormGroup.get('tz').hasError('minlength')">
+                        שדה זה חיב להכיל 9 ספרות</mat-error>
+                    <mat-error *ngIf="firstFormGroup.get('tz').hasError('maxlength')">
+                        שדה זה חיב להכיל 9 ספרות</mat-error> -->
                 </mat-form-field>
             </div>
             <div class="form-field">
@@ -63,12 +74,18 @@
 
                 <mat-form-field>
                     <mat-label>פלאפון</mat-label>
-                    <input matInput placeholder="" formControlName="phone" pattern="[0-9]*" minlength="10"
-                        maxlength="10" required>
+                    <input matInput placeholder="" formControlName="phone"  required>
+                    <!-- <mat-error *ngIf="firstFormGroup.get('tz').hasError('pattern')">
+                        שדה זה חיב להכיל רק מספרים</mat-error> -->
+                        <!-- minlength="9" maxlength="10" -->
+                        <!-- <mat-error *ngIf="firstFormGroup.get('tz').hasError('minlength')">
+                                שדה זה חיב להכיל לפחות 9 ספרות</mat-error>
+                                <mat-error *ngIf="firstFormGroup.get('tz').hasError('maxlength')">
+                                        שדה זה חיב להכיל עד 10 ספרות</mat-error> -->
                 </mat-form-field>
             </div>
             <div class="form-field">
-                
+
                 <div class="form-field">
                     <i class='fas fa-unlock-alt' id="icon"></i>
                     <mat-form-field>
@@ -89,22 +106,66 @@
                         <mat-label> אימות סיסמא </mat-label>
                         <input matInput formControlName="passwordAgain" placeholder="" type="password"
                             [errorStateMatcher]="passwordsMatcher" required>
-                        <mat-error *ngIf="form.hasError('passwordsNotEqual')">Passwords are different. They should be
+                        <mat-error *ngIf="firstFormGroup.hasError('passwordsNotEqual')">Passwords are different. They
+                            should be
                             equal!</mat-error>
                     </mat-form-field>
                 </div>
-                <app-file></app-file>
+                <app-file id="file"></app-file>
             </div>
+            <!-- <div class="form-bottom"> -->
+            <!-- formControlName="save" required -->
+            <!-- <button mat-raised-button [disabled]="!firstFormGroup.valid" >שמור</button>
+            </div> -->
             <div>
-                <button mat-button matStepperNext (click)="addTeacher()" required>הבא</button>
+                <!--  formControlName="save"-->
+                <button mat-button matStepperNext (click)="addTeacher()" [disabled]="!firstFormGroup.valid">שמור והמשך</button>
             </div>
+
         </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="תמחור ושעות" (click)="addTeacher()">
+    <mat-step [stepControl]="secondFormGroup"  label="תמחור ובחירת מקצוע"  >
 
+        <form [formGroup]="secondFormGroup" (ngSubmit)="submitAccount(secondFormGroup)">
+            <!-- <app-determining-lessons class="tab"></app-determining-lessons> -->
+            <!-- <form id="form"> -->
+            <div class="form-field">
+                <mat-form-field>
+                    <mat-label> מקצוע</mat-label>
+                    <input matInput placeholder="" formControlName="subject" required>
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <mat-form-field appearance="fill">
+                    <mat-label>סכום לשיעור</mat-label>
+                    <input matInput type="number" class="example-right-align" formControlName="money" type="number"
+                        id="money">
+                    <span matPrefix>ש"ח&nbsp;</span>
+                    <span matSuffix>.00</span>
+                </mat-form-field>
+            </div>
+            <mat-form-field appearance="fill">
+                <mat-label>בחר שכבה</mat-label>
+                <select matNativeControl required formControlName="grade" class="form-control">
+                    <option value=1>א - ד יסודי</option>
+                    <option value=2>ה- ו יסודי</option>
+                    <option value=3>ז- ח יסודי</option>
+                    <option value=4>תיכון</option>
+                    <option value=5>השתלמות</option>
+                </select>
+            </mat-form-field>
 
+            <!-- <button mat-raised-button color="primary" name="ok" type="search" id="ok" value="אישור"
+                            (click)="addSubjectToTeacher()">אישור</button> -->
+
+        </form>
         <!-- </form> -->
-
+        <div>
+            <button mat-button matStepperPrevious>חזרה</button>
+            <button mat-button matStepperNext>הבא</button>
+        </div>
+    </mat-step>
+    <mat-step label="קביעת שעות">
         <p class="day" id="sunday">ראשון</p>
         <p class="day" id="monday">שני</p>
         <p class="day">שלישי</p>
@@ -424,46 +485,13 @@
             <button mat-button matStepperPrevious>חזרה</button>
             <button mat-button matStepperNext>הבא</button>
         </div>
-        <form [formGroup]="secondFormGroup" (ngSubmit)="submitAccount(secondFormGroup)">
-            <!-- <app-determining-lessons class="tab"></app-determining-lessons> -->
-            <!-- <form id="form"> -->
-            <div class="form-field">
-                <mat-form-field>
-                    <mat-label> מקצוע</mat-label>
-                    <input matInput placeholder="" formControlName="subject" required>
-                </mat-form-field>
-            </div>
-            <div class="form-field">
-                <mat-form-field appearance="fill">
-                    <mat-label>סכום לשיעור</mat-label>
-                    <input matInput type="number" class="example-right-align" formControlName="money" type="number"
-                        id="money">
-                    <span matPrefix>ש"ח&nbsp;</span>
-                    <span matSuffix>.00</span>
-                </mat-form-field>
-            </div>
-            <mat-form-field appearance="fill">
-                <mat-label>בחר שכבה</mat-label>
-                <select matNativeControl required formControlName="grade" class="form-control">
-                    <option value=1>א - ד יסודי</option>
-                    <option value=2>ה- ו יסודי</option>
-                    <option value=3>ז- ח יסודי</option>
-                    <option value=4>תיכון</option>
-                    <option value=5>השתלמות</option>
-                </select>
-            </mat-form-field>
 
-            <!-- <button mat-raised-button color="primary" name="ok" type="search" id="ok" value="אישור"
-                    (click)="addSubjectToTeacher()">אישור</button> -->
 
-        </form>
+
     </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
+    <mat-step label="נרשמת בהצלחה">
+        <!-- <ng-template matStepLabel>Done</ng-template> -->
         <p>You are now done.</p>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
+        <button mat-button matStepperPrevious>חזרה</button>
     </mat-step>
 </mat-horizontal-stepper>

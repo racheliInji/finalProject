@@ -96,7 +96,7 @@ export class AddTeacherComponent implements OnInit {
   isChecked519: any;
   isChecked520: any;
   isChecked521: any;
-  isLinear = true;
+  isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   // tz: string
@@ -114,7 +114,7 @@ export class AddTeacherComponent implements OnInit {
   private kind: string;
   teachers: Teacher[] = [];
   form: any;
-  constructor(private userService: UserService,private TeacherService:TeacherService,  private HoursAndDayService: HoursAndDayService, private UserService: UserService, private formBuilder: FormBuilder, private _formBuilder: FormBuilder, private router: Router, private auth: AuthService) {
+  constructor(private userService: UserService, private TeacherService: TeacherService, private HoursAndDayService: HoursAndDayService, private UserService: UserService, private formBuilder: FormBuilder, private _formBuilder: FormBuilder, private router: Router, private auth: AuthService) {
     this.form = this.formBuilder.group({
       email: new FormControl('', EmailValidation),
       password: new FormControl('', PasswordValidation),
@@ -122,23 +122,37 @@ export class AddTeacherComponent implements OnInit {
       acceptTerms: new FormControl('', [Validators.requiredTrue])
     }, { validator: RepeatPasswordValidator });
   }
-
+f(){
+  console.log("hi")
+}
   ngOnInit() {
     if (localStorage.getItem("token")) {
       this.id = this.UserService.getIdByToken();
       this.hoursAndDayList = this.HoursAndDayService.hoursForTeacherList;
       this.putValus();
     }
-    
 
     this.firstFormGroup = this._formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: ['', Validators.required,
+        // Validators.pattern('^[a-zA-Z ]*$')
+      ],
+      lastName: ['', Validators.required,
+        // Validators.pattern('^[a-zA-Z ]*$')
+      ],
       street: ['', Validators.required],
       numhouse: ['', Validators.required],
       city: ['', Validators.required],
-      tz: ['', Validators.required],
-      phone: ['', Validators.required],
+      tz: ['', Validators.required,
+        // Validators.pattern("[0-9]*"),
+        // Validators.maxLength(9),
+        // Validators.minLength(9),
+      ],
+      phone: ['', Validators.required,
+        // Validators.pattern("[0-9]*"),
+        // Validators.maxLength(10),
+        // Validators.minLength(9),
+      ],
+      // save: ['', Validators.required],
       // email: ['', this.stringValidatorArr('email', 7, 30, /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)],
       email: ['', EmailValidation],
       password: ['', PasswordValidation],
@@ -155,22 +169,22 @@ export class AddTeacherComponent implements OnInit {
   }
   addTeacher() {
     console.log(this.firstFormGroup.value);
-      console.log("ok");
-      this.TeacherService
-        .addTeacher(new Teacher(this.firstFormGroup.value.tz, this.firstFormGroup.value.firstName, this.firstFormGroup.value.lastName, this.firstFormGroup.value.city, this.firstFormGroup.value.street, this.firstFormGroup.value.numhouse,
-          this.firstFormGroup.value.email, this.firstFormGroup.value.password, this.firstFormGroup.value.phone, " ")).subscribe(res => {
-            this.auth.login(this.firstFormGroup.value.firstName, this.firstFormGroup.value.password).subscribe((token: string) => {
-              if (token != "notfound") {
-                localStorage.setItem(this.key, token);
-                swal("פרטיך נשמרו בהצלחה!", "", "success")
-              }
+    console.log("ok");
+    this.TeacherService
+      .addTeacher(new Teacher(this.firstFormGroup.value.tz, this.firstFormGroup.value.firstName, this.firstFormGroup.value.lastName, this.firstFormGroup.value.city, this.firstFormGroup.value.street, this.firstFormGroup.value.numhouse,
+        this.firstFormGroup.value.email, this.firstFormGroup.value.password, this.firstFormGroup.value.phone, " ")).subscribe(res => {
+          this.auth.login(this.firstFormGroup.value.firstName, this.firstFormGroup.value.password).subscribe((token: string) => {
+            if (token != "notfound") {
+              // localStorage.setItem(this.key, token);
+              // swal("פרטיך נשמרו בהצלחה!", "", "success")
             }
-            );
-            this.userService.sendEmails(this.firstFormGroup.value.firstName, this.firstFormGroup.value.lastName, this.firstFormGroup.value.email).subscribe();
-          });
+          }
+          );
+          this.userService.sendEmails(this.firstFormGroup.value.firstName, this.firstFormGroup.value.lastName, this.firstFormGroup.value.email).subscribe();
+        });
 
-      this.router.navigate(['/determineLessons']);
-    
+    // this.router.navigate(['/determineLessons']);
+
 
   }
   GetTeacher() {

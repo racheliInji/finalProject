@@ -19,7 +19,7 @@
           <mat-icon class="matIcon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
-      <a href="#" class="forgot">שכחת סיסמא?</a>
+      <a [routerLink]="" class="forgot" (click)="forgot()">שכחת סיסמא?</a>
       <div *ngIf="checkNewUser()==true">
         <p id="no">{{massage}}</p>
       </div>

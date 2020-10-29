@@ -74,6 +74,19 @@ namespace BL
             }
             return null;
         }
+        
+        public static List<RecommendationDTO> GetRecrecommendationById(int id)
+        {
+            List<RecommendationDTO> recommendations = new List<RecommendationDTO>();
+            foreach( var recommendtion in DAL.TeacherDAL.GetRecrecommendationById())
+            {
+                if(recommendtion.TeacherId== id)
+                {
+                    recommendations.Add(Converters.RecommendationConvert.GetRecommendationDTO(recommendtion));
+                }
+            }
+            return recommendations;
+        }
 
         public static int getId(TeacherDTO.UserAndTeacherDTO teacher)
         {

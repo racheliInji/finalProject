@@ -10,6 +10,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class TeacherService {
+  
 
 
   flag = false;
@@ -27,7 +28,9 @@ export class TeacherService {
     console.log(teacher);
     return this.http.post<any>(environment.URL + '/Teacher/addTeacher', teacher);
   }
-
+  getRecrecommendation(id) {
+    return this.http.get<any>(`${environment.URL + '/Teacher/getRecrecommendationById'}/${id}`);
+  }
   getTeachers() {
     return this.http.get<Teacher[]>(environment.URL + '/Teacher/GetTeachers');
   }

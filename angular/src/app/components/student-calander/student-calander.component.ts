@@ -104,7 +104,7 @@ export class StudentCalanderComponent implements OnInit {
             {
               title: "הוספת המלצה",
               content: {
-                element: "input",
+                element: "textarea",
                 attributes: {
                   // placeholder: "אני ממליצה........",
                   // name: "recomandation",
@@ -132,7 +132,18 @@ export class StudentCalanderComponent implements OnInit {
       },
     },
     {
-      
+      label: '<i class="far fa-sticky-note"></i> ',
+      // label: '<i class="fa fa-sticky-note-o"></i>',
+      a11yLabel: 'Remarks',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        swal({
+          title: "הערה",
+          icon: "info",
+
+        })
+      },
+    },
+    {
       label: '<i class="fas fa-fw fa-trash-alt"></i>',
       a11yLabel: 'Delete',
       onClick: ({ event }: { event: CalendarEvent }): void => {
@@ -152,11 +163,11 @@ export class StudentCalanderComponent implements OnInit {
             }
           );
         }
-        else{
+        else {
           swal({
             title: "השיעור התקים",
             icon: "info",
-            
+
           })
         }
 

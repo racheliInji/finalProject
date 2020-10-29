@@ -17,6 +17,8 @@ namespace DTO
         public class ScheduleDTOWithStudentName
         {
             public int ScheduleId { get; set; }
+            public int studentId { get; set; }
+
             public int TeacherId { get; set; }
             public string StudentName { get; set; }
             public string Subject { get; set; }

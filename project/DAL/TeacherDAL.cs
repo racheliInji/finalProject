@@ -82,6 +82,14 @@ namespace DAL
             }
         }
 
+        public static List< Recommendation> GetRecrecommendationById()
+        {
+            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            {
+                return db.Recommendations.ToList();
+            }
+        }
+
 
 
         //public static UserAndTeacher GetTeacher(int id)

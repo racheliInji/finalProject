@@ -1,4 +1,3 @@
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -7,15 +6,12 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 
-<div class="container">
+<!-- <div class="container"> -->
 <!-- <br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
 <hr> -->
 
 
-
-
-<!-- <app-header (sidenavToggle)="sidenav.toggle()"></app-header> -->
-<div class="card bg-light">
+<!-- <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
 	<form>
 	<div class="form-group input-group">
@@ -28,9 +24,9 @@
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-        <input  name="lastName"class="form-control" placeholder="שם משפחה"  type="text"  [(ngModel)]="lastName" >
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
+        <input  name="lastName"class="form-control" placeholder="שם משפחה"  type="text"  [(ngModel)]="lastName" > -->
+<!-- </div> form-group// -->
+<!-- <div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
@@ -42,8 +38,8 @@
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
         <input name="email" class="form-control" placeholder="Email address" type="email"  [(ngModel)]="email" >
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
+    </div>  form-group// -->
+<!-- <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 		</div>
@@ -53,9 +49,9 @@
 		    <option value="2">+198</option>
 		    <option value="3">+701</option>
 		</select>
-    	<input name="phone" class="form-control" placeholder="Phone number" type="text"  [(ngModel)]="phone" >
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
+    	<input name="phone" class="form-control" placeholder="Phone number" type="text"  [(ngModel)]="phone" > -->
+<!-- </div> form-group// -->
+<!-- <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"><i class="fa fa-pencil" aria-hidden="true"></i>  </span>
 		</div>
@@ -81,8 +77,8 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i> </span>
         </div>
-        <input name="city"  ngx-google-places-autocomplete #placesRef="ngx-places" class="form-control" placeholder="עיר"  type="text" [(ngModel)]="city" > 
-		<!-- <select name="city" class="form-control"  [(ngModel)]="city" >
+        <input name="city"  ngx-google-places-autocomplete #placesRef="ngx-places" class="form-control" placeholder="עיר"  type="text" [(ngModel)]="city" >  -->
+<!-- <select name="city" class="form-control"  [(ngModel)]="city" >
             <option value="בני ברק">בני ברק</option>
             <option value="ירושלים">ירושלים</option>
             <option value="חיפה">חיפה</option>
@@ -106,7 +102,7 @@
             <option value="דימונה"> דימונה </option>
             <option value="רעננה"> רעננה </option>
 		</select> -->
-    </div> 
+<!-- </div> 
     <div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
@@ -123,24 +119,167 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input class="form-control" name="password"  placeholder="Create password" type="password"  [(ngModel)]="password" >
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
+        <input class="form-control" name="password"  placeholder="Create password" type="password"  [(ngModel)]="password" > -->
+<!-- </div> form-group// -->
+<!-- <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input  name="checkpassword" class="form-control" placeholder="Repeat password" type="password"  [(ngModel)]="checkpassword" >
-    </div> <!-- form-group// -->                                      
-    <div class="form-group">
+        <input  name="checkpassword" class="form-control" placeholder="Repeat password" type="password"  [(ngModel)]="checkpassword" > -->
+<!-- </div> form-group//                                       -->
+<!-- <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block" (click)="addStudent()" >לרישום </button>
-    </div> 
-    <div class="form-group">
+    </div>  -->
+<!-- <div class="form-group">
         <button  class="btn btn-primary btn-block" (click)="GetStudent()" >AllStudents </button>
-    </div>                                                                
-</form>
-</article>
-</div> <!-- card.// -->
+    </div>                                                                 -->
+<!-- </form>
+</article> -->
+<!-- </div> card.// -->
 
-</div> 
+<!-- </div>  -->
 
 
+<div class="CONTAINER">
+    <form [formGroup]="firstFormGroup" (ngSubmit)="submitAccount(firstFormGroup)">
+        <!-- <ng-template matStepLabel >פרטים אישיים</ng-template> -->
+        <div class="right">
+            <div class="form-field">
+                <i class="fa fa-user" id="icon"></i>
+                <mat-form-field>
+                    <mat-label>שם פרטי</mat-label>
+                    <input matInput placeholder=" " formControlName="firstName" required>
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class="fa fa-user" id="icon"></i>
+                <mat-form-field>
+                    <mat-label>משפחה</mat-label>
+                    <input matInput placeholder="" formControlName="lastName" required>
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class="material-icons" id="icon">email</i>
+                <mat-form-field>
+                    <mat-label>דואר אלקטרוני </mat-label>
+                    <input matInput formControlName="email" placeholder="Email" type="email" required>
+                    <mat-error *ngIf="firstFormGroup.get('email').hasError('required')">
+                        שדה זה שדה חובה </mat-error>
+                    <mat-error *ngIf="firstFormGroup.get('email').hasError('email')">
+                        המיל לא תקין
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div class="form-field">
+                <i class="fa fa-id-card" id="icon"></i>
+                <mat-form-field>
+                    <mat-label>ת.ז</mat-label>
+                    <input matInput placeholder="" formControlName="tz" required>
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class='fas fa-city' id="icon"></i>
+                <mat-form-field>
+                    <mat-label>עיר</mat-label>
+                    <input matInput placeholder="" formControlName="city" required>
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class='fas fa-map-marker-alt' id="icon"></i>
+                <mat-form-field>
+                    <mat-label>רחוב</mat-label>
+                    <input matInput placeholder="" formControlName="street" required>
+                </mat-form-field>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="left">
+            <div class="form-field">
+                <i class='fas fa-home' id="icon"></i>
+                <mat-form-field>
+                    <mat-label>מספר בית</mat-label>
+                    <input matInput placeholder="" formControlName="numhouse" required type="number">
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class='fas fa-phone' id="icon"></i>
+
+                <mat-form-field>
+                    <mat-label>פלאפון</mat-label>
+                    <input matInput placeholder="" formControlName="phone" pattern="[0-9]*" minlength="10"
+                        maxlength="10" required>
+                </mat-form-field>
+            </div>
+
+            <div class="form-field">
+
+                <div class="form-field">
+                    <i class='fas fa-unlock-alt' id="icon"></i>
+                    <mat-form-field>
+                        <mat-label>סיסמא </mat-label>
+                        <input matInput formControlName="password" type="password" required>
+                        <mat-hint class="ac-form-field-description">בין 6 ל24 תווים</mat-hint>
+                        <mat-error *ngIf="firstFormGroup.get('password').hasError('required')">
+                            שדה זה שדה חובה </mat-error>
+                        <mat-error *ngIf="firstFormGroup.get('password').hasError('minlength')">
+                            הסיסמא חיבת להיות לפחות עם 6 תווים </mat-error>
+                        <mat-error *ngIf="firstFormGroup.get('password').hasError('maxlength')">
+                            הסיסמא יותר מ24 תווים </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-field">
+                    <i class='fas fa-unlock-alt' id="icon"></i>
+                    <mat-form-field>
+                        <mat-label> אימות סיסמא </mat-label>
+                        <input matInput formControlName="passwordAgain" placeholder="" type="password"
+                            [errorStateMatcher]="passwordsMatcher" required>
+                        <mat-error *ngIf="firstFormGroup.hasError('passwordsNotEqual')">Passwords are different. They should be
+                            equal!</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                    <i class='fas fa-chalkboard-teacher' id="levelIcon"></i>
+                    <mat-form-field appearance="fill" id="level">
+                        <mat-label>בחר שכבה</mat-label > 
+                        <select matNativeControl required formControlName="grade" class="form-control">
+                            <option value=1>א - ד יסודי</option>
+                            <option value=2>ה- ו יסודי</option>
+                            <option value=3>ז- ח יסודי</option>
+                            <option value=4>תיכון</option>
+                            <option value=5>השתלמות</option>
+                        </select>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-field" id="select">
+                    <i class='fas fa-chalkboard-teacher' id="levelIcon"></i>
+                    <mat-form-field appearance="fill" id="level2">
+                        <mat-label>בחר רמה</mat-label>
+                        <select matNativeControl required formControlName="level" class="form-control">
+                            <option value=1>גבוהה</option>
+                            <option value=2>בינונית</option>
+                            <option value=3>נמוכה</option>
+                        </select>
+                    </mat-form-field>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="form-group" id="save">
+                <!-- <button type="submit" mat-raised-button (click)="addStudent()">לרישום</button> -->
+                <div class="form-bottom">
+                        <button mat-raised-button [disabled]="!firstFormGroup.valid" (click)="addStudent()" id="save">לרישום</button>
+                    </div>
+            <!-- <button type="submit" class="btn btn-primary btn-block" (click)="addStudent()">לרישום </button> -->
+        </div>
+    </form>
+</div>

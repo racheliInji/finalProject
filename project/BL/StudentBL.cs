@@ -34,6 +34,11 @@ namespace BL
             DAL.StudentDAL.AddStudent(Converters.StudentConvert.GetStudent(StudentDTO), Converters.UserConvert.GetUser(userDTO));
         }
 
+        public static void AddNote(int id, string value,DateTime date)
+        {
+            DAL.StudentDAL.AddNote(id, value, date);
+        }
+
         public static void AddRecommendation(string value, int id)
         {
             DAL.StudentDAL.AddRecommendation(value,id);

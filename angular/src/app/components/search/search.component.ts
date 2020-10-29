@@ -40,6 +40,9 @@ export class SearchComponent implements OnInit {
     this.TeacherService.getTeacherAndSubject().subscribe(res => { this.teacherList = res, console.log(this.teacherList) });
     // this.searchText=
   }
+  getRecrecommendation(teacher){
+this.TeacherService.getRecrecommendation(teacher.userId).subscribe(res=>console.log(res));
+  }
   check(teacher: any) {
     // console.log(teacher);
     if (teacher != null && teacher!= "") {
@@ -47,7 +50,6 @@ export class SearchComponent implements OnInit {
     }
     return false;
   }
-
   // city: string;
   isOpen = false;
   // street: string;

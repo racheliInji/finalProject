@@ -53,8 +53,8 @@
       </div>
       <ul class="list-group list-group-flush" >
   
-        <li class="list-group-item" *ngFor="let teacher of teacherList | appFilter: searchText:searchPrice:searchPlace">
-          <h1>{{teacher.firstName}} {{ teacher.lastName}}</h1>
+        <li class="list-group-item" *ngFor="let teacher of teacherList | appFilter: searchText:searchPrice:searchPlace" (click)="getRecrecommendation(teacher)">
+          <h1>המורה {{teacher.firstName}} {{ teacher.lastName}}</h1>
           <p>{{teacher.SubjectName}}</p>
           <p>מחיר: {{teacher.PriceForLesson}} ש"ח</p>
           <p>פלאפון: {{teacher.phone}}</p>

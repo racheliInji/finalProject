@@ -25,8 +25,24 @@ namespace WebApi.Controllers
             }
 
         }
-
         [HttpGet]
+        [Route("AddNote/{id}")]
+        public IHttpActionResult AddNote(int id, string value,DateTime date)
+        {
+
+            try
+            {
+              BL.StudentBL.AddNote(id,value,date);
+                    return Ok();
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+        }
+            
+            [HttpGet]
         [Route("AddRecommendation")]
         public IHttpActionResult AddRecommendation(string value,string id)
         {

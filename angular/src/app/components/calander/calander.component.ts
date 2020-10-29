@@ -79,10 +79,11 @@ export class CalanderComponent implements OnInit {
       this.events.push(
         {
           start: startOfDay(new Date(i.Date)),
-          title: i.StudentName + ': בשעה:' + i.starTtime,
+          title: i.StudentName + ': בשעה:' + i.starTtime +' שיעור '+i.Subject,
           color: colors.yellow,
           actions: this.actions,
-          meta: i.ScheduleId
+          meta: i,
+
         }
       )
     })
@@ -100,42 +101,43 @@ export class CalanderComponent implements OnInit {
       a11yLabel: 'Edit',
       onClick: ({ event }: { event: CalendarEvent }): void => {
 
-        swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this imaginary file!",
-         
-        })
-        .then((willDelete) => {
-    
-            if(willDelete.value){
-                 swal("Success");
-            }else{
-              swal("Fail");
-            }
-    
-          console.log(willDelete)
+        // swal({
+        //   title: "Are you sure?",
+        //   text: "Once deleted, you will not be able to recover this imaginary file!",
+
+        // })
+        // .then((willDelete) => {
+
+        //     if(willDelete.value){
+        //          swal("Success");
+        //     }else{
+        //       swal("Fail");
+        //     }
+
+        //   console.log(willDelete)
+        // });
+        swal(
+          {
+
+            title: "הוספת הערה",
+            content: {
+              element: "textarea",
+              attributes: {
+                // placeholder: "אני ממליצה........",
+                // name: "recomandation",
+                
+                id: "recomandation",
+                style: " height: 100px",
+              },
+
+            },
+
+            buttons: ["ביטול", "אישור"],
+          }
+        ).then((value) => {
+          this.calanderService.AddNote(value, event.meta.ScheduleId,event.meta.Date).subscribe();
+          // console.log(event.meta.studentId);
         });
-        // swal(
-        //   {
-
-        //     title: "הוספת הערה",
-        //     content: {
-        //       element: "input",
-        //       attributes: {
-        //         // placeholder: "אני ממליצה........",
-        //         // name: "recomandation",
-        //         id: "recomandation",
-        //         style: " height: 100px",
-        //       },
-
-        //     },
-
-        //     buttons: ["ביטול", "אישור"],
-        //   }
-        // )
-        //   .then((value) => {
-        //     console.log(value);
-        //   });
         // this.handleEvent('Edited', event);
       },
     },
@@ -151,8 +153,8 @@ export class CalanderComponent implements OnInit {
         }).then(
           i => {
             if (i != null) {
-              console.log(event.meta);
-              this.calanderService.deleteLesson(event.meta).subscribe(res => this.calanderService.getLesson());
+              console.log(event.meta.ScheduleId);
+              this.calanderService.deleteLesson(event.meta.ScheduleId).subscribe(res => this.calanderService.getLesson());
               this.events = this.events.filter((iEvent) => iEvent !== event);
               this.handleEvent('Deleted', event);
             }

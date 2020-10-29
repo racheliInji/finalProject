@@ -63,19 +63,7 @@ namespace WebApi.Controllers
                 return BadRequest();
             }
         }
-        //[Route("GetByToken")]
-        //[HttpGet]
-        //public int GetByToken(string token)
-        //{
-        //    int i;
-        //    string s = "";
-        //    for (i = 1; i < token.IndexOf('a'); i++)
-        //    {
-        //        s += token[i];
-        //    }
-        //    int id = Int32.Parse(s) / 2;
-        //    return id;
-        //}
+      
         [Route("GetUserById/{id}")]
         [HttpGet]
         public IHttpActionResult GetUserById(int id)

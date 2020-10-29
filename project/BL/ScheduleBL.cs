@@ -29,7 +29,9 @@ namespace BL
                     Subject = i.Subject,
                     TeacherId = i.TeacherId,
                     StudentName = q2.firstName + ' ' + q2.lastName,
-                    ScheduleId=i.ScheduleId
+                    ScheduleId=i.ScheduleId,
+                    studentId=q2.id
+
                 };
                 list.Add(scheduleDTOWithStudent);
             }

@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 
-<div class="container">
-    <!-- <br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
+<!-- <div class="container"> -->
+<!-- <br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
 <hr> -->
-    <!-- <app-header (sidenavToggle)="sidenav.toggle()"></app-header> -->
+<!-- <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px;">
             <form>
@@ -27,7 +27,7 @@
                     </div>
                     <input name="lastName" class="form-control" placeholder="שם משפחה" type="text" #lastName2="ngModel"
                         [(ngModel)]="lastName">
-                </div> <!-- form-group// -->
+                </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -41,7 +41,7 @@
                     </div>
                     <input name="email" class="form-control" placeholder="Email address" type="email" #email2="ngModel"
                         [(ngModel)]="email">
-                </div> <!-- form-group// -->
+                </div> 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -54,8 +54,8 @@
                     </select>
                     <input name="phone" class="form-control" placeholder="Phone number" type="text" #phone2="ngModel"
                         [(ngModel)]="phone">
-                </div> <!-- form-group// -->
-                <div class="form-group input-group">
+                </div>  -->
+<!-- <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i> </span>
                     </div>
@@ -104,20 +104,135 @@
                     </div>
                     <input class="form-control" name="password" placeholder="Create password" type="password"
                         #password2="ngModel" [(ngModel)]="password">
-                </div> <!-- form-group// -->
-                <div class="form-group input-group">
+                </div>  -->
+<!-- <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
                     <input name="checkpassword" class="form-control" placeholder="Repeat password" type="password"
                         [(ngModel)]="checkpassword">
-                </div> <!-- form-group// -->
+                </div> 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block" (click)="updateTeacher()">אישור </button>
                 </div>
 
             </form>
         </article>
-    </div> <!-- card.// -->
+    </div> 
 
+</div> -->
+<!-- -------------- -->
+
+
+<div class="CONTAINER">
+    <form [formGroup]="firstFormGroup" (ngSubmit)="submitAccount(firstFormGroup)">
+
+        <div class="right">
+            <div class="form-field">
+                <i class="fa fa-user" id="icon"></i>
+                <mat-form-field>
+                    <mat-label>שם פרטי</mat-label>
+                    <input matInput placeholder="firstName" [value]="firstName" formControlName="firstName" >
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class="fa fa-user" id="icon"></i>
+                <mat-form-field>
+                    <mat-label>משפחה</mat-label>
+                    <input matInput placeholder="lastName" [value]="lastName" formControlName="lastName" >
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class="material-icons" id="icon">email</i>
+                <mat-form-field>
+                    <mat-label>דואר אלקטרוני </mat-label>
+                    <input matInput formControlName="email" [value]="email" placeholder="Email" type="email" >
+                    <mat-error *ngIf="firstFormGroup.get('email').hasError('required')">
+                        שדה זה שדה חובה </mat-error>
+                    <mat-error *ngIf="firstFormGroup.get('email').hasError('email')">
+                        המיל לא תקין
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div class="form-field">
+                <i class="fa fa-id-card" id="icon"></i>
+                <mat-form-field>
+                    <mat-label>ת.ז</mat-label>
+                    <input matInput placeholder="" [value]="tz" formControlName="tz" >
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class='fas fa-city' id="icon"></i>
+                <mat-form-field>
+                    <mat-label>עיר</mat-label>
+                    <input matInput placeholder="" [value]="city" formControlName="city" >
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="left">
+            <div class="form-field">
+                <i class='fas fa-map-marker-alt' id="icon"></i>
+                <mat-form-field>
+                    <mat-label>רחוב</mat-label>
+                    <input matInput placeholder="" [value]="street" formControlName="street" >
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class='fas fa-home' id="icon"></i>
+                <mat-form-field>
+                    <mat-label>מספר בית</mat-label>
+                    <input matInput placeholder="" [value]="numhouse" formControlName="numhouse"  type="number">
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class='fas fa-phone' id="icon"></i>
+
+                <mat-form-field>
+                    <mat-label>פלאפון</mat-label>
+                    <input matInput placeholder="" [value]="phone" formControlName="phone" pattern="[0-9]*"
+                        minlength="10" maxlength="10" >
+                </mat-form-field>
+            </div>
+
+            <div class="form-field">
+
+                <div class="form-field">
+                    <i class='fas fa-unlock-alt' id="icon"></i>
+                    <mat-form-field>
+                        <mat-label>סיסמא </mat-label>
+                        <input matInput [value]="password" formControlName="password" type="password" >
+                        <mat-hint class="ac-form-field-description">בין 6 ל24 תווים</mat-hint>
+                        <mat-error *ngIf="firstFormGroup.get('password').hasError('required')">
+                            שדה זה שדה חובה </mat-error>
+                        <mat-error *ngIf="firstFormGroup.get('password').hasError('minlength')">
+                            הסיסמא חיבת להיות לפחות עם 6 תווים </mat-error>
+                        <mat-error *ngIf="firstFormGroup.get('password').hasError('maxlength')">
+                            הסיסמא יותר מ24 תווים </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-field">
+                    <i class='fas fa-unlock-alt' id="icon"></i>
+                    <mat-form-field>
+                        <mat-label> אימות סיסמא </mat-label>
+                        <input matInput formControlName="passwordAgain" [value]="passwordAgain" placeholder=""
+                            type="password" [errorStateMatcher]="passwordsMatcher" >
+                        <mat-error *ngIf="firstFormGroup.hasError('passwordsNotEqual')">Passwords are different. They
+                            should be
+                            equal!</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group" id="save">
+            <!-- <button type="submit" mat-raised-button (click)="addStudent()">לרישום</button> -->
+            <div class="form-bottom">
+                <button  mat-raised-button color="accent" (click)="updateStudent()" id="save">לעידכון</button>
+            </div>
+            <!-- <button type="submit" class="btn btn-primary btn-block" (click)="addStudent()">לרישום </button> -->
+        </div>
+    </form>
 </div>

@@ -22,16 +22,15 @@ namespace DAL
     
         public int VacationId { get; set; }
         public int TeacherId { get; set; }
-        public int StudentId { get; set; }
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
         public Nullable<System.TimeSpan> StartTime { get; set; }
         public Nullable<System.TimeSpan> EndTime { get; set; }
         public string describe { get; set; }
+        public int StudentId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Message> Messages { get; set; }
-        public virtual Student Student { get; set; }
         public virtual Teacher Teacher { get; set; }
     }
 }

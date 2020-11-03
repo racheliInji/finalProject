@@ -29,6 +29,8 @@ import { CalanderService } from 'src/app/services/calander.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { MyDialogComponent } from 'src/app/components/my-dialog/my-dialog.component';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { element } from 'protractor';
 
 const colors: any = {
   red: {
@@ -79,7 +81,7 @@ export class CalanderComponent implements OnInit {
       this.events.push(
         {
           start: startOfDay(new Date(i.Date)),
-          title: i.StudentName + ': בשעה:' + i.starTtime +' שיעור '+i.Subject,
+          title: i.StudentName + ': בשעה:' + i.starTtime + ' שיעור ' + i.Subject,
           color: colors.yellow,
           actions: this.actions,
           meta: i,
@@ -121,21 +123,24 @@ export class CalanderComponent implements OnInit {
 
             title: "הוספת הערה",
             content: {
-              element: "textarea",
+              element: "input",
               attributes: {
+                
                 // placeholder: "אני ממליצה........",
                 // name: "recomandation",
-                
+
                 id: "recomandation",
                 style: " height: 100px",
               },
 
             },
 
-            buttons: ["ביטול", "אישור"],
-          }
+            // buttons: ["ביטול", "אישור"],
+          },
+          
         ).then((value) => {
-          this.calanderService.AddNote(value, event.meta.ScheduleId,event.meta.Date).subscribe();
+          console.log(value);
+          this.calanderService.AddNote(value, event.meta.ScheduleId, event.meta.Date).subscribe();
           // console.log(event.meta.studentId);
         });
         // this.handleEvent('Edited', event);
@@ -145,22 +150,29 @@ export class CalanderComponent implements OnInit {
       label: '<i class="fas fa-fw fa-trash-alt"></i>',
       a11yLabel: 'Delete',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        swal({
-          title: "האם לבטל את השיעור",
-          icon: "warning",
-          // dangerMode: true,
-          buttons: ["ביטול", "אישור"],
-        }).then(
-          i => {
-            if (i != null) {
-              console.log(event.meta.ScheduleId);
-              this.calanderService.deleteLesson(event.meta.ScheduleId).subscribe(res => this.calanderService.getLesson());
-              this.events = this.events.filter((iEvent) => iEvent !== event);
-              this.handleEvent('Deleted', event);
+        if (event.start >= new Date()) {
+          swal({
+            title: "האם לבטל את השיעור",
+            icon: "warning",
+            // dangerMode: true,
+            buttons: ["ביטול", "אישור"],
+          }).then(
+            i => {
+              if (i != null) {
+                this.calanderService.deleteLesson(event.meta.ScheduleId).subscribe(res => this.calanderService.getLesson());
+                      this.events = this.events.filter((iEvent) => iEvent !== event);
+                      this.handleEvent('Deleted', event);
+              }
             }
-          }
-        );
+          );
+        }
+        else {
+          swal({
+            title: "השיעור התקים",
+            icon: "info",
 
+          })
+        }
 
       },
     },

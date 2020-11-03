@@ -18,6 +18,7 @@ namespace BL.Converters
             //SubjectToTeacher.LessonLength = SubjectToTeacherDTO.LessonLength;
             SubjectToTeacher.PriceForLesson = SubjectToTeacherDTO.PriceForLesson;
             SubjectToTeacher.TeacherId = SubjectToTeacherDTO.TeacherId;
+            SubjectToTeacher.Subject = SubjectToTeacherDTO.SubjectName;
             //foreach (var item in DAL.UserDal.GetUsers())
             //{
             //    if (SubjectToTeacherDTO.password == item.password && SubjectToTeacherDTO.teacherName == item.firstName)
@@ -25,14 +26,14 @@ namespace BL.Converters
             //        SubjectToTeacher.TeacherId = item.id;
             //    }
             //}
-            foreach (var item in DAL.SubjectToTeacherDAL.GetSubjects())
-            {
-                if (item.SubjectName == SubjectToTeacherDTO.SubjectName)
-                {
-                    SubjectToTeacher.SubjectId = item.SubjectId;
+            //foreach (var item in DAL.SubjectToTeacherDAL.GetSubjects())
+            //{
+            //    if (item.SubjectName == SubjectToTeacherDTO.SubjectName)
+            //    {
+            //        SubjectToTeacher.SubjectId = item.SubjectName;
 
-                }
-            }
+            //    }
+            //}
 
             return SubjectToTeacher;
         }

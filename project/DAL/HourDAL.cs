@@ -10,7 +10,7 @@ namespace DAL
     {
         public static void AddLesson(Hour hour )
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 db.Hours.Add(hour);
                 db.SaveChanges();
@@ -20,7 +20,7 @@ namespace DAL
 
         public static List<Hour> getHours()
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 return db.Hours.ToList();
             }

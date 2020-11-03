@@ -8,7 +8,7 @@ namespace DAL
     {
         public static void AddLesson(Schedule schedule)
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 db.Schedules.Add(schedule);
                 db.SaveChanges();
@@ -18,7 +18,7 @@ namespace DAL
 
         public static List<Schedule> GetLessons()
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 return db.Schedules.ToList();
 
@@ -27,7 +27,7 @@ namespace DAL
 
         public static Schedule deleteLesson(int scheduleId)
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 Schedule schedule = new Schedule();
                 foreach (var item in db.Schedules)

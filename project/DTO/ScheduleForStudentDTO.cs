@@ -9,6 +9,8 @@ namespace DTO
    public class ScheduleForStudentDTO:ScheduleDTO.ScheduleDTOWithStudentName
     {
         public string TeacherName { get; set; }
+        public string Notes { get; set; }
+
 
     }
 }

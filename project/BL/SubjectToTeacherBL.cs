@@ -5,9 +5,9 @@ namespace BL
 {
     public class SubjectToTeacherBL
     {
-        public static void AddSubjectToTeacher(SubjectToTeacherDTO subjectToTeacher)
+        public static bool AddSubjectToTeacher(SubjectToTeacherDTO subjectToTeacher)
         {
-            DAL.SubjectToTeacherDAL.AddSubjectToTeacher(Converters.SubjectToTeacherConvert.GetSubjectToTeacher(subjectToTeacher));
+         return   DAL.SubjectToTeacherDAL.AddSubjectToTeacher(Converters.SubjectToTeacherConvert.GetSubjectToTeacher(subjectToTeacher));
         }
     }
 }

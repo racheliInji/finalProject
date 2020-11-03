@@ -11,7 +11,7 @@ namespace DAL
     {
         public static void addTeacher(Teacher teacher, User user)
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             { 
                 db.Teachers.Add(teacher);
                 db.Users.Add(user);
@@ -43,7 +43,7 @@ namespace DAL
         public static List<Teacher> GetTeachers()
         {
 
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 return db.Teachers.ToList();
             }
@@ -51,11 +51,11 @@ namespace DAL
 
         public static void updateTeacher(TeacherDTO.UserAndTeacherDTO userAndTeacherDTO, int id)
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 foreach (var user in db.Users)
                 {
-                    if (user.id == id)
+                    if (user.userId == id)
                     {
                         user.firstName = userAndTeacherDTO.firstName;
                         user.city = userAndTeacherDTO.city;
@@ -84,7 +84,7 @@ namespace DAL
 
         public static List< Recommendation> GetRecrecommendationById()
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 return db.Recommendations.ToList();
             }
@@ -94,7 +94,7 @@ namespace DAL
 
         //public static UserAndTeacher GetTeacher(int id)
         //{
-        //    using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+        //    using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
         //    {
         //        UserAndTeacher q = new UserAndTeacher();
         //        var teacher = from T in db.Teachers

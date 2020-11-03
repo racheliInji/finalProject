@@ -18,7 +18,6 @@ namespace DAL
         public Subject()
         {
             this.Recommendations = new HashSet<Recommendation>();
-            this.Schedules = new HashSet<Schedule>();
         }
     
         public int SubjectId { get; set; }
@@ -26,7 +25,5 @@ namespace DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recommendation> Recommendations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Schedule> Schedules { get; set; }
     }
 }

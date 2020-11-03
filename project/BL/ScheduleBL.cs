@@ -21,7 +21,7 @@ namespace BL
             var q = Converters.ScheduleConvert.DtoScheduleList(DAL.ScheduleDAL.GetLessons()).Where(i => i.TeacherId == id).ToList();
             foreach (var i in q)
             {
-                var q2 = DAL.UserDal.GetUsers().FirstOrDefault(e => e.id == i.StudentId);
+                var q2 = DAL.UserDal.GetUsers().FirstOrDefault(e => e.userId == i.StudentId);
                 ScheduleDTO.ScheduleDTOWithStudentName scheduleDTOWithStudent = new ScheduleDTO.ScheduleDTOWithStudentName()
                 {
                     Date = i.Date,
@@ -30,7 +30,7 @@ namespace BL
                     TeacherId = i.TeacherId,
                     StudentName = q2.firstName + ' ' + q2.lastName,
                     ScheduleId=i.ScheduleId,
-                    studentId=q2.id
+                    studentId=q2.userId
 
                 };
                 list.Add(scheduleDTOWithStudent);
@@ -53,8 +53,8 @@ namespace BL
 
             try
             {
-                var q = DAL.UserDal.GetUsers().FirstOrDefault(i => i.id == schedule.StudentId);
-                var q2 = DAL.UserDal.GetUsers().FirstOrDefault(i => i.id == schedule.TeacherId);
+                var q = DAL.UserDal.GetUsers().FirstOrDefault(i => i.userId == schedule.StudentId);
+                var q2 = DAL.UserDal.GetUsers().FirstOrDefault(i => i.userId == schedule.TeacherId);
                 MailMessage mm = new MailMessage("miniclass909@gmail.com", q.email, "ביטול שיעור"+schedule.Subject, "");
                 mm.Body = " הי " + q.firstName + ' ' + q.lastName +
                    " \n" + " שיעור " + schedule.Subject + " של המורה  " + q2.firstName + ' ' + q2.lastName + " בתאריך " + schedule.Date + " בשעה " + schedule.starTtime+" התבטל!!!!!! "

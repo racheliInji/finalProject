@@ -21,7 +21,7 @@ namespace WebApi.Controllers
                 return Ok();
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
                 return BadRequest();

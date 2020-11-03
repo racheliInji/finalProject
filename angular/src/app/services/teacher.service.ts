@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class TeacherService {
-  
+ 
 
 
   flag = false;
@@ -47,7 +47,11 @@ export class TeacherService {
   console.log(teacher.userId);
     return this.http.get(`${environment.URL}/Teacher/GetCVFile/${teacher.userId}`, { responseType: "blob" });
   }
-
+  updateSubject(value: any) {
+    console.log(value)
+    return this.http.put<any>(environment.URL + "/Teacher/updateSubject", value);
+  }
+  
   updateTeacher(teacher: Teacher) {
     return this.http.put<any>(environment.URL + "/Teacher/updateTeacher", teacher);
   }

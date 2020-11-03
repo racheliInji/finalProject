@@ -3,7 +3,8 @@ import { TeacherService } from 'src/app/services/teacher.service';
 import { BaseUser } from 'src/app/class/base-user';
 import { Teacher } from 'src/app/class/teacher';
 import { UserService } from 'src/app/services/user.service';
-
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { EmailValidation, PasswordValidation, RepeatPasswordValidator } from '../validators';
 @Component({
   selector: 'app-update-teacher',
   templateUrl: './update-teacher.component.html',
@@ -21,11 +22,36 @@ export class UpdateTeacherComponent implements OnInit {
   street: string;
   user: BaseUser;
   teacher: Teacher;
-  id: number
-  constructor(private TeacherService: TeacherService, private UserService: UserService) { }
+  id: number;
+  form: any;
+  firstFormGroup: any;
+  constructor(private _formBuilder: FormBuilder,private TeacherService: TeacherService, private UserService: UserService) { 
+    this.form = this._formBuilder.group({
+      email: new FormControl('', EmailValidation),
+      password: new FormControl('', PasswordValidation),
+      passwordAgain: new FormControl(''),
+      acceptTerms: new FormControl('', [Validators.requiredTrue])
+    }, { validator: RepeatPasswordValidator });
+  }
 
   ngOnInit() {
     this.load();
+    this.firstFormGroup = this._formBuilder.group({
+      level: ['',],
+      grade: ['',],
+      firstName: ['', ],
+      lastName: ['', ],
+      street: ['', ],
+      numhouse: ['', ],
+      city: ['', ],
+      tz: ['', ],
+      phone: ['', ],
+      email: ['', ],
+      password: ['', ],
+      passwordAgain: new FormControl(''),
+    }, { validator: RepeatPasswordValidator }
+
+    );
   }
 
   load(){

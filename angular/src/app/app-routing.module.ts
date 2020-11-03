@@ -27,6 +27,7 @@ import { AddTeacherComponent } from './components/add-teacher/add-teacher.compon
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'רישום/כניסה', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'newuser', component: NewuserComponent },

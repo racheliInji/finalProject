@@ -5,6 +5,9 @@ import { HourandDay } from 'src/app/class/hourand-day';
 import { BaseUser } from 'src/app/class/base-user';
 import { SubjectForTeacher } from 'src/app/class/subject-for-teacher';
 import { UserService } from 'src/app/services/user.service';
+import { Validators, FormBuilder } from '@angular/forms';
+import { TeacherService } from 'src/app/services/teacher.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-determining-lessons',
@@ -13,7 +16,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class DeterminingLessonsComponent implements OnInit {
 
-  constructor(private HoursAndDayService: HoursAndDayService, private UserService: UserService) { }
+  constructor(private teacherService: TeacherService, private formBuilder: FormBuilder, private HoursAndDayService: HoursAndDayService, private UserService: UserService) { }
 
   hoursAndDayList: any[] = [];
   day: string;
@@ -91,7 +94,7 @@ export class DeterminingLessonsComponent implements OnInit {
   isChecked519: any;
   isChecked520: any;
   isChecked521: any;
-
+  subjectFormGroup: any
   ngOnInit() {
     if (localStorage.getItem("token")) {
       this.id = this.UserService.getIdByToken();
@@ -99,9 +102,81 @@ export class DeterminingLessonsComponent implements OnInit {
       this.hoursAndDayList = this.HoursAndDayService.hoursForTeacherList;
       this.putValus();
     }
+    this.subjectFormGroup = this.formBuilder.group({
+      subject: ['',],
+      money: ['',],
+      grade: ['',],
+    });
   }
   s: string;
   s2: string;
+  addSubjectToTeacher() {
+    this.HoursAndDayService.addSubjectToTeacher(new SubjectForTeacher(this.id, this.subjectFormGroup.value.subject, this.subjectFormGroup.value.money, this.subjectFormGroup.value.grade)).subscribe(res =>{
+      if (res == true) {
+        swal({
+          title: "שיעור זה כבר קים",
+          icon: "info",
+          // dangerMode: true,
+          buttons: ["ביטול", "אישור"],
+        });
+      }
+      else {
+        swal({
+          title: "השיעור זה נוסף בהצלחה",
+          icon: "success",
+        });
+      } 
+    });
+  }
+  
+  updateSubject() {
+    // console.log(this.subjectFormGroup.value);
+    this.teacherService.updateSubject(new SubjectForTeacher(this.id, this.subjectFormGroup.value.subject, this.subjectFormGroup.value.money, this.subjectFormGroup.value.grade)).subscribe(
+      res => {
+        console.log(res);
+        if (res == false) {
+          swal({
+            title: "שיעור זה אינו קים",
+            text: "להוספת שיעור זה לחץ על האישור",
+            icon: "info",
+            // dangerMode: true,
+            buttons: ["ביטול", "אישור"],
+          }).then(
+            i => {
+              if (i != null) {
+                this.HoursAndDayService.addSubjectToTeacher(new SubjectForTeacher(this.id, this.subjectFormGroup.value.subject, this.subjectFormGroup.value.money, this.subjectFormGroup.value.grade)).subscribe(res => {
+                 console.log(res);
+                  if (res == true) {
+                    swal({
+                      title: "שיעור זה כבר קים",
+                      icon: "info",
+                      // dangerMode: true,
+                      buttons: ["ביטול", "אישור"],
+                    });
+                  }
+                  else {
+                    swal({
+                      title: "השיעור זה נוסף בהצלחה",
+                      icon: "success",
+                    });
+                  } 
+                });}
+            }
+
+          );
+        }
+        else {
+          swal({
+            title: "שיעור זה עודכן בהצלחה ",
+            icon: "success",
+
+          })
+        }
+      });
+  }
+
+
+
   putValus() {
     // console.log(this.hoursAndDayList);
     this.hoursAndDayList.forEach(element => {
@@ -181,9 +256,9 @@ export class DeterminingLessonsComponent implements OnInit {
       this.isChecked315 = dayAndTime;
     else if (s == "isChecked316")
       this.isChecked316 = dayAndTime;
-    else if (s =="isChecked317")
+    else if (s == "isChecked317")
       this.isChecked317 = dayAndTime;
-    else if (s =="isChecked318")
+    else if (s == "isChecked318")
       this.isChecked318 = dayAndTime;
     else if (s == "isChecked319")
       this.isChecked319 = dayAndTime;
@@ -217,7 +292,7 @@ export class DeterminingLessonsComponent implements OnInit {
       this.isChecked420 = dayAndTime;
     else if (s == "isChecked421")
       this.isChecked421 = dayAndTime;
-      else if (s == "isChecked509")
+    else if (s == "isChecked509")
       this.isChecked509 = dayAndTime;
     else if (s == "isChecked510")
       this.isChecked510 = dayAndTime;
@@ -243,7 +318,7 @@ export class DeterminingLessonsComponent implements OnInit {
       this.isChecked520 = dayAndTime;
     else if (s == "isChecked521")
       this.isChecked521 = dayAndTime;
-    
+
   }
   convertDay(day) {
     if (day == "ראשון")
@@ -286,9 +361,9 @@ export class DeterminingLessonsComponent implements OnInit {
       return "21";
   }
 
-  addSubjectToTeacher() {
-    this.HoursAndDayService.addSubjectToTeacher(new SubjectForTeacher(this.id, this.subject, this.money, this.grade)).subscribe();
-  }
+  // addSubjectToTeacher() {
+  //   this.HoursAndDayService.addSubjectToTeacher(new SubjectForTeacher(this.id, this.subject, this.money, this.grade)).subscribe();
+  // }
 
   // getHourandDay() {
   //   this.HoursAndDayService.getHourandDayById(this.id).subscribe((list: HourandDay[]) => { this.hoursAndDayList = list, console.log(this.hoursAndDayList), this.putValus() })

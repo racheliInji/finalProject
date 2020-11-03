@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="51c44153ae1c4f0dacd53ffe918bca10" Name="Diagram1">
+        <EntityTypeShape EntityType="RacheliandDiniModel.Grade" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Hour" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.HoursForTeacher" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Lesson" Width="1.5" PointX="10.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Message" Width="1.5" PointX="7.5" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Recommendation" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Schedule" Width="1.5" PointX="8.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Student" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Subject" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.SubjectToTeacher" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Teacher" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.User" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacheliandDiniModel.Vacation" Width="1.5" PointX="5.25" PointY="20.5" IsExpanded="true" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Student__IdGrade__1F98B2C1" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Student__IdGrade__208CD6FA" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Student__IdGrade__2180FB33" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Hours__TeacherId__671F4F74" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__HoursForT__Teach__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Lesson__Schedule__7FEAFD3E" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Message__Vacatio__3493CFA7" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Recommend__Subje__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Recommend__Teach__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Schedule__Studen__7A3223E8" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Schedule__Teache__7B264821" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Student__Student__22751F6C" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__SubjectTo__Teach__6CD828CA" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Teacher__Teacher__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="RacheliandDiniModel.FK__Vacation__Teache__31B762FC" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

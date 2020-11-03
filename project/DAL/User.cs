@@ -17,11 +17,11 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.HoursForTeachers = new HashSet<HoursForTeacher>();
             this.Hours = new HashSet<Hour>();
+            this.HoursForTeachers = new HashSet<HoursForTeacher>();
         }
     
-        public int id { get; set; }
+        public int userId { get; set; }
         public string tz { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -33,10 +33,10 @@ namespace DAL
         public string phone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Hour> Hours { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoursForTeacher> HoursForTeachers { get; set; }
         public virtual Student Student { get; set; }
         public virtual Teacher Teacher { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Hour> Hours { get; set; }
     }
 }

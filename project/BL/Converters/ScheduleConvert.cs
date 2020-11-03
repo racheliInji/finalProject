@@ -18,7 +18,7 @@ namespace BL.Converters
             Schedule.TeacherId = ScheduleDto.TeacherId;
             Schedule.Hour = ScheduleDto.starTtime;
             Schedule.StudentId = ScheduleDto.StudentId;
-            Schedule.SubjectId = DAL.SubjectToTeacherDAL.GetSubjects().Find(i => i.SubjectName == ScheduleDto.Subject).SubjectId;
+            Schedule.Subject = ScheduleDto.Subject;
           //  Schedule.ScheduleId = ScheduleDto.ScheduleId;
             return Schedule;
         }
@@ -29,7 +29,7 @@ namespace BL.Converters
             ScheduleDTO.TeacherId = Schedule.TeacherId;
             ScheduleDTO.starTtime = Schedule.Hour;
             ScheduleDTO.StudentId = Schedule.StudentId;
-            ScheduleDTO.Subject = DAL.SubjectToTeacherDAL.GetSubjects().Find(i => i.SubjectId == Schedule.SubjectId).SubjectName;
+            ScheduleDTO.Subject = Schedule.Subject;
             ScheduleDTO.ScheduleId = Schedule.ScheduleId;
             return ScheduleDTO;
         }

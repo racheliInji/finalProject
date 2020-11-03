@@ -39,7 +39,7 @@
     overflow: hidden scroll; 
     // height:100%;
     // widows: 100%;
-    top:0px;
+    top:-17%;
     right:0px;
     bottom:0px;
     left:0px;
@@ -52,7 +52,7 @@
     // top: 30px;
     // left: 10px;
   // --scroll-y:10px;
-    height: 100vh;
+    height: 120vh;
     // overflow-y: hidden;
   // padding-right: 15px;
    z-index:10 !important;
@@ -68,9 +68,9 @@
   //   color:blue;
   // }
   #close{
-    position: absolute;
-    margin-left: 75%;
-    margin-top: 2%;
+    // position: absolute;
+    margin-left:50%;
+    margin-top: 10%;
     font-size: 280%;
   }
 

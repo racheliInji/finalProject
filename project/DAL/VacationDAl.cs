@@ -11,7 +11,7 @@ namespace DAL
     {
         public static List<Vacation>  getVacation()
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 return db.Vacations.ToList();
             }

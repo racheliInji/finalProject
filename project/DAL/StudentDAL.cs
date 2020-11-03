@@ -11,10 +11,10 @@ namespace DAL
     {
         public static void AddStudent(Student student, User user)
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 db.Users.Add(user);
-                db.Students.Add(new Student() { IdGrade = student.IdGrade, Level = student.Level, StudentId = user.id });
+                db.Students.Add(new Student() { IdGrade = student.IdGrade, Level = student.Level, StudentId = user.userId });
 
                 try
                 {
@@ -41,7 +41,7 @@ namespace DAL
 
         public static void AddNote(int id, string value, DateTime date)
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
 
                 db.Lessons.Add(new Lesson()
@@ -58,7 +58,7 @@ namespace DAL
 
         public static void AddRecommendation(string value, int id)
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
 
                 Recommendation recommendation = new Recommendation()
@@ -75,7 +75,7 @@ namespace DAL
 
         public static List<Student> GetStudents()
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 return db.Students.ToList();
             }
@@ -83,11 +83,11 @@ namespace DAL
 
         public static void updateStudent(StudentDTO.UserAndStudentDTO userAndStudentDTO, int id)
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 foreach (var user in db.Users)
                 {
-                    if (user.id == id)
+                    if (user.userId == id)
                     {
                         user.firstName = userAndStudentDTO.firstName;
                         user.city = userAndStudentDTO.city;
@@ -115,9 +115,19 @@ namespace DAL
 
         }
 
+        public static List<Lesson> GetNotes(int id)
+        {
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
+            {
+                return db.Lessons.ToList();
+            }
+        }
+
+       
+
         public static void DeleteStudent(int id)
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 foreach (var item in db.Students)
                 {
@@ -128,7 +138,7 @@ namespace DAL
                 }
                 foreach (var item in db.Users)
                 {
-                    if (item.id == id)
+                    if (item.userId == id)
                     {
                         db.Users.Remove(item);
                     }

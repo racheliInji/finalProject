@@ -11,7 +11,7 @@ namespace DAL
     {
         public static void HoursForTeacherAdd(HoursForTeacher hoursForTeacher)
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 db.HoursForTeachers.Add(hoursForTeacher);
                 db.SaveChanges();
@@ -20,7 +20,7 @@ namespace DAL
 
         public static List<HoursForTeacher> GetHoursForTeacher()
         {
-            using(RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using(RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 return db.HoursForTeachers.ToList();
             }
@@ -29,7 +29,7 @@ namespace DAL
 
         public static void DeleteHoursAndDaysForTeacher(int id)
         {
-           using(RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+           using(RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 foreach(var item in db.HoursForTeachers)
                 {
@@ -44,7 +44,7 @@ namespace DAL
 
         //public static List<HoursForTeacherDTO> GetHoursForTeacherById(int id)
         //{
-        //    using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+        //    using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
         //    {
                 
         //        return db.HoursForTeachers.ToList();
@@ -57,7 +57,7 @@ namespace DAL
 
         //public static void DeleteHoursAndDaysForTeacher(int id)
         //{
-        //  using(RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+        //  using(RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
         //    {
         //        foreach(var item in GetHoursForTeacher())
         //        {

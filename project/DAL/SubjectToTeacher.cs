@@ -14,8 +14,9 @@ namespace DAL
     
     public partial class SubjectToTeacher
     {
+        public int id { get; set; }
         public int TeacherId { get; set; }
-        public int SubjectId { get; set; }
+        public string Subject { get; set; }
         public decimal PriceForLesson { get; set; }
         public int LessonLength { get; set; }
         public string GradesRange { get; set; }

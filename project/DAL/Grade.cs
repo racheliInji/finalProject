@@ -18,6 +18,8 @@ namespace DAL
         public Grade()
         {
             this.Students = new HashSet<Student>();
+            this.Students1 = new HashSet<Student>();
+            this.Students2 = new HashSet<Student>();
         }
     
         public int IdGrade { get; set; }
@@ -26,5 +28,9 @@ namespace DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Students { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Students1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Students2 { get; set; }
     }
 }

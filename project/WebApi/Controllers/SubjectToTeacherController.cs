@@ -16,15 +16,14 @@ namespace WebApi.Controllers
 
             try
             {
-                BL.SubjectToTeacherBL.AddSubjectToTeacher( SubjectToTeacher);
-                return Ok();
+                return Ok(BL.SubjectToTeacherBL.AddSubjectToTeacher(SubjectToTeacher));
 
             }
-            catch
+            catch(Exception e)
             {
 
 
-                return BadRequest();
+                return BadRequest(e.ToString());
             }
 
         }

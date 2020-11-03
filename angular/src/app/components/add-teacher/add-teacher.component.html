@@ -1,4 +1,4 @@
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
+<mat-horizontal-stepper (selectionChange)="setIndex($event)" [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup" (ngSubmit)="submitAccount(firstFormGroup)">
             <ng-template matStepLabel>פרטים אישיים</ng-template>
@@ -6,18 +6,18 @@
                 <i class="fa fa-user" id="icon"></i>
                 <mat-form-field>
                     <mat-label>שם פרטי</mat-label>
-                    <input matInput placeholder=" "  formControlName="firstName" required>
-                    <!-- <mat-error *ngIf="firstFormGroup.get('firstName').hasError('pattern')">
-                        שדה זה מכיל רק אותיות </mat-error> -->
+                    <input matInput placeholder=" " formControlName="firstName" pattern="[a-zA-Zא-ת ]*" required>
+                    <mat-error *ngIf="firstFormGroup.get('firstName').hasError('pattern')">
+                        שדה זה מכיל רק אותיות </mat-error>
                 </mat-form-field>
             </div>
             <div class="form-field">
                 <i class="fa fa-user" id="icon"></i>
                 <mat-form-field>
                     <mat-label>משפחה</mat-label>
-                    <input matInput placeholder="" formControlName="lastName"  required>
-                    <!-- <mat-error *ngIf="firstFormGroup.get('lastName').hasError('pattern') [pattern]="'^[a-zA-Z']$'"">
-                        שדה זה מכיל רק אותיות </mat-error> -->
+                    <input matInput placeholder="" formControlName="lastName" pattern="[a-zA-Zא-ת ]*" required>
+                    <mat-error *ngIf="firstFormGroup.get('lastName').hasError('pattern') ">
+                        שדה זה מכיל רק אותיות </mat-error>
                 </mat-form-field>
             </div>
             <div class="form-field">
@@ -38,14 +38,13 @@
                 <i class="fa fa-id-card" id="icon"></i>
                 <mat-form-field>
                     <mat-label>ת.ז</mat-label>
-                    <input matInput placeholder=""  formControlName="tz" required>
-                    <!-- <mat-error *ngIf="firstFormGroup.get('tz').hasError('pattern')">
-                        שדה זה מכיל רק מספרים </mat-error> -->
-                        <!-- maxlength="9" minlength="9" -->
-                    <!-- <mat-error *ngIf="firstFormGroup.get('tz').hasError('minlength')">
+                    <input matInput placeholder="" maxlength="9" minlength="9" formControlName="tz" required>
+                    <mat-error *ngIf="firstFormGroup.get('tz').hasError('pattern')">
+                        שדה זה מכיל רק מספרים </mat-error>
+                    <mat-error *ngIf="firstFormGroup.get('tz').hasError('minlength')">
                         שדה זה חיב להכיל 9 ספרות</mat-error>
                     <mat-error *ngIf="firstFormGroup.get('tz').hasError('maxlength')">
-                        שדה זה חיב להכיל 9 ספרות</mat-error> -->
+                        שדה זה חיב להכיל 9 ספרות</mat-error>
                 </mat-form-field>
             </div>
             <div class="form-field">
@@ -74,14 +73,14 @@
 
                 <mat-form-field>
                     <mat-label>פלאפון</mat-label>
-                    <input matInput placeholder="" formControlName="phone"  required>
-                    <!-- <mat-error *ngIf="firstFormGroup.get('tz').hasError('pattern')">
-                        שדה זה חיב להכיל רק מספרים</mat-error> -->
-                        <!-- minlength="9" maxlength="10" -->
-                        <!-- <mat-error *ngIf="firstFormGroup.get('tz').hasError('minlength')">
-                                שדה זה חיב להכיל לפחות 9 ספרות</mat-error>
-                                <mat-error *ngIf="firstFormGroup.get('tz').hasError('maxlength')">
-                                        שדה זה חיב להכיל עד 10 ספרות</mat-error> -->
+                    <input matInput placeholder="" formControlName="phone" minlength="9" maxlength="10" required>
+                    <mat-error *ngIf="firstFormGroup.get('tz').hasError('pattern')">
+                        שדה זה חיב להכיל רק מספרים</mat-error>
+
+                    <mat-error *ngIf="firstFormGroup.get('tz').hasError('minlength')">
+                        שדה זה חיב להכיל לפחות 9 ספרות</mat-error>
+                    <mat-error *ngIf="firstFormGroup.get('tz').hasError('maxlength')">
+                        שדה זה חיב להכיל עד 10 ספרות</mat-error>
                 </mat-form-field>
             </div>
             <div class="form-field">
@@ -111,7 +110,16 @@
                             equal!</mat-error>
                     </mat-form-field>
                 </div>
-                <app-file id="file"></app-file>
+                <div class="form-group">
+                    <label for="file">
+                        <i class="material-icons" style="font-size:36px;  margin-left: 110%;">file_upload</i></label>
+
+                    <input name="selectFile" type="file" id="file" (change)="selectFile($event)">
+                </div>
+                <!-- <div class="form-group">
+                    <app-file></app-file>
+                </div> -->
+                <!-- <app-file class="form-group" ></app-file> -->
             </div>
             <!-- <div class="form-bottom"> -->
             <!-- formControlName="save" required -->
@@ -119,42 +127,47 @@
             </div> -->
             <div>
                 <!--  formControlName="save"-->
-                <button mat-button matStepperNext (click)="addTeacher()" [disabled]="!firstFormGroup.valid">שמור והמשך</button>
+                <button mat-button matStepperNext (click)="addTeacher()" [disabled]="!firstFormGroup.valid">שמור
+                    והמשך</button>
             </div>
 
         </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup"  label="תמחור ובחירת מקצוע"  >
+    <mat-step [stepControl]="secondFormGroup" label="תמחור ובחירת מקצוע">
 
         <form [formGroup]="secondFormGroup" (ngSubmit)="submitAccount(secondFormGroup)">
-            <!-- <app-determining-lessons class="tab"></app-determining-lessons> -->
-            <!-- <form id="form"> -->
-            <div class="form-field">
-                <mat-form-field>
-                    <mat-label> מקצוע</mat-label>
-                    <input matInput placeholder="" formControlName="subject" required>
+            <div id="container">
+                <div class="form-field">
+                    <mat-form-field id="subject">
+                        <mat-label> מקצוע</mat-label>
+                        <input matInput placeholder="" formControlName="subject" required>
+                    </mat-form-field>
+                </div>
+                <div class="form-field">
+                    <mat-form-field appearance="fill" id="price">
+                        <mat-label>סכום לשיעור</mat-label>
+                        <input matInput type="number" class="example-right-align" formControlName="money" type="number"
+                            id="money">
+                        <span matPrefix>ש"ח&nbsp;</span>
+                        <span matSuffix>.00</span>
+                    </mat-form-field>
+                </div>
+                <mat-form-field appearance="fill" id="level">
+                    <mat-label>בחר שכבה</mat-label>
+                    <select matNativeControl required formControlName="grade" class="form-control">
+                        <option value=1>יסודי </option>
+                        <option value=2>חטיבת ביניים </option>
+                        <option value=3>תיכון</option>
+                        <option value=4>סמינר</option>
+                        <option value=5>השתלמות</option>
+                        <option value=4>אחר</option>
+                    </select>
                 </mat-form-field>
+                <button mat-button matStepperNext mat-raised-button color="primary" [disabled]="!secondFormGroup.valid"
+                    id="ok" (click)="addSubjectToTeacher()">שמור והמשך</button>
+                <button mat-button mat-raised-button color="primary" [disabled]="!secondFormGroup.valid" id="add2"
+                    (click)="addAnother()"> מקצוע נוסף</button>
             </div>
-            <div class="form-field">
-                <mat-form-field appearance="fill">
-                    <mat-label>סכום לשיעור</mat-label>
-                    <input matInput type="number" class="example-right-align" formControlName="money" type="number"
-                        id="money">
-                    <span matPrefix>ש"ח&nbsp;</span>
-                    <span matSuffix>.00</span>
-                </mat-form-field>
-            </div>
-            <mat-form-field appearance="fill">
-                <mat-label>בחר שכבה</mat-label>
-                <select matNativeControl required formControlName="grade" class="form-control">
-                    <option value=1>א - ד יסודי</option>
-                    <option value=2>ה- ו יסודי</option>
-                    <option value=3>ז- ח יסודי</option>
-                    <option value=4>תיכון</option>
-                    <option value=5>השתלמות</option>
-                </select>
-            </mat-form-field>
-
             <!-- <button mat-raised-button color="primary" name="ok" type="search" id="ok" value="אישור"
                             (click)="addSubjectToTeacher()">אישור</button> -->
 
@@ -162,332 +175,333 @@
         <!-- </form> -->
         <div>
             <button mat-button matStepperPrevious>חזרה</button>
-            <button mat-button matStepperNext>הבא</button>
+            <!-- <button mat-button matStepperNext>הבא</button> -->
         </div>
     </mat-step>
     <mat-step label="קביעת שעות">
-        <p class="day" id="sunday">ראשון</p>
-        <p class="day" id="monday">שני</p>
-        <p class="day">שלישי</p>
-        <p class="day">רביעי</p>
-        <p class="day">חמישי</p>
-        <div id="space"></div>
-        <label class="container" id="Thursday">
-            <input checked=checked type="checkbox" name="d509" [(ngModel)]="isChecked509"
-                (change)="checkValue(isChecked509?509:5090)" />
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked409" (change)="checkValue(isChecked409?409:4090)">
-            <span class="checkmark"></span>
-        </label>
+        <div id="hours">
+            <p class="day" id="sunday">ראשון</p>
+            <p class="day" id="monday">שני</p>
+            <p class="day">שלישי</p>
+            <p class="day">רביעי</p>
+            <p class="day">חמישי</p>
+            <div id="space"></div>
+            <label class="container" id="Thursday">
+                <input checked=checked type="checkbox" name="d509" [(ngModel)]="isChecked509"
+                    (change)="checkValue(isChecked509?509:5090)" />
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked409" (change)="checkValue(isChecked409?409:4090)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked309" (change)="checkValue(isChecked309?309:3090)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked309" (change)="checkValue(isChecked309?309:3090)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked209" (change)="checkValue(isChecked209?209:2090)">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked109" (change)="checkValue(isChecked109?109:1090)">
-            <span class="checkmark"></span>09:00-10:00
-        </label>
-        <div></div>
-        <label class="container" id="Thursday">
-            <input type="checkbox" [(ngModel)]="isChecked510" (change)="checkValue(isChecked6?510:5100)" />
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked410" (change)="checkValue(isChecked410?410:4100)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked209" (change)="checkValue(isChecked209?209:2090)">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked109" (change)="checkValue(isChecked109?109:1090)">
+                <span class="checkmark"></span>09:00-10:00
+            </label>
+            <div></div>
+            <label class="container" id="Thursday">
+                <input type="checkbox" [(ngModel)]="isChecked510" (change)="checkValue(isChecked6?510:5100)" />
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked410" (change)="checkValue(isChecked410?410:4100)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked310" (change)="checkValue(isChecked310?310:3100)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked310" (change)="checkValue(isChecked310?310:3100)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked210" (change)="checkValue(isChecked210?210:2100)">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked110" (change)="checkValue(isChecked110?110:1100)">
-            <span class="checkmark"></span>10:00-11:00
-        </label>
-        <div></div>
-        <label class="container" id="Thursday">
-            <input type="checkbox" [(ngModel)]="isChecked511" (change)="checkValue(isChecked511?511:5110)" />
-            <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked411" (change)="checkValue(isChecked411?411:4110)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked210" (change)="checkValue(isChecked210?210:2100)">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked110" (change)="checkValue(isChecked110?110:1100)">
+                <span class="checkmark"></span>10:00-11:00
+            </label>
+            <div></div>
+            <label class="container" id="Thursday">
+                <input type="checkbox" [(ngModel)]="isChecked511" (change)="checkValue(isChecked511?511:5110)" />
+                <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked411" (change)="checkValue(isChecked411?411:4110)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked311" (change)="checkValue(isChecked311?311:3110)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked311" (change)="checkValue(isChecked311?311:3110)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked211" (change)="checkValue(isChecked211?211:2110)">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked111" (change)="checkValue(isChecked111?111:1110)">
-            <span class="checkmark"></span>11:00-12:00
-        </label>
-        <div></div>
-        <label class="container" id="Thursday">
-            <input type="checkbox" [(ngModel)]="isChecked512" (change)="checkValue(isChecked512?512:5120)" />
-            <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked412" (change)="checkValue(isChecked17?412:4120)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked211" (change)="checkValue(isChecked211?211:2110)">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked111" (change)="checkValue(isChecked111?111:1110)">
+                <span class="checkmark"></span>11:00-12:00
+            </label>
+            <div></div>
+            <label class="container" id="Thursday">
+                <input type="checkbox" [(ngModel)]="isChecked512" (change)="checkValue(isChecked512?512:5120)" />
+                <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked412" (change)="checkValue(isChecked17?412:4120)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked312" (change)="checkValue(isChecked312?312:3120)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked312" (change)="checkValue(isChecked312?312:3120)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked212" (change)="checkValue(isChecked212?212:2120)">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked112" (change)="checkValue(isChecked112?112:1120)">
-            <span class="checkmark"></span>12:00-13:00
-        </label>
-        <div></div>
-        <label class="container" id="Thursday">
-            <input type="checkbox" [(ngModel)]="isChecked513" (change)="checkValue(isChecked513?513:5130)" />
-            <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked413" (change)="checkValue(isChecked413?413:4130)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked212" (change)="checkValue(isChecked212?212:2120)">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked112" (change)="checkValue(isChecked112?112:1120)">
+                <span class="checkmark"></span>12:00-13:00
+            </label>
+            <div></div>
+            <label class="container" id="Thursday">
+                <input type="checkbox" [(ngModel)]="isChecked513" (change)="checkValue(isChecked513?513:5130)" />
+                <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked413" (change)="checkValue(isChecked413?413:4130)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked313" (change)="checkValue(isChecked313?313:3130)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked313" (change)="checkValue(isChecked313?313:3130)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked213" (change)="checkValue(isChecked213?213:2130)">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked113" (change)="checkValue(isChecked113?113:1130)">
-            <span class="checkmark"></span>13:00-14:00
-        </label>
-        <div></div>
-        <label class="container" id="Thursday">
-            <input type="checkbox" [(ngModel)]="isChecked514" (change)="checkValue(isChecked514?514:5140)" />
-            <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked414" (change)="checkValue(isChecked414?414:4140)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked213" (change)="checkValue(isChecked213?213:2130)">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked113" (change)="checkValue(isChecked113?113:1130)">
+                <span class="checkmark"></span>13:00-14:00
+            </label>
+            <div></div>
+            <label class="container" id="Thursday">
+                <input type="checkbox" [(ngModel)]="isChecked514" (change)="checkValue(isChecked514?514:5140)" />
+                <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked414" (change)="checkValue(isChecked414?414:4140)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked314" (change)="checkValue(isChecked314?314:3140)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked314" (change)="checkValue(isChecked314?314:3140)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked214" (change)="checkValue(isChecked214?214:2140)">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked114" (change)="checkValue(isChecked114?114:1140)">
-            <span class="checkmark"></span>14:00-15:00
-        </label>
-        <div></div>
-        <label class="container" id="Thursday">
-            <input type="checkbox" [(ngModel)]="isChecked515" (change)="checkValue(isChecked515?515:5150)" />
-            <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked415" (change)="checkValue(isChecked415?415:4150)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked214" (change)="checkValue(isChecked214?214:2140)">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked114" (change)="checkValue(isChecked114?114:1140)">
+                <span class="checkmark"></span>14:00-15:00
+            </label>
+            <div></div>
+            <label class="container" id="Thursday">
+                <input type="checkbox" [(ngModel)]="isChecked515" (change)="checkValue(isChecked515?515:5150)" />
+                <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked415" (change)="checkValue(isChecked415?415:4150)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked315" (change)="checkValue(isChecked315?315:3150)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked315" (change)="checkValue(isChecked315?315:3150)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked215" (change)="checkValue(isChecked215?215:2150)">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked115" (change)="checkValue(isChecked115?115:1150)">
-            <span class="checkmark"></span>15:00-16:00
-        </label>
-        <div></div>
-        <label class="container" id="Thursday">
-            <input type="checkbox" [(ngModel)]="isChecked516" (change)="checkValue(isChecked516?516:5160)" />
-            <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked416" (change)="checkValue(isChecked416?416:4160)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked215" (change)="checkValue(isChecked215?215:2150)">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked115" (change)="checkValue(isChecked115?115:1150)">
+                <span class="checkmark"></span>15:00-16:00
+            </label>
+            <div></div>
+            <label class="container" id="Thursday">
+                <input type="checkbox" [(ngModel)]="isChecked516" (change)="checkValue(isChecked516?516:5160)" />
+                <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked416" (change)="checkValue(isChecked416?416:4160)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked316" (change)="checkValue(isChecked316?316:3160)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked316" (change)="checkValue(isChecked316?316:3160)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked216" (change)="checkValue(isChecked216?216:2160)">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked116" (change)="checkValue(isChecked116?116:1160)">
-            <span class="checkmark"></span>16:00-17:00
-        </label>
-        <div></div>
-        <label class="container" id="Thursday">
-            <input type="checkbox" [(ngModel)]="isChecked517" (change)="checkValue(isChecked517?517:5170)" />
-            <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked417" (change)="checkValue(isChecked417?417:4170)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked216" (change)="checkValue(isChecked216?216:2160)">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked116" (change)="checkValue(isChecked116?116:1160)">
+                <span class="checkmark"></span>16:00-17:00
+            </label>
+            <div></div>
+            <label class="container" id="Thursday">
+                <input type="checkbox" [(ngModel)]="isChecked517" (change)="checkValue(isChecked517?517:5170)" />
+                <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked417" (change)="checkValue(isChecked417?417:4170)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked317" (change)="checkValue(isChecked317?317:3170)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked317" (change)="checkValue(isChecked317?317:3170)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked217" (change)="checkValue(isChecked217?217:2170)">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked117" (change)="checkValue(isChecked117?117:1170)">
-            <span class="checkmark"></span>17:00-18:00
-        </label>
-        <div></div>
-        <label class="container" id="Thursday">
-            <input type="checkbox" [(ngModel)]="isChecked518" (change)="checkValue(isChecked518?518:5180)" />
-            <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked418" (change)="checkValue(isChecked418?418:4180)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked217" (change)="checkValue(isChecked217?217:2170)">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked117" (change)="checkValue(isChecked117?117:1170)">
+                <span class="checkmark"></span>17:00-18:00
+            </label>
+            <div></div>
+            <label class="container" id="Thursday">
+                <input type="checkbox" [(ngModel)]="isChecked518" (change)="checkValue(isChecked518?518:5180)" />
+                <!-- <input type="checkbox" (click)="addHour()" [(ngModel)]="day" name="day" > -->
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked418" (change)="checkValue(isChecked418?418:4180)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked318" (change)="checkValue(isChecked318?318:3180)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked318" (change)="checkValue(isChecked318?318:3180)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked218" (change)="checkValue(isChecked218?218:2180)">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked118" (change)="checkValue(isChecked118?118:1180)">
-            <span class="checkmark"></span>18:00-19:00
-        </label>
-        <div></div>
-        <label class="container" id="Thursday">
-            <input type="checkbox" [(ngModel)]="isChecked519" (change)="checkValue(isChecked519?519:5190)" />
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked419" (change)="checkValue(isChecked419?419:4190)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked218" (change)="checkValue(isChecked218?218:2180)">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked118" (change)="checkValue(isChecked118?118:1180)">
+                <span class="checkmark"></span>18:00-19:00
+            </label>
+            <div></div>
+            <label class="container" id="Thursday">
+                <input type="checkbox" [(ngModel)]="isChecked519" (change)="checkValue(isChecked519?519:5190)" />
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked419" (change)="checkValue(isChecked419?419:4190)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked319" (change)="checkValue(isChecked319?319:3190)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked319" (change)="checkValue(isChecked319?319:3190)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked219" (change)="checkValue(isChecked219?219:2190)">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked119" (change)="checkValue(isChecked119?119:1190)">
-            <span class="checkmark"></span>19:00-20:00
-        </label>
-        <div></div>
-        <div></div>
-        <label class="container" id="Thursday">
-            <input type="checkbox" [(ngModel)]="isChecked520" (change)="checkValue(isChecked520?520:5200)" />
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked420" (change)="checkValue(isChecked420?420:4200)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked219" (change)="checkValue(isChecked219?219:2190)">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked119" (change)="checkValue(isChecked119?119:1190)">
+                <span class="checkmark"></span>19:00-20:00
+            </label>
+            <div></div>
+            <div></div>
+            <label class="container" id="Thursday">
+                <input type="checkbox" [(ngModel)]="isChecked520" (change)="checkValue(isChecked520?520:5200)" />
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked420" (change)="checkValue(isChecked420?420:4200)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked320" (change)="checkValue(isChecked320?320:3200)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked320" (change)="checkValue(isChecked320?320:3200)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked220" (change)="checkValue(isChecked220?220:2200)">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked120" (change)="checkValue(isChecked120?120:1200)">
-            <span class="checkmark"></span>20:00-21:00
-        </label>
-        <div></div>
-        <div></div>
-        <label class="container" id="Thursday">
-            <input type="checkbox" [(ngModel)]="isChecked521" (change)="checkValue(isChecked521?521:5210)" />
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked421" (change)="checkValue(isChecked421?421:4210)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked220" (change)="checkValue(isChecked220?220:2200)">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked120" (change)="checkValue(isChecked120?120:1200)">
+                <span class="checkmark"></span>20:00-21:00
+            </label>
+            <div></div>
+            <div></div>
+            <label class="container" id="Thursday">
+                <input type="checkbox" [(ngModel)]="isChecked521" (change)="checkValue(isChecked521?521:5210)" />
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked421" (change)="checkValue(isChecked421?421:4210)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked321" (change)="checkValue(isChecked321?321:3210)">
-            <span class="checkmark"></span>
-        </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked321" (change)="checkValue(isChecked321?321:3210)">
+                <span class="checkmark"></span>
+            </label>
 
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked221" (change)="checkValue(isChecked221?221:2210)">
-            <span class="checkmark"></span>
-        </label>
-        <label class="container">
-            <input type="checkbox" [(ngModel)]="isChecked121" (change)="checkValue(isChecked62?121:1210)">
-            <span class="checkmark"></span>21:00-22:00
-        </label>
-        <div>
-            <button mat-button matStepperPrevious>חזרה</button>
-            <button mat-button matStepperNext>הבא</button>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked221" (change)="checkValue(isChecked221?221:2210)">
+                <span class="checkmark"></span>
+            </label>
+            <label class="container">
+                <input type="checkbox" [(ngModel)]="isChecked121" (change)="checkValue(isChecked62?121:1210)">
+                <span class="checkmark"></span>21:00-22:00
+            </label>
+            <div>
+                <button mat-button matStepperPrevious>חזרה</button>
+                <button mat-button matStepperNext>הבא</button>
+            </div>
+
+
         </div>
-
-
-
     </mat-step>
     <mat-step label="נרשמת בהצלחה">
         <!-- <ng-template matStepLabel>Done</ng-template> -->

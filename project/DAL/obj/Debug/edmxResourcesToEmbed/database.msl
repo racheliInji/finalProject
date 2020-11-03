@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="RacheliandDiniModel1StoreContainer" CdmEntityContainer="RacheliandDiniEntities1">
-    <EntitySetMapping Name="Grades">
-      <EntityTypeMapping TypeName="RacheliandDiniModel1.Grade">
-        <MappingFragment StoreEntitySet="Grade">
-          <ScalarProperty Name="IdGrade" ColumnName="IdGrade" />
-          <ScalarProperty Name="Level" ColumnName="Level" />
-          <ScalarProperty Name="Grade1" ColumnName="Grade" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="HoursForTeachers">
       <EntityTypeMapping TypeName="RacheliandDiniModel1.HoursForTeacher">
         <MappingFragment StoreEntitySet="HoursForTeacher">
@@ -70,33 +61,6 @@
           <ScalarProperty Name="StudentId" ColumnName="StudentId" />
           <ScalarProperty Name="IdGrade" ColumnName="IdGrade" />
           <ScalarProperty Name="Level" ColumnName="Level" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Subjects">
-      <EntityTypeMapping TypeName="RacheliandDiniModel1.Subject">
-        <MappingFragment StoreEntitySet="Subject">
-          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
-          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SubjectToTeachers">
-      <EntityTypeMapping TypeName="RacheliandDiniModel1.SubjectToTeacher">
-        <MappingFragment StoreEntitySet="SubjectToTeacher">
-          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
-          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
-          <ScalarProperty Name="PriceForLesson" ColumnName="PriceForLesson" />
-          <ScalarProperty Name="LessonLength" ColumnName="LessonLength" />
-          <ScalarProperty Name="GradesRange" ColumnName="GradesRange" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Teachers">
-      <EntityTypeMapping TypeName="RacheliandDiniModel1.Teacher">
-        <MappingFragment StoreEntitySet="Teacher">
-          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
-          <ScalarProperty Name="Qualifications" ColumnName="Qualifications" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -165,8 +129,19 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="RacheliandDiniModel1.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="RacheliandDiniModel1.Store.sp_upgraddiagrams" />
-    <EntitySetMapping Name="Hours">
-      <EntityTypeMapping TypeName="RacheliandDiniModel1.Hour">
+    <EntitySetMapping Name="SubjectToTeacher1">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.SubjectToTeacher1">
+        <MappingFragment StoreEntitySet="SubjectToTeacher">
+          <ScalarProperty Name="GradesRange" ColumnName="GradesRange" />
+          <ScalarProperty Name="LessonLength" ColumnName="LessonLength" />
+          <ScalarProperty Name="PriceForLesson" ColumnName="PriceForLesson" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hour1">
+      <EntityTypeMapping TypeName="RacheliandDiniModel1.Hour1">
         <MappingFragment StoreEntitySet="Hours">
           <ScalarProperty Name="Endtime" ColumnName="Endtime" />
           <ScalarProperty Name="Starttime" ColumnName="Starttime" />

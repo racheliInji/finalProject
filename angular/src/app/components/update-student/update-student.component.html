@@ -1,16 +1,14 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<!------ Include the above in your HEAD tag ---------->
+
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 
 <div class="container">
-    <!-- <br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
-<hr> -->
-    <!-- <app-header (sidenavToggle)="sidenav.toggle()"></app-header> -->
+  
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px;">
             <form>
@@ -27,12 +25,13 @@
                     </div>
                     <input name="lastName" class="form-control" #lastName2="ngModel" placeholder="שם משפחה" type="text"
                         [(ngModel)]="lastName">
-                </div> <!-- form-group// -->
+                </div> 
+                
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input name="tz" class="form-control" placeholder="ת.ז" #tz2="ngModel" type="text" [(ngModel)]="tz">
+                    <input class="form-control" name="tz"  placeholder="ת.ז" #tz2="ngModel" type="text" [(ngModel)]="tz">
                 </div>
 
                 <div class="form-group input-group">
@@ -41,7 +40,7 @@
                     </div>
                     <input name="email" class="form-control" #email2="ngModel" placeholder="Email address" type="email"
                         [(ngModel)]="email">
-                </div> <!-- form-group// -->
+                </div> 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -52,14 +51,14 @@
                         <option value="2">+198</option>
                         <option value="3">+701</option>
                     </select>
-                    <input name="phone" class="form-control" placeholder="Phone number" type="text" [(ngModel)]="phone"
+                    <input  class="form-control" name="phone" placeholder="Phone number" type="text" [(ngModel)]="phone"
                         #phone2="ngModel">
-                </div> <!-- form-group// -->
+                </div> 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-pencil" aria-hidden="true"></i> </span>
                     </div>
-                    <select name="grade" class="form-control" [(ngModel)]="grade" #grade2="ngModel">
+                    <select class="form-control" name="grade"  [(ngModel)]="grade" #grade2="ngModel">
                         <option value=1>א - ד יסודי</option>
                         <option value=2>ה- ו יסודי</option>
                         <option value=3>ז- ח יסודי</option>
@@ -71,7 +70,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-pencil" aria-hidden="true"></i></span>
                     </div>
-                    <select name="level" class="form-control" [(ngModel)]="level" #level2="ngModel">
+                    <select class="form-control" name="level"  [(ngModel)]="level" #level2="ngModel">
                         <option value="רמה גבוה">רמה גבוה</option>
                         <option value="רמה בנונית">רמה בנונית</option>
                         <option value="רמה נמוכה">רמה נמוכה</option>
@@ -82,7 +81,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i> </span>
                     </div>
-                    <select name="city" class="form-control" [(ngModel)]="city" #city2="ngModel">
+                    <select  class="form-control" name="city" [(ngModel)]="city" #city2="ngModel">
                         <option value="בני ברק">בני ברק</option>
                         <option value="ירושלים">ירושלים</option>
                         <option value="חיפה">חיפה</option>
@@ -111,14 +110,14 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
                     </div>
-                    <input name="street" class="form-control" placeholder="רחוב" type="text" #street2="ngModel"
+                    <inputclass="form-control"  name="street" placeholder="רחוב" type="text" #street2="ngModel"
                         [(ngModel)]="street">
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
                     </div>
-                    <input name="numhouse" class="form-control" placeholder="מספר בית" type="number"
+                    <input class="form-control"  name="numhouse" placeholder="מספר בית" type="number"
                         #numhouse2="ngModel" [(ngModel)]="numhouse">
                 </div>
                 <div class="form-group input-group">
@@ -127,20 +126,165 @@
                     </div>
                     <input class="form-control" name="password" placeholder="Create password" type="password"
                         #password2="ngModel" [(ngModel)]="password">
-                </div> <!-- form-group// -->
+                </div> 
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
                     <input name="checkpassword" class="form-control" placeholder="Repeat password" type="password"
                         #checkpassword2="ngModel" [(ngModel)]="checkpassword">
-                </div> <!-- form-group// -->
+                </div> 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block" (click)="updateStudent()">אישור </button>
                 </div>
 
             </form>
         </article>
-    </div> <!-- card.// -->
+    </div> 
 
+</div> -->
+
+
+<div class="CONTAINER">
+    <form [formGroup]="firstFormGroup" (ngSubmit)="submitAccount(firstFormGroup)">
+      
+        <div class="right">
+            <div class="form-field">
+                <i class="fa fa-user" id="icon"></i>
+                <mat-form-field>
+                    <mat-label>שם פרטי</mat-label>
+                    <input matInput placeholder="firstName" [value]="firstName"  formControlName="firstName" >
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class="fa fa-user" id="icon"></i>
+                <mat-form-field>
+                    <mat-label>משפחה</mat-label>
+                    <input matInput placeholder="lastName" [value]="lastName" formControlName="lastName" >
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class="material-icons" id="icon">email</i>
+                <mat-form-field>
+                    <mat-label>דואר אלקטרוני </mat-label>
+                    <input matInput formControlName="email" [value]="email" placeholder="Email" type="email" >
+                    <mat-error *ngIf="firstFormGroup.get('email').hasError('required')">
+                        שדה זה שדה חובה </mat-error>
+                    <mat-error *ngIf="firstFormGroup.get('email').hasError('email')">
+                        המיל לא תקין
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <div class="form-field">
+                <i class="fa fa-id-card" id="icon"></i>
+                <mat-form-field>
+                    <mat-label>ת.ז</mat-label>
+                    <input matInput placeholder=""[value]="tz" formControlName="tz" >
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class='fas fa-city' id="icon"></i>
+                <mat-form-field>
+                    <mat-label>עיר</mat-label>
+                    <input matInput placeholder="" [value]="city" formControlName="city" >
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class='fas fa-map-marker-alt' id="icon"></i>
+                <mat-form-field>
+                    <mat-label>רחוב</mat-label>
+                    <input matInput placeholder=""[value]="street" formControlName="street" >
+                </mat-form-field>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="left">
+            <div class="form-field">
+                <i class='fas fa-home' id="icon"></i>
+                <mat-form-field>
+                    <mat-label>מספר בית</mat-label>
+                    <input matInput placeholder="" [value]="numhouse"formControlName="numhouse"  type="number">
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <i class='fas fa-phone' id="icon"></i>
+
+                <mat-form-field>
+                    <mat-label>פלאפון</mat-label>
+                    <input matInput placeholder="" [value]="phone"formControlName="phone" pattern="[0-9]*" minlength="10"
+                        maxlength="10" >
+                </mat-form-field>
+            </div>
+
+            <div class="form-field">
+
+                <div class="form-field">
+                    <i class='fas fa-unlock-alt' id="icon"></i>
+                    <mat-form-field>
+                        <mat-label>סיסמא </mat-label>
+                        <input matInput  [value]="password"formControlName="password" type="password" >
+                        <mat-hint class="ac-form-field-description">בין 6 ל24 תווים</mat-hint>
+                        <mat-error *ngIf="firstFormGroup.get('password').hasError('required')">
+                            שדה זה שדה חובה </mat-error>
+                        <mat-error *ngIf="firstFormGroup.get('password').hasError('minlength')">
+                            הסיסמא חיבת להיות לפחות עם 6 תווים </mat-error>
+                        <mat-error *ngIf="firstFormGroup.get('password').hasError('maxlength')">
+                            הסיסמא יותר מ24 תווים </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form-field">
+                    <i class='fas fa-unlock-alt' id="icon"></i>
+                    <mat-form-field>
+                        <mat-label> אימות סיסמא </mat-label>
+                        <input matInput formControlName="passwordAgain" [value]="passwordAgain" placeholder="" type="password"
+                            [errorStateMatcher]="passwordsMatcher" >
+                        <mat-error *ngIf="firstFormGroup.hasError('passwordsNotEqual')">Passwords are different. They should be
+                            equal!</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                    <i class='fas fa-chalkboard-teacher' id="levelIcon"></i>
+                    <mat-form-field appearance="fill" id="level">
+                        <mat-label>בחר שכבה</mat-label > 
+                        <select matNativeControl  formControlName="grade" [value]="grade"  class="form-control">
+                            <option value=1>א - ד יסודי</option>
+                            <option value=2>ה- ו יסודי</option>
+                            <option value=3>ז- ח יסודי</option>
+                            <option value=4>תיכון</option>
+                            <option value=5>השתלמות</option>
+                        </select>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-field" id="select">
+                    <i class='fas fa-chalkboard-teacher' id="levelIcon"></i>
+                    <mat-form-field appearance="fill" id="level2">
+                        <mat-label>בחר רמה</mat-label>
+                        <select matNativeControl  formControlName="level" [value]="level"  class="form-control">
+                            <option value=1>גבוהה</option>
+                            <option value=2>בינונית</option>
+                            <option value=3>נמוכה</option>
+                        </select>
+                    </mat-form-field>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="form-group" id="save">
+                <!-- <button type="submit" mat-raised-button (click)="addStudent()">לרישום</button> -->
+                <div class="form-bottom">
+                        <button mat-raised-button color="accent" (click)="updateStudent()" id="save">לעדכון</button>
+                    </div>
+            <!-- <button type="submit" class="btn btn-primary btn-block" (click)="addStudent()">לרישום </button> -->
+        </div>
+    </form>
 </div>

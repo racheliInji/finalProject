@@ -10,24 +10,24 @@ namespace DAL
     {
         public static List<User> GetUsers()
         {
-            using(RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using(RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 return db.Users.ToList();
             }
         }
 
-        public static void AddUser(User user)
+        public static void AddUser(User User)
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
-                db.Users.Add(user);
+                db.Users.Add(User);
                 db.SaveChanges();
             }
         }
 
         public static void AddTeacher(Teacher teacher)
         {
-            using (RacheliandDiniEntities1 db = new RacheliandDiniEntities1())
+            using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 db.Teachers.Add(teacher);
                 db.SaveChanges();

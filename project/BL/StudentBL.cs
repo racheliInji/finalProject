@@ -28,20 +28,20 @@ namespace BL
             {
                 //StudentId = student.StudentId,
                 IdGrade = student.IdGrade,
-                Level= student.Level
+                Level = student.Level
 
             };
             DAL.StudentDAL.AddStudent(Converters.StudentConvert.GetStudent(StudentDTO), Converters.UserConvert.GetUser(userDTO));
         }
 
-        public static void AddNote(int id, string value,DateTime date)
+        public static void AddNote(int id, string value, DateTime date)
         {
             DAL.StudentDAL.AddNote(id, value, date);
         }
 
         public static void AddRecommendation(string value, int id)
         {
-            DAL.StudentDAL.AddRecommendation(value,id);
+            DAL.StudentDAL.AddRecommendation(value, id);
         }
 
         public static List<StudentDTO.UserAndStudentDTO> GetStudents()
@@ -53,11 +53,11 @@ namespace BL
             {
                 foreach (var s in q)
                 {
-                    if (u.id == s.StudentId)
+                    if (u.userId == s.StudentId)
                     {
                         UserAndStudentDTO.Add(new StudentDTO.UserAndStudentDTO()
                         {
-                            userId = u.id,
+                            userId = u.userId,
                             firstName = u.firstName,
                             lastName = u.lastName,
                             city = u.city,
@@ -67,9 +67,9 @@ namespace BL
                             password = u.password,
                             email = u.email,
                             tz = u.tz,
-                            IdGrade= s.IdGrade,
-                            Level=s.Level
-                            
+                            IdGrade = s.IdGrade,
+                            Level = s.Level
+
                         });
 
                     }
@@ -88,10 +88,11 @@ namespace BL
         {
             List<ScheduleForStudentDTO> list = new List<ScheduleForStudentDTO>();
             var q = Converters.ScheduleConvert.DtoScheduleList(DAL.ScheduleDAL.GetLessons()).Where(i => i.StudentId == id).ToList();
+            var q2 = DAL.UserDal.GetUsers().FirstOrDefault(e => e.userId == id);
             foreach (var i in q)
             {
-                var q2 = DAL.UserDal.GetUsers().FirstOrDefault(e => e.id == i.StudentId);
-                var q3 = DAL.UserDal.GetUsers().FirstOrDefault(e => e.id == i.TeacherId);
+                var q3 = DAL.UserDal.GetUsers().FirstOrDefault(e => e.userId == i.TeacherId);
+                var q4 = DAL.StudentDAL.GetNotes(id).FirstOrDefault(e => e.ScheduleId == i.ScheduleId);
                 ScheduleForStudentDTO ScheduleForStudent = new ScheduleForStudentDTO()
                 {
                     Date = i.Date,
@@ -99,7 +100,8 @@ namespace BL
                     Subject = i.Subject,
                     TeacherId = i.TeacherId,
                     StudentName = q2.firstName + ' ' + q2.lastName,
-                    TeacherName=q3.firstName+" "+q3.lastName
+                    TeacherName = q3.firstName + " " + q3.lastName,
+                    Notes =q4.LessonDescribe
                 };
                 list.Add(ScheduleForStudent);
             }
@@ -113,10 +115,10 @@ namespace BL
             {
                 if (student.StudentId == id)
                 {
-                   var u= DAL.UserDal.GetUsers().Find(i => i.id == id);
+                    var u = DAL.UserDal.GetUsers().Find(i => i.userId == id);
                     StudentDTO.UserAndStudentDTO userAndStudentDTO = new StudentDTO.UserAndStudentDTO()
                     {
-                        userId = u.id,
+                        userId = u.userId,
                         firstName = u.firstName,
                         lastName = u.lastName,
                         city = u.city,
@@ -139,16 +141,16 @@ namespace BL
         {
             foreach (var user in DAL.UserDal.GetUsers())
             {
-                if(user.email==userAndStudentDTO.email && user.password == userAndStudentDTO.password)
+                if (user.email == userAndStudentDTO.email && user.password == userAndStudentDTO.password)
                 {
-                    DAL.StudentDAL.updateStudent(userAndStudentDTO, user.id);
+                    DAL.StudentDAL.updateStudent(userAndStudentDTO, user.userId);
                 }
             }
         }
 
         public static StudentDTO getStudentById(int id)
         {
-            foreach(var student in DAL.StudentDAL.GetStudents())
+            foreach (var student in DAL.StudentDAL.GetStudents())
             {
                 if (student.StudentId == id)
                     return Converters.StudentConvert.GetStudentDTO(student);
@@ -157,11 +159,11 @@ namespace BL
         }
         public static object getIdStudent(UserDTO.userLogin baseUser)
         {
-            foreach(var user in DAL.UserDal.GetUsers())
+            foreach (var user in DAL.UserDal.GetUsers())
             {
                 if (user.firstName == baseUser.firstName && user.password == baseUser.password)
                 {
-                    var s = getStudentById(user.id);
+                    var s = getStudentById(user.userId);
                     StudentDTO.UserAndStudentDTO userAndStudent = new StudentDTO.UserAndStudentDTO()
                     {
                         city = user.city,

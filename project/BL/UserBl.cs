@@ -88,7 +88,7 @@ namespace BL
         {
             foreach (var user in DAL.UserDal.GetUsers())
             {
-                if (user.id == id)
+                if (user.userId == id)
                 {
                     return Converters.UserConvert.GetUserDTO(user);
                 }

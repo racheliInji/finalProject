@@ -18,7 +18,6 @@ namespace DAL
         public Student()
         {
             this.Schedules = new HashSet<Schedule>();
-            this.Vacations = new HashSet<Vacation>();
         }
     
         public int StudentId { get; set; }
@@ -26,10 +25,10 @@ namespace DAL
         public string Level { get; set; }
     
         public virtual Grade Grade { get; set; }
+        public virtual Grade Grade1 { get; set; }
+        public virtual Grade Grade2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Schedule> Schedules { get; set; }
         public virtual User User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vacation> Vacations { get; set; }
     }
 }

@@ -1,7 +1,50 @@
-<form id="form">
+<!-- <form [formGroup]="subjectFormGroup" > -->
+  <!-- (ngSubmit)="submitAccount(subjectFormGroup)" -->
+  <!-- <div id="container">
+     <div class="form-field">
+         <mat-form-field id="subject">
+             <mat-label> מקצוע</mat-label>
+             <input matInput placeholder="" formControlName="subject" required>
+         </mat-form-field>
+     </div>
+     <div class="form-field">
+         <mat-form-field appearance="fill" id="price"> 
+             <mat-label>סכום לשיעור</mat-label>
+             <input matInput type="number" class="example-right-align" formControlName="money" type="number"
+                 id="money">
+             <span matPrefix>ש"ח&nbsp;</span>
+             <span matSuffix>.00</span>
+         </mat-form-field>
+     </div>
+     <mat-form-field appearance="fill" id="level">
+         <mat-label>בחר שכבה</mat-label>
+         <select matNativeControl required formControlName="grade" class="form-control">
+             <option value=1>יסודי </option>
+             <option value=2>חטיבת ביניים </option>
+             <option value=3>תיכון</option>
+             <option value=4>סמינר</option>
+             <option value=5>השתלמות</option>
+             <option value=4>אחר</option>
+         </select>
+     </mat-form-field>
+     <button  mat-button  mat-raised-button color="primary" [disabled]="!subjectFormGroup.valid"   id="ok" 
+     (click)="addSubjectToTeacher()">שמור והמשך</button>
+     <button  mat-button  mat-raised-button color="primary" [disabled]="!subjectFormGroup.valid"  id="add2" 
+     (click)="addAnother()"> מקצוע נוסף</button>
+ </div> -->
+     <!-- <button mat-raised-button color="primary" name="ok" type="search" id="ok" value="אישור"
+                     (click)="addSubjectToTeacher()">אישור</button> -->
+<!-- 
+ </form> -->
+<!-- ------------------------- -->
+<form id="form" [formGroup]="subjectFormGroup">
   <div class="form-field">
-    <mat-form-field appearance="fill">
-        <mat-label>בחר מקצוע</mat-label>
+    <!-- <mat-form-field appearance="fill"> -->
+        <mat-form-field id="subject">
+            <mat-label> מקצוע</mat-label>
+            <input matInput placeholder="" name="subject"   formControlName="subject">
+        </mat-form-field>
+        <!-- <mat-label>בחר מקצוע</mat-label>
         <select formControlName="subject" required  matNativeControl required  id="subject" class="form-control" [(ngModel)]="subject">
             <option value="אנגלית"> אנגלית</option>
             <option value="מתמטיקה">מתמטיקה</option>
@@ -11,8 +54,8 @@
             <option value="תכנות">תכנות</option>
             <option value="פיזיקה">פיזיקה</option>
           </select>
-        <!-- <input matInput placeholder="" formControlName="phone" required> -->
-    </mat-form-field>
+        <input matInput placeholder="" formControlName="phone" required> -->
+    <!-- </mat-form-field>  -->
   </div>
   <!-- <mat-form-field appearance="fill">
     <mat-label>בחר מקצוע</mat-label>
@@ -26,30 +69,33 @@
       <option value="פיזיקה">פיזיקה</option>
     </select>
   </mat-form-field> -->
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" id="price">
     <mat-label>סכום לשיעור</mat-label>
-    <input matInput type="number" class="example-right-align" name="money" type="number" id="money" [(ngModel)]="money">
+    <input matInput type="number" class="example-right-align" name="money" type="number" id="money" formControlName="money">
     <span matPrefix>ש"ח&nbsp;</span>
     <span matSuffix>.00</span>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" id="level">
     <mat-label>בחר שכבה</mat-label>
-    <select matNativeControl required name="grade" class="form-control" [(ngModel)]="grade">
-      <option value=1>א - ד יסודי</option>
-      <option value=2>ה- ו יסודי</option>
-      <option value=3>ז- ח יסודי</option>
-      <option value=4>תיכון</option>
-      <option value=5>השתלמות</option>
+    <select matNativeControl  name="grade" class="form-control" formControlName="grade">
+        <option value=1>יסודי </option>
+        <option value=2>חטיבת ביניים </option>
+        <option value=3>תיכון</option>
+        <option value=4>סמינר</option>
+        <option value=5>השתלמות</option>
+        <option value=4>אחר</option>
     </select>
   </mat-form-field>
   <button mat-raised-button color="primary" name="ok" type="search" id="ok" value="אישור"
-    (click)="addSubjectToTeacher()">אישור</button>
+    (click)="updateSubject()">לעדכון</button>
+    <button mat-raised-button color="primary" name="ok" type="search" id="add" value="אישור"
+    (click)="addSubjectToTeacher()"> להוספה</button>
   <!-- <div class="col-75">
       <input name="ok" type="search" id="ok" value="אישור" (click)="addSubjectToTeacher()">
     </div> -->
 
-</form>
+</form> 
 
 <p class="day" id="sunday">ראשון</p>
 <p class="day" id="monday">שני</p>

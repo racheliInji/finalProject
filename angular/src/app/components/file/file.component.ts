@@ -9,8 +9,9 @@ import swal from 'sweetalert';
   styleUrls: ['./file.component.scss']
 })
 export class FileComponent implements OnInit {
-  public nameFile: string;
   constructor(private teacherService: TeacherService, private Http: HttpClient) { }
+  public nameFile: string;
+  
   selectedfile: File = null;
   Url = 'http://localhost:59802/Teacher'
   ngOnInit() {
@@ -27,7 +28,7 @@ export class FileComponent implements OnInit {
       fd.append('file', this.selectedfile, this.selectedfile.name);
       this.nameFile = this.selectedfile.name;
       console.log(this.selectedfile.type)
-      this.teacherService.addfile(fd, this.selectedfile.name).subscribe(res => { alert(res) });
+      this.teacherService.addfile(fd, this.selectedfile.name).subscribe(res => { });
     }
 
   }

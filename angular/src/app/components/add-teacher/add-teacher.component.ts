@@ -11,6 +11,8 @@ import { TeacherService } from 'src/app/services/teacher.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert';
+import { ConditionalExpr } from '@angular/compiler';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-teacher',
@@ -26,95 +28,22 @@ export class AddTeacherComponent implements OnInit {
   startHour: string
   endHour: string
   teacherName: string;
-  // user: BaseUser;
   money: number;
   subject: string;
   grade: string;
   id: number;
-  isChecked109: any;
-  isChecked110: any;
-  isChecked111: any;
-  isChecked112: any;
-  isChecked113: any;
-  isChecked114: any;
-  isChecked115: any;
-  isChecked116: any;
-  isChecked117: any;
-  isChecked118: any;
-  isChecked119: any;
-  isChecked120: any;
-  isChecked121: any;
-  isChecked209: any;
-  isChecked210: any;
-  isChecked211: any;
-  isChecked212: any;
-  isChecked213: any;
-  isChecked214: any;
-  isChecked215: any;
-  isChecked216: any;
-  isChecked217: any;
-  isChecked218: any;
-  isChecked219: any;
-  isChecked220: any;
-  isChecked221: any;
-  isChecked309: any;
-  isChecked310: any;
-  isChecked311: any;
-  isChecked312: any;
-  isChecked313: any;
-  isChecked314: any;
-  isChecked315: any;
-  isChecked316: any;
-  isChecked317: any;
-  isChecked318: any;
-  isChecked319: any;
-  isChecked320: any;
-  isChecked321: any;
-  isChecked409: any;
-  isChecked410: any;
-  isChecked411: any;
-  isChecked412: any;
-  isChecked413: any;
-  isChecked415: any;
-  isChecked414: any;
-  isChecked416: any;
-  isChecked417: any;
-  isChecked418: any;
-  isChecked419: any;
-  isChecked420: any;
-  isChecked421: any;
-  isChecked509: any;
-  isChecked510: any;
-  isChecked511: any;
-  isChecked512: any;
-  isChecked513: any;
-  isChecked514: any;
-  isChecked515: any;
-  isChecked516: any;
-  isChecked517: any;
-  isChecked518: any;
-  isChecked519: any;
-  isChecked520: any;
-  isChecked521: any;
-  isLinear = false;
+  isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  // tz: string
-  // firstName: string
-  // lastName: string;
-  // city: string
-  // email: string
-  // password: string;
-  // phone: string;
-  // numhouse: number;
-  // street: string;
-  // checkpassword: string;
+  public nameFile: string;
+  selectedfile: File = null;
+  Url = 'http://localhost:59802/Teacher';
   private key = 'token'
   private user: any;
   private kind: string;
   teachers: Teacher[] = [];
   form: any;
-  constructor(private userService: UserService, private TeacherService: TeacherService, private HoursAndDayService: HoursAndDayService, private UserService: UserService, private formBuilder: FormBuilder, private _formBuilder: FormBuilder, private router: Router, private auth: AuthService) {
+  constructor(private Http: HttpClient, private userService: UserService, private TeacherService: TeacherService, private HoursAndDayService: HoursAndDayService, private UserService: UserService, private formBuilder: FormBuilder, private _formBuilder: FormBuilder, private router: Router, private auth: AuthService) {
     this.form = this.formBuilder.group({
       email: new FormControl('', EmailValidation),
       password: new FormControl('', PasswordValidation),
@@ -122,35 +51,46 @@ export class AddTeacherComponent implements OnInit {
       acceptTerms: new FormControl('', [Validators.requiredTrue])
     }, { validator: RepeatPasswordValidator });
   }
-f(){
-  console.log("hi")
-}
-  ngOnInit() {
-    if (localStorage.getItem("token")) {
-      this.id = this.UserService.getIdByToken();
-      this.hoursAndDayList = this.HoursAndDayService.hoursForTeacherList;
-      this.putValus();
+  f() {
+    console.log("hi")
+  }
+  selectedIndex: any;
+  flag = false;
+  flag2 = false;
+
+  setIndex(event) {
+    this.selectedIndex = event.selectedIndex;
+    console.log(event);
+    if (event.selectedIndex == 1 && this.flag == false) {
+      this.flag = true;
+      this.addTeacher();
     }
+    else if (event.selectedIndex == 2 && this.flag2 == false) {
+      this.flag2 = true;
+      this.addSubjectToTeacher();
+    }
+  }
+  ngOnInit() {
 
     this.firstFormGroup = this._formBuilder.group({
-      firstName: ['', Validators.required,
-        // Validators.pattern('^[a-zA-Z ]*$')
+      firstName: ['', [Validators.required,
+      Validators.pattern('[a-zA-Zא-ת ]*')]
       ],
-      lastName: ['', Validators.required,
-        // Validators.pattern('^[a-zA-Z ]*$')
+      lastName: ['', [Validators.required,
+      Validators.pattern('[a-zA-Zא-ת ]*')]
       ],
       street: ['', Validators.required],
       numhouse: ['', Validators.required],
       city: ['', Validators.required],
-      tz: ['', Validators.required,
-        // Validators.pattern("[0-9]*"),
-        // Validators.maxLength(9),
-        // Validators.minLength(9),
+      tz: ['', [Validators.required,
+      Validators.pattern("[0-9]*"),
+      Validators.maxLength(9),
+      Validators.minLength(9),]
       ],
-      phone: ['', Validators.required,
-        // Validators.pattern("[0-9]*"),
-        // Validators.maxLength(10),
-        // Validators.minLength(9),
+      phone: ['', [Validators.required,
+      Validators.pattern("[0-9]*"),
+      Validators.maxLength(10),
+      Validators.minLength(9),]
       ],
       // save: ['', Validators.required],
       // email: ['', this.stringValidatorArr('email', 7, 30, /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)],
@@ -167,7 +107,22 @@ f(){
     });
 
   }
+  selectFile(event) {
+    this.selectedfile = <File>event.target.files[0];
+    if ((this.selectedfile.type != "application/pdf")) {
+      swal("!!!!!!PDF ניתן לטעות רק קבצי ", "", "info")
+    }
+    else {
+      const fd = new FormData();
+      fd.append('file', this.selectedfile, this.selectedfile.name);
+      this.nameFile = this.selectedfile.name;
+      console.log(this.selectedfile.type)
+      this.TeacherService.addfile(fd, this.selectedfile.name).subscribe(res => { });
+    }
+
+  }
   addTeacher() {
+    this.flag = true;
     console.log(this.firstFormGroup.value);
     console.log("ok");
     this.TeacherService
@@ -175,9 +130,11 @@ f(){
         this.firstFormGroup.value.email, this.firstFormGroup.value.password, this.firstFormGroup.value.phone, " ")).subscribe(res => {
           this.auth.login(this.firstFormGroup.value.firstName, this.firstFormGroup.value.password).subscribe((token: string) => {
             if (token != "notfound") {
-              // localStorage.setItem(this.key, token);
-              // swal("פרטיך נשמרו בהצלחה!", "", "success")
+              localStorage.setItem(this.key, token);
+              this.id = this.UserService.getIdByToken();
+              // this.hoursAndDayList = this.HoursAndDayService.hoursForTeacherList;
             }
+            // swal("פרטיך נשמרו בהצלחה!", "", "success")
           }
           );
           this.userService.sendEmails(this.firstFormGroup.value.firstName, this.firstFormGroup.value.lastName, this.firstFormGroup.value.email).subscribe();
@@ -186,6 +143,10 @@ f(){
     // this.router.navigate(['/determineLessons']);
 
 
+  }
+  addAnother() {
+    this.addSubjectToTeacher();
+    this.secondFormGroup.reset();
   }
   GetTeacher() {
     this.TeacherService.getTeachers().subscribe((teacherList: Teacher[]) => { this.teachers = teacherList, console.log(this.teachers) });
@@ -198,151 +159,7 @@ f(){
       f => f.value && pattern && !f.value.match(pattern) ? { 'val': `'${ctrlName}' format is not correct` } : null
     ];
   }
-  s: string;
-  s2: string;
-  putValus() {
-    // console.log(this.hoursAndDayList);
-    this.hoursAndDayList.forEach(element => {
-      // console.log(element.Day);
 
-      this.s = this.convertDay(element.Day) + this.convertTime(element.Starttime);
-      this.s2 = "isChecked" + this.s;
-      this.find(this.s2, this.s);
-    });
-  }
-  find(s, dayAndTime) {
-    if (s == "isChecked109")
-      this.isChecked109 = dayAndTime;
-    else if (s == "isChecked110")
-      this.isChecked110 = dayAndTime;
-    else if (s == "isChecked111")
-      this.isChecked111 = dayAndTime;
-    else if (s == "isChecked112")
-      this.isChecked112 = dayAndTime;
-    else if (s == "isChecked113")
-      this.isChecked113 = dayAndTime;
-    else if (s == "isChecked114")
-      this.isChecked114 = dayAndTime;
-    else if (s == "isChecked115")
-      this.isChecked115 = dayAndTime;
-    else if (s == this.isChecked116)
-      this.isChecked116 = dayAndTime;
-    else if (s == "isChecked117")
-      this.isChecked117 = dayAndTime;
-    else if (s == "isChecked118")
-      this.isChecked118 = dayAndTime;
-    else if (s == "isChecked119")
-      this.isChecked119 = dayAndTime;
-    else if (s == "isChecked120")
-      this.isChecked120 = dayAndTime;
-    else if (s == "isChecked121")
-      this.isChecked121 = dayAndTime;
-    else if (s == "isChecked209")
-      this.isChecked209 = dayAndTime;
-    else if (s == "isChecked210")
-      this.isChecked210 = dayAndTime;
-    else if (s == "isChecked211")
-      this.isChecked211 = dayAndTime;
-    else if (s == "isChecked212")
-      this.isChecked212 = dayAndTime;
-    else if (s == "isChecked213")
-      this.isChecked213 = dayAndTime;
-    else if (s == "isChecked214")
-      this.isChecked214 = dayAndTime;
-    else if (s == "isChecked215")
-      this.isChecked215 = dayAndTime;
-    else if (s == "isChecked216")
-      this.isChecked216 = dayAndTime;
-    else if (s == "isChecked217")
-      this.isChecked217 = dayAndTime;
-    else if (s == "isChecked218")
-      this.isChecked218 = dayAndTime;
-    else if (s == "isChecked219")
-      this.isChecked219 = dayAndTime;
-    else if (s == "isChecked220")
-      this.isChecked220 = dayAndTime;
-    else if (s == "isChecked221")
-      this.isChecked221 = dayAndTime;
-    else if (s == "isChecked309")
-      this.isChecked309 = dayAndTime;
-    else if (s == "isChecked310")
-      this.isChecked310 = dayAndTime;
-    else if (s == "isChecked311")
-      this.isChecked311 = dayAndTime;
-    else if (s == "isChecked312")
-      this.isChecked312 = dayAndTime;
-    else if (s == "isChecked313")
-      this.isChecked313 = dayAndTime;
-    else if (s == "isChecked314")
-      this.isChecked314 = dayAndTime;
-    else if (s == "isChecked315")
-      this.isChecked315 = dayAndTime;
-    else if (s == "isChecked316")
-      this.isChecked316 = dayAndTime;
-    else if (s == "isChecked317")
-      this.isChecked317 = dayAndTime;
-    else if (s == "isChecked318")
-      this.isChecked318 = dayAndTime;
-    else if (s == "isChecked319")
-      this.isChecked319 = dayAndTime;
-    else if (s == "isChecked320")
-      this.isChecked320 = dayAndTime;
-    else if (s == "isChecked321")
-      this.isChecked321 = dayAndTime;
-    else if (s == "isChecked409")
-      this.isChecked409 = dayAndTime;
-    else if (s == "isChecked410")
-      this.isChecked410 = dayAndTime;
-    else if (s == "isChecked411")
-      this.isChecked411 = dayAndTime;
-    else if (s == "isChecked412")
-      this.isChecked412 = dayAndTime;
-    else if (s == "isChecked413")
-      this.isChecked413 = dayAndTime;
-    else if (s == "isChecked414")
-      this.isChecked414 = dayAndTime;
-    else if (s == "isChecked415")
-      this.isChecked415 = dayAndTime;
-    else if (s == "isChecked416")
-      this.isChecked416 = dayAndTime;
-    else if (s == "isChecked417")
-      this.isChecked417 = dayAndTime;
-    else if (s == "isChecked418")
-      this.isChecked418 = dayAndTime;
-    else if (s == "isChecked419")
-      this.isChecked419 = dayAndTime;
-    else if (s == "isChecked420")
-      this.isChecked420 = dayAndTime;
-    else if (s == "isChecked421")
-      this.isChecked421 = dayAndTime;
-    else if (s == "isChecked509")
-      this.isChecked509 = dayAndTime;
-    else if (s == "isChecked510")
-      this.isChecked510 = dayAndTime;
-    else if (s == "isChecked511")
-      this.isChecked511 = dayAndTime;
-    else if (s == "isChecked512")
-      this.isChecked512 = dayAndTime;
-    else if (s == "isChecked513")
-      this.isChecked513 = dayAndTime;
-    else if (s == "isChecked514")
-      this.isChecked514 = dayAndTime;
-    else if (s == "isChecked515")
-      this.isChecked515 = dayAndTime;
-    else if (s == "isChecked516")
-      this.isChecked516 = dayAndTime;
-    else if (s == "isChecked517")
-      this.isChecked517 = dayAndTime;
-    else if (s == "isChecked518")
-      this.isChecked518 = dayAndTime;
-    else if (s == "isChecked519")
-      this.isChecked519 = dayAndTime;
-    else if (s == "isChecked520")
-      this.isChecked520 = dayAndTime;
-    else if (s == "isChecked521")
-      this.isChecked521 = dayAndTime;
-
-  }
   convertDay(day) {
     if (day == "ראשון")
       return 1;
@@ -385,7 +202,20 @@ f(){
   }
 
   addSubjectToTeacher() {
-    this.HoursAndDayService.addSubjectToTeacher(new SubjectForTeacher(this.id, this.subject, this.money, this.grade)).subscribe();
+    this.flag2=true;
+    console.log(this.id);
+    this.HoursAndDayService.addSubjectToTeacher(new SubjectForTeacher(this.id, this.secondFormGroup.value.subject, this.secondFormGroup.value.money, this.secondFormGroup.value.grade)).subscribe(res => {
+      console.log(res);
+      if (res == true) {
+        swal({
+          title: "שיעור זה כבר קים",
+          icon: "info",
+          // dangerMode: true,
+          buttons: ["ביטול", "אישור"],
+        });
+      }
+    });
+
   }
 
   // getHourandDay() {

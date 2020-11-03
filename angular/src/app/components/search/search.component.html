@@ -1,34 +1,4 @@
 
-<!-- <div id="id" #wrapper>
-    <input type="text" placeholder="מקצוע" [(ngModel)]="subject">
-    <input type="text" placeholder="עיר" [(ngModel)]="city">
-    <input type="text" placeholder="רחוב" [(ngModel)]="street">
-    <input type="button" value="חפש" (click)="getTeachers()">
-    <div *ngFor="let teacher of teacherList" id="teacher">
-        <h1 id="name">המורה {{teacher.firstName}} {{ teacher.lastName}}</h1>
-        <div *ngIf="check(teacher.Qualifications)==true">
-            <button mat-fab color="red" aria-label="Example icon button with a bookmark icon" (click)="open()">
-                <i class='fas fa-graduation-cap' style='font-size:190%' ></i>
-            </button>
-            <div *ngIf="checkIsOpen()==true">
-                <div id="wrapdiv"> <mat-icon id="close" (click)="close()"> close</mat-icon>
-                    <img  src="assets/{{teacher.Qualifications}}">
-                </div>
-            </div>
-        </div>
-        <p class="detail">{{teacher.SubjectName}}</p>
-        <p class="detail">מחיר: {{teacher.PriceForLesson}} ש"ח</p>
-        <p class="detail">פלאפון: {{teacher.phone}}</p>
-        <img src="assets/{{teacher.Qualifications}}">
-        <button mat-stroked-button color="primary" (click)="addLesson(teacher)"><i class="fa fa-calendar"></i>
-            לקביעת שיעור אונלין</button>
-
-    </div>
-    <div *ngIf="TeacherService.IsChossen()==true">
-        <app-add-lesson></app-add-lesson>
-    </div>
-</div> -->
-
 <table class="example-full-width" cellspacing="0" dir="rtl"><tr>
   <td dir="rtl"><mat-form-field class="example-full-width">
     <mat-label>מקצוע</mat-label>
@@ -39,12 +9,32 @@
     <input matInput   aria-describedby="search-text"[(ngModel)]="searchPrice">
   </mat-form-field></td>
 
-  <td><mat-form-field class="example-full-width">
-    <mat-label>כתובת</mat-label>
-    <input matInput   ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleSourceChange($event)" [(ngModel)]="searchPlace"
-       >
-    <!-- <input   matInput aria-describedby="search-text"[(ngModel)]="searchPrice"> -->
+  <td dir="rtl"><mat-form-field class="example-full-width">
+    <mat-label> עד מחיר</mat-label>
+    <input matInput   aria-describedby="search-text"[(ngModel)]="searchPriceHigh">
   </mat-form-field></td>
+
+  <td dir="rtl"><mat-form-field class="example-full-width">
+    <mat-label>עיר</mat-label>
+    <input matInput   aria-describedby="search-text"[(ngModel)]="searchPlace">
+  </mat-form-field></td>
+
+  <!-- (onAutocompleteSelected)="onAutocompleteSelected($event)" -->
+    <!-- (onLocationSelected)="onLocationSelected($event)" -->
+  <!-- (onGermanAddressMapped)="onGermanAddressMapped($event)" -->
+  <!-- handleSourceChange($event) -->
+  <!-- g-places-autocomplete ng-model="searchPlace"  -->
+
+  <!-- <td><mat-form-field class="example-full-width">
+    <mat-label>כתובת</mat-label>
+    <input matInput   ngx-google-places-autocomplete #placesRef="ngx-places"   [options]="{
+      types: [],
+      componentRestrictions: { country: 'ISR' }
+      }" (onAddressChange)="handleAddressChange($event)" appearance="outline"
+      [(ngModel)]="searchPlace"> -->
+    <!-- <input   matInput aria-describedby="search-text"[(ngModel)]="searchPrice"> -->
+
+  <!-- </mat-form-field></td> -->
  </table>
 <div class="content" role="main">
     <div class="card">
@@ -53,11 +43,76 @@
       </div>
       <ul class="list-group list-group-flush" >
   
-        <li class="list-group-item" *ngFor="let teacher of teacherList | appFilter: searchText:searchPrice:searchPlace" (click)="getRecrecommendation(teacher)">
-          <h1>המורה {{teacher.firstName}} {{ teacher.lastName}}</h1>
+        <li class="teacher" >
+
+
+          <div class="row">
+
+            <!--Grid column-->
+            <div class="col-md-6" id="li" *ngFor="let teacher of teacherList | appFilter: searchText:searchPrice:searchPriceHigh:searchPlace" (click)="getRecrecommendation(teacher)" >
+          
+              <mdb-card class="testimonial-card" style="float: right !important; width:100%; margin: 5%" >
+                <!--Bacground color-->
+                <div class="card-up indigo lighten-1" id="color">
+                </div>
+          
+                <!--Avatar-->
+                <div class="avatar mx-auto">
+                  <img src="assets/icon.jpg" class="rounded-circle" style="width: 7vw;">
+                </div>
+          
+                <mdb-card-body>
+                  <!--Name-->
+                  <mdb-card-title>
+                    <h4>המורה {{teacher.firstName}} {{ teacher.lastName}}</h4>
+                  </mdb-card-title>
+                  <hr>
+                  <!--Quotation-->
+                  <div class="container" id="container">
+                  <p class="details">
+                    <!-- <mdb-icon fas icon="quote-left"></mdb-icon> -->
+                    מקצוע:{{teacher.SubjectName}}
+                    </p>
+          <p class="details">מחיר: {{teacher.PriceForLesson}} ש"ח</p>
+          <p class="details">פלאפון: {{teacher.phone}}</p>
+          <p class="details">מייל: {{teacher.email}}</p>
+          <p class="details">כתובת: {{teacher.city }} {{teacher.street }} {{teacher.numhouse}}</p>
+        </div>
+
+        <button  *ngIf="check(teacher.Qualifications)==true" matButton (click)="DownloadCVFile(teacher)"  style="border: none;"><mdb-icon far icon="file-alt" ></mdb-icon>הצגת קו"ח</button>  
+        <br>
+        <br>
+
+        <button mat-raised-button="primary" class="mat-focus-indicator mat-raised-button mat-button-base" (click)="addLesson(teacher)" style="color: #dd1d8e ;" ><i class="fa fa-calendar"></i>
+          לקביעת שיעור אונלין</button>
+          <div *ngIf="TeacherService.IsChossen()==true" dir="ltr">
+            <app-add-lesson></app-add-lesson>
+        </div>
+
+      </mdb-card-body>
+              </mdb-card>
+          
+            </div>
+            <!--Grid column-->
+          
+          
+          </div>
+          <!--Grid row-->
+
+
+
+
+
+          <!-- <h1>המורה {{teacher.firstName}} {{ teacher.lastName}}</h1>
           <p>{{teacher.SubjectName}}</p>
           <p>מחיר: {{teacher.PriceForLesson}} ש"ח</p>
           <p>פלאפון: {{teacher.phone}}</p>
+          <p>פלאפון: {{teacher.email}}</p>
+          <p>פלאפון: {{teacher.city }} {{teacher.street }} {{teacher.numhouse}}</p> -->
+
+
+
+
           <!-- <div *ngIf="check(teacher.Qualifications)==true">
             <button mat-fab color="red" aria-label="Example icon button with a bookmark icon" (click)="open()">
                 <i class='fas fa-graduation-cap' style='font-size:190%' ></i>
@@ -69,13 +124,7 @@
             </div>
         </div> -->
       
-        <button    *ngIf="check(teacher.Qualifications)==true" matButton (click)="DownloadCVFile(teacher)">הצג קובץ קו"ח</button>  
-
-          <button mat-stroked-button color="primary" (click)="addLesson(teacher)"><i class="fa fa-calendar"></i>
-            לקביעת שיעור אונלין</button>
-            <div *ngIf="TeacherService.IsChossen()==true" dir="ltr">
-              <app-add-lesson></app-add-lesson>
-          </div>
+        
           <!-- <div *ngIf="check(teacher)==true">
             <img src="assets/{{teacher.Qualifications}}">
           </div>
@@ -86,4 +135,11 @@
     </ul>
   </div>
   </div>
+  
+
+  
+
+
+
+
   

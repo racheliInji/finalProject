@@ -130,6 +130,25 @@ namespace WebApi.Controllers
             }
 
         }
+
+        [HttpPut]
+        [Route("updateSubject")]
+        public bool updateSubject(SubjectToTeacherDTO subject)
+        {
+
+            try
+            {
+              return  BL.TeacherBL.updateSubject(subject);
+               
+            }
+            catch (Exception e)
+            {
+               
+                Console.WriteLine(e.ToString());
+                return false;
+            }
+
+        }
         [HttpPut]
         [Route("updateTeacher")]
         public IHttpActionResult updateTeacher(TeacherDTO.UserAndTeacherDTO userAndTeacherDTO)

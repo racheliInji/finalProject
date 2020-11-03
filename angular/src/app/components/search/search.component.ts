@@ -3,6 +3,7 @@ import { TeacherService } from 'src/app/services/teacher.service';
 import { Router } from '@angular/router';
 import { AddLessonService } from 'src/app/services/add-lesson.service';
 import { SubjectToTeacher } from 'src/app/class/subject-to-teacher';
+import { Address } from 'cluster';
 
 @Component({
   selector: 'app-search',
@@ -22,6 +23,7 @@ export class SearchComponent implements OnInit {
   searchLastName: string = '';
   searchPrice: string = '';
   searchPlace:string='';
+  searchPriceHigh: string='';
   userFilter: any = { name: '' };
   src = "C:\Users\USER\Desktop\myproject\project\WebApi\ResourcesFiles"
   constructor(private TeacherService: TeacherService, private AddLessonService: AddLessonService) { }
@@ -107,4 +109,12 @@ this.TeacherService.getRecrecommendation(teacher.userId).subscribe(res=>console.
       return true;
     return false;
   }
+  handleAddressChange(address: Address)
+{
+  console.log(address);
+  console.log(this.searchPlace)
+  
+}
+
+
 }

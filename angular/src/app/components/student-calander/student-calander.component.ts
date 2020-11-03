@@ -88,14 +88,14 @@ export class StudentCalanderComponent implements OnInit {
           title: ' המורה: ' + i.TeacherName + '  שיעור  ' + i.Subject + ' : בשעה ' + i.starTtime,
           color: colors.yellow,
           actions: this.actions,
-          meta: i.TeacherId
+          meta: i
         }
       )
     })
   }
   actions: CalendarEventAction[] = [
     {
-      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
+      label: '<i class="fas fa-fw fa-pencil-alt" ></i>',
       a11yLabel: 'Edit',
       onClick: ({ event }: { event: CalendarEvent }): void => {
 
@@ -104,7 +104,7 @@ export class StudentCalanderComponent implements OnInit {
             {
               title: "הוספת המלצה",
               content: {
-                element: "textarea",
+                element: "input",
                 attributes: {
                   // placeholder: "אני ממליצה........",
                   // name: "recomandation",
@@ -118,7 +118,7 @@ export class StudentCalanderComponent implements OnInit {
             .then((value) => {
               console.log(value);
 
-              this.calanderService.addRecommendation(value, event.meta).subscribe();
+              this.calanderService.addRecommendation(value, event.meta.TeacherId).subscribe();
             });
         }
         else {
@@ -136,8 +136,10 @@ export class StudentCalanderComponent implements OnInit {
       // label: '<i class="fa fa-sticky-note-o"></i>',
       a11yLabel: 'Remarks',
       onClick: ({ event }: { event: CalendarEvent }): void => {
+       console.log( event.meta.Notes);
         swal({
           title: "הערה",
+          text:event.meta.Notes,
           icon: "info",
 
         })
@@ -156,7 +158,7 @@ export class StudentCalanderComponent implements OnInit {
           }).then(
             i => {
               if (i != null) {
-                this.calanderService.deleteLesson(event.meta).subscribe(res => this.calanderService.getLesson());
+                this.calanderService.deleteLesson(event.meta.TeacherId).subscribe(res => this.calanderService.getLesson());
                 this.events = this.events.filter((iEvent) => iEvent !== event);
                 this.handleEvent('Deleted', event);
               }
@@ -282,7 +284,7 @@ export class StudentCalanderComponent implements OnInit {
   }
   teacherDetails: any;
   handleEvent(action: string, event: CalendarEvent): void {
-    this.teacherService.getTeacherById(event.meta).subscribe(res => {
+    this.teacherService.getTeacherById(event.meta.TeacherId).subscribe(res => {
       console.log(res), this.teacherDetails = res,
         this.s =
         "כתובת: " + this.teacherDetails.street + ' ' + this.teacherDetails.numhouse + "  " + this.teacherDetails.city + "\n" + this.teacherDetails.email + "   דואר אלקטרוני:  "

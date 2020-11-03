@@ -27,8 +27,19 @@
     margin-left: 2%;
   }
   #ok{
-    width: 40%;
-    display:table-column
+    width: 15%;
+    display:block;
+    margin-top: 2%;
+    padding:1%;
+    margin-left: -3%;
+  }
+  #add2{
+    width: 15%;
+    margin-top: -6.1%;
+    padding: 1%;
+    /* position: absolute; */
+    float: right;
+    margin-right: 68%;
   }
   .example-container .mat-form-field + .mat-form-field {
     margin-left: 8px;
@@ -62,6 +73,32 @@
     display: inline;
     margin-left: 3%;
 
+  }
+  #file{
+    margin-left: 5%;
+}
+ 
+  #price{
+    width: 30%;
+    margin-top: 4%;
+
+  }
+  #hours{
+  margin-left: 45%;
+  }
+  .mat-form-field-flex{
+    background-color: white !important;
+  }
+  #subject{
+    width: 30%;
+    background-color: rgba(0,0,0,.04)
+
+  }
+  #container{
+    margin-left:30%;
+  }
+  #level{
+    width: 30%;
   }
   /* Hide the browser's default checkbox */
   .container input {

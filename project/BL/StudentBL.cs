@@ -86,6 +86,7 @@ namespace BL
 
         public static List<ScheduleForStudentDTO> GetLessonsByStudentId(int id)
         {
+            var note = "";
             List<ScheduleForStudentDTO> list = new List<ScheduleForStudentDTO>();
             var q = Converters.ScheduleConvert.DtoScheduleList(DAL.ScheduleDAL.GetLessons()).Where(i => i.StudentId == id).ToList();
             var q2 = DAL.UserDal.GetUsers().FirstOrDefault(e => e.userId == id);
@@ -93,6 +94,14 @@ namespace BL
             {
                 var q3 = DAL.UserDal.GetUsers().FirstOrDefault(e => e.userId == i.TeacherId);
                 var q4 = DAL.StudentDAL.GetNotes(id).FirstOrDefault(e => e.ScheduleId == i.ScheduleId);
+                if (q4 != null)
+                {
+                    note = q4.LessonDescribe;
+                }
+                else
+                {
+                    note = "";
+                }
                 ScheduleForStudentDTO ScheduleForStudent = new ScheduleForStudentDTO()
                 {
                     Date = i.Date,
@@ -101,7 +110,7 @@ namespace BL
                     TeacherId = i.TeacherId,
                     StudentName = q2.firstName + ' ' + q2.lastName,
                     TeacherName = q3.firstName + " " + q3.lastName,
-                    Notes =q4.LessonDescribe
+                    Notes = note
                 };
                 list.Add(ScheduleForStudent);
             }

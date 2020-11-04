@@ -25,7 +25,7 @@ export class UpdateTeacherComponent implements OnInit {
   id: number;
   form: any;
   firstFormGroup: any;
-  constructor(private _formBuilder: FormBuilder,private TeacherService: TeacherService, private UserService: UserService) { 
+  constructor(private _formBuilder: FormBuilder, private TeacherService: TeacherService, private UserService: UserService) {
     this.form = this._formBuilder.group({
       email: new FormControl('', EmailValidation),
       password: new FormControl('', PasswordValidation),
@@ -39,22 +39,22 @@ export class UpdateTeacherComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       level: ['',],
       grade: ['',],
-      firstName: ['', ],
-      lastName: ['', ],
-      street: ['', ],
-      numhouse: ['', ],
-      city: ['', ],
-      tz: ['', ],
-      phone: ['', ],
-      email: ['', ],
-      password: ['', ],
+      firstName: ['',],
+      lastName: ['',],
+      street: ['',],
+      numhouse: ['',],
+      city: ['',],
+      tz: ['',],
+      phone: ['',],
+      email: ['',],
+      password: ['',],
       passwordAgain: new FormControl(''),
     }, { validator: RepeatPasswordValidator }
 
     );
   }
 
-  load(){
+  load() {
     if (localStorage.getItem("token")) {
       this.id = this.UserService.getIdByToken();
       console.log(this.id);
@@ -75,9 +75,38 @@ export class UpdateTeacherComponent implements OnInit {
     this.tz = this.teacher.tz;
 
   }
+  check() {
+    if (this.firstFormGroup.value.tz != "") {
+      this.firstName == this.firstFormGroup.value.tz
+    }
+    if (this.firstFormGroup.value.lastName != "") {
+      this.lastName = this.firstFormGroup.value.lastName
+    }
+    if (this.firstFormGroup.value.city != "") {
+      this.city = this.firstFormGroup.value.city;
+    }
+    if (this.firstFormGroup.value.street != "") {
+      this.street = this.firstFormGroup.value.street;
+    }
+    if (this.firstFormGroup.value.numhouse != "") {
+      this.numhouse = this.firstFormGroup.value.numhouse;
+    }
+    if (this.firstFormGroup.value.email != "") {
+      this.email = this.firstFormGroup.value.email;
+    }
+    if (this.firstFormGroup.value.password != "") {
+      this.password = this.firstFormGroup.value.password
+    }
+    if (this.firstFormGroup.value.phone != "") {
+      this.phone = this.firstFormGroup.value.phone
+    }
+  }
 
   updateTeacher() {
+    debugger;
+    this.check();
+    console.log("hi");
     this.TeacherService.updateTeacher(new Teacher(this.tz, this.firstName, this.lastName, this.city, this.street, this.numhouse,
-      this.email, this.password, this.phone, '')).subscribe(i=>{this.load()});
+      this.email, this.password, this.phone, '')).subscribe(i => { this.load() });
   }
 }

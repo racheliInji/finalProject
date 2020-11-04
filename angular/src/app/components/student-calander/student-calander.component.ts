@@ -72,7 +72,7 @@ export class StudentCalanderComponent implements OnInit {
   };
   ngOnInit() {
     // console.log(this.calanderService.lessonListForStudent);
-
+    this.getLesson();
   }
   getLesson() {
     this.calanderService.getLesson();
@@ -81,6 +81,7 @@ export class StudentCalanderComponent implements OnInit {
 
   }
   putlesson() {
+    console.log(this.lessonList);
     this.lessonList.forEach(i => {
       this.events.push(
         {
@@ -93,9 +94,10 @@ export class StudentCalanderComponent implements OnInit {
       )
     })
   }
+  note: any
   actions: CalendarEventAction[] = [
     {
-      label: '<i class="fas fa-fw fa-pencil-alt" ></i>',
+      label: '<i class="far fa-thumbs-up"></i>',
       a11yLabel: 'Edit',
       onClick: ({ event }: { event: CalendarEvent }): void => {
 
@@ -136,10 +138,15 @@ export class StudentCalanderComponent implements OnInit {
       // label: '<i class="fa fa-sticky-note-o"></i>',
       a11yLabel: 'Remarks',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-       console.log( event.meta.Notes);
+        console.log(event.meta.Notes);
+        if (event.meta.Notes == "" || event.meta.Notes == null)
+          this.note = "לא עודכן הערה"
+        else {
+          this.note = event.meta.Notes
+        }
         swal({
           title: "הערה",
-          text:event.meta.Notes,
+          text: this.note,
           icon: "info",
 
         })
@@ -224,7 +231,7 @@ export class StudentCalanderComponent implements OnInit {
   activeDayIsOpen: boolean = false;
 
   constructor(public dialog: MatDialog, private router: Router, private teacherService: TeacherService, private calanderService: CalanderService, private modal: NgbModal) {
-    this.getLesson();
+    // this.getLesson();
   }
   s: string;
   // openDialog(): void {

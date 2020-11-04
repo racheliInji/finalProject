@@ -78,7 +78,39 @@ export class UpdateStudentComponent implements OnInit {
       this.tz= this.student.tz
  
   }
+  check() {
+    if (this.firstFormGroup.value.tz != "") {
+      this.firstName == this.firstFormGroup.value.tz
+    }
+    if (this.firstFormGroup.value.lastName != "") {
+      this.lastName = this.firstFormGroup.value.lastName
+    }
+    if (this.firstFormGroup.value.city != "") {
+      this.city = this.firstFormGroup.value.city;
+    }
+    if (this.firstFormGroup.value.street != "") {
+      this.street = this.firstFormGroup.value.street;
+    }
+    if (this.firstFormGroup.value.numhouse != "") {
+      this.numhouse = this.firstFormGroup.value.numhouse;
+    }
+    if (this.firstFormGroup.value.email != "") {
+      this.email = this.firstFormGroup.value.email;
+    }
+    if (this.firstFormGroup.value.password != "") {
+      this.password = this.firstFormGroup.value.password
+    }
+    if (this.firstFormGroup.value.phone != "") {
+      this.phone = this.firstFormGroup.value.phone
+    }
+    if (this.firstFormGroup.value.grade != "") {
+      this.grade = this.firstFormGroup.value.grade
+    } if (this.firstFormGroup.value.level != "") {
+      this.level = this.firstFormGroup.value.level
+    }
+  }
   updateStudent() {
+    this.check();
     this.StudentService.updateStudent(new Student(this.tz, this.firstName, this.lastName, this.city, this.street, this.numhouse,
       this.email, this.password, this.phone, this.grade, this.level)).subscribe();
   }

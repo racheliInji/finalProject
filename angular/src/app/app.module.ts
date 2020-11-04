@@ -55,6 +55,9 @@ import { MyDialogComponent } from './components/my-dialog/my-dialog.component';
 import { FootrerComponent } from './components/footrer/footrer.component';
 import { AddTeacherComponent } from './components/add-teacher/add-teacher.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { ModalContainerComponent } from './components/modal-container/modal-container.component';
+import { ModalContentComponent } from './components/modal-content/modal-content.component';
+import { RecommandationComponent } from './components/recommandation/recommandation.component';
 
 
 @NgModule({
@@ -87,6 +90,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     MyDialogComponent,
     FootrerComponent,
     AddTeacherComponent,
+    ModalContainerComponent,
+    ModalContentComponent,
+    RecommandationComponent,
     
   ],
   imports: [
@@ -142,14 +148,14 @@ import {MatStepperModule} from '@angular/material/stepper';
       useFactory: adapterFactory,
     }),
   ],
-
+   
   providers: [  {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},DatePipe,{ provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check' },
   { 
     provide: HTTP_INTERCEPTORS,
     useClass: AuInterceptor,
     multi: true
   },],
-
+  entryComponents: [ ModalContentComponent,HomeComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

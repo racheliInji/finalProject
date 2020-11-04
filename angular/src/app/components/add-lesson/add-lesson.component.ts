@@ -59,7 +59,7 @@ export class AddLessonComponent implements OnInit {
   hoursList: any[] = [];
   dayList: any[] = [];
 
-  constructor(private router: Router, private TeacherService: TeacherService, private modal: NgbModal, private datePipe: DatePipe, private addLessonService: AddLessonService, private calanderService:CalanderService) { }
+  constructor(private router: Router, private TeacherService: TeacherService, private modal: NgbModal, private datePipe: DatePipe, private addLessonService: AddLessonService, private calanderService: CalanderService) { }
 
   ngOnInit() {
     this.getTeachersDays();
@@ -121,7 +121,10 @@ export class AddLessonComponent implements OnInit {
   };
   addLesson() {
     console.log("addLesson!!!!!1")
-    this.addLessonService.addLesson(this.formatedDate, this.starTtime).subscribe(i => swal("השיעור נוסף בהצלחה!", "", "success")
+    this.addLessonService.addLesson(this.formatedDate, this.starTtime).subscribe(i => {
+      this.calanderService.getLessonForStudent(),
+        swal("השיעור נוסף בהצלחה!", "", "success");
+    }
     );
   }
   formatedDate: any;
@@ -142,15 +145,15 @@ export class AddLessonComponent implements OnInit {
           this.calanderService.getLesson();
         }
         else {
-          swal( {
-            title:"לקביעת שיעור עליך להיות רשום",
+          swal({
+            title: "לקביעת שיעור עליך להיות רשום",
             icon: "info",
             // dangerMode: true,
             buttons: ["ביטול", "לרשום"],
           }).then(
             i => {
               if (i != null) {
-                this.addLessonService.newUser=true;
+                this.addLessonService.newUser = true;
                 this.router.navigate(['/newStudent']);
               }
             }

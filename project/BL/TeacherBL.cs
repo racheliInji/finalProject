@@ -35,8 +35,10 @@ namespace BL
             DAL.TeacherDAL.addTeacher(Converters.TeacherConver.GetTeacher(teacherDTO), Converters.UserConvert.GetUser(userDTO));
         }
 
-
-
+        public static TeacherDTO.TeacherAndSubjectDTO GetTeacherAndSubjectById(int id)
+        {
+           return GetTeacherAndSubject().FirstOrDefault(i => i.userId == id);
+        }
 
         public static TeacherDTO getTeacherById(int id)
         {
@@ -67,7 +69,9 @@ namespace BL
                         password = u.password,
                         email = u.email,
                         tz = u.tz,
-                        Qualifications = teacher.Qualifications
+                        Qualifications = teacher.Qualifications,
+                      
+                        
                     };
                     return UserAndTeacherDTO;
                 }

@@ -1,0 +1,68 @@
+// #contain{
+//     width: 40vw;
+//     height: 60vh;
+//     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+//     align-items: center;
+//     text-align: center;
+// }
+#contain{
+   
+    text-align: right;
+    margin-right: 10%;
+    margin-top: 3%;
+}
+i{
+    font-size: xx-large;
+    margin-left: 2%;
+    color: #dd1d8e;
+}
+#teacher{
+    margin-left: 25%;
+
+}
+#cap{
+    font-size:150%;
+    color:black;
+    // margin-left: 6%;
+
+}
+mat-card-subtitle{
+    font-size: larger;
+}
+
+#close{
+    direction: rtl;
+    margin-left: 95%;
+    /* text-align: right; */
+    font-size: xxx-large;
+    position: absolute;
+    margin-top: -1%;
+}
+.details{
+    font-size:x-large;
+    margin-top: 2%;
+}
+h1{
+font-weight: 180px;
+margin-bottom: 3%;
+}
+#profile{
+    border: solid #dd1d8e;
+}
+.example-card {
+    max-width: 80%;
+    height: 20%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  }
+  
+  .example-header-image {
+    background-image: url('/assets/icon.jpg');
+    background-size: cover;
+  }
+  #feedback{
+      direction: rtl;
+      margin-left: 20%;
+      margin-top: 3%;
+      height: 40%;
+  }

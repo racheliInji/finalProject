@@ -143,9 +143,9 @@ namespace WebApi.Controllers
                     return Ok(q);
                 return NotFound();
             }
-            catch
+            catch(Exception e)
             {
-                return BadRequest();
+                return BadRequest(e.ToString());
 
             }
 

@@ -66,7 +66,7 @@ namespace DAL
                         user.password = userAndTeacherDTO.password;
                         user.email = userAndTeacherDTO.email;
                         user.tz = userAndTeacherDTO.tz;
-
+                        break;
                     };
                 }
                 foreach (var teacher in db.Teachers)
@@ -74,7 +74,7 @@ namespace DAL
                     if (teacher.TeacherId == id)
                     {
                         teacher.Qualifications = userAndTeacherDTO.Qualifications;
-     
+                        break;
                     }
                 }
 

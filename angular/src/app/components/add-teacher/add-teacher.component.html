@@ -105,17 +105,17 @@
                         <mat-label> אימות סיסמא </mat-label>
                         <input matInput formControlName="passwordAgain" placeholder="" type="password"
                             [errorStateMatcher]="passwordsMatcher" required>
-                        <mat-error *ngIf="firstFormGroup.hasError('passwordsNotEqual')">Passwords are different. They
-                            should be
-                            equal!</mat-error>
+                        <mat-error *ngIf="firstFormGroup.hasError('passwordsNotEqual')">הסיסמאות אינם זהות!
+                        </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="file">
                         <i class="material-icons" style="font-size:36px;  margin-left: 110%;">file_upload</i></label>
 
                     <input name="selectFile" type="file" id="file" (change)="selectFile($event)">
-                </div>
+                </div> -->
+                <input type="file" (change)="selectFile($event)" >
                 <!-- <div class="form-group">
                     <app-file></app-file>
                 </div> -->
@@ -160,13 +160,14 @@
                         <option value=3>תיכון</option>
                         <option value=4>סמינר</option>
                         <option value=5>השתלמות</option>
-                        <option value=4>אחר</option>
+                        <option value=6>אחר</option>
                     </select>
                 </mat-form-field>
-                <button mat-button matStepperNext mat-raised-button color="primary" [disabled]="!secondFormGroup.valid"
-                    id="ok" (click)="addSubjectToTeacher()">שמור והמשך</button>
-                <button mat-button mat-raised-button color="primary" [disabled]="!secondFormGroup.valid" id="add2"
+                <button  mat-button mat-stroked-button color="primary" [disabled]="!secondFormGroup.valid" id="add2"
                     (click)="addAnother()"> מקצוע נוסף</button>
+                <button mat-button matStepperNext mat-stroked-button color="primary" [disabled]="!secondFormGroup.valid"
+                    id="ok" (click)="addSubjectToTeacher()">שמור והמשך</button>
+
             </div>
             <!-- <button mat-raised-button color="primary" name="ok" type="search" id="ok" value="אישור"
                             (click)="addSubjectToTeacher()">אישור</button> -->
@@ -174,7 +175,7 @@
         </form>
         <!-- </form> -->
         <div>
-            <button mat-button matStepperPrevious>חזרה</button>
+            <!-- <button mat-button matStepperPrevious>חזרה</button> -->
             <!-- <button mat-button matStepperNext>הבא</button> -->
         </div>
     </mat-step>
@@ -495,17 +496,13 @@
                 <input type="checkbox" [(ngModel)]="isChecked121" (change)="checkValue(isChecked62?121:1210)">
                 <span class="checkmark"></span>21:00-22:00
             </label>
-            <div>
-                <button mat-button matStepperPrevious>חזרה</button>
-                <button mat-button matStepperNext>הבא</button>
-            </div>
 
 
         </div>
     </mat-step>
     <mat-step label="נרשמת בהצלחה">
         <!-- <ng-template matStepLabel>Done</ng-template> -->
-        <p>You are now done.</p>
-        <button mat-button matStepperPrevious>חזרה</button>
+        <img src="assets/הוספת מורה.jpg">
+        <!-- <button mat-button matStepperPrevious>חזרה</button> -->
     </mat-step>
 </mat-horizontal-stepper>

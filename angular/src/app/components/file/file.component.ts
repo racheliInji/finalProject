@@ -21,16 +21,17 @@ export class FileComponent implements OnInit {
   selectFile(event) {
     this.selectedfile = <File>event.target.files[0];
     if ((this.selectedfile.type != "application/pdf")) {
-      swal("!!!!!!PDF ניתן לטעות רק קבצי ", "", "info")
+      swal("!!!!!!PDF ניתן לטעון רק קבצי ", "", "info")
     }
     else {
+      console.log('hhh');
       const fd = new FormData();
       fd.append('file', this.selectedfile, this.selectedfile.name);
       this.nameFile = this.selectedfile.name;
       console.log(this.selectedfile.type)
-      this.teacherService.addfile(fd, this.selectedfile.name).subscribe(res => { });
+      this.teacherService.addfile(fd, this.selectedfile.name).subscribe();
     }
-
+    return false
   }
 
 }

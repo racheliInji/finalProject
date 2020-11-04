@@ -22,6 +22,7 @@ import { StudentCalanderComponent } from './components/student-calander/student-
 import { StudentHomeComponent } from './components/student-home/student-home.component';
 import { TeacherhomeComponent } from './components/teacherhome/teacherhome.component';
 import { AddTeacherComponent } from './components/add-teacher/add-teacher.component';
+import { RecommandationComponent } from './components/recommandation/recommandation.component';
 
 
 
@@ -52,7 +53,9 @@ const routes: Routes = [
   { path: 'יציאה', component: ExitComponent },
   { path: 'לוח שנה לתלמידה', component: StudentCalanderComponent },
   { path: 'למורה בית', component: TeacherhomeComponent },
-  { path: 'teacherHome', component: TeacherhomeComponent }
+  { path: 'teacherHome', component: TeacherhomeComponent },
+  {path:'recommandation/:teacherId',component:RecommandationComponent}
+  
 
 ];
 

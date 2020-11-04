@@ -29,14 +29,34 @@ select{
     margin-left:2%;
     width: 70%;
 }
+// #save{
+//     position: absolute;
+//     margin-top:24%;
+//     padding: 1%;
+//     width:10vw !important;
+//     margin-bottom: 5%;
+//     margin-left: 39%;
+// }
 #save{
-    position: absolute;
-    margin-top:24%;
-    padding: 1%;
-    width:10vw !important;
-    margin-bottom: 5%;
-    margin-left: 39%;
+  position: absolute;
+  margin-top:22%;
+  padding: 1%;
+  width:40vw !important;
+  margin-bottom: 5%;
+  margin-left: -11%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
+#save2{
+  position: absolute;
+  margin-top:22%;
+  padding: 1%;
+  width:40vw !important;
+  margin-bottom: 5%;
+  margin-left: -11%;
+
+}
+
 .mat-form-field-flex{
     background-color: white !important;
 }

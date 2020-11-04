@@ -110,16 +110,16 @@ export class AddTeacherComponent implements OnInit {
   selectFile(event) {
     this.selectedfile = <File>event.target.files[0];
     if ((this.selectedfile.type != "application/pdf")) {
-      swal("!!!!!!PDF ניתן לטעות רק קבצי ", "", "info")
+      swal("!!!!!!PDF ניתן לטעון רק קבצי ", "", "info")
     }
     else {
+      //console.log(this.selectedfile.type)
       const fd = new FormData();
       fd.append('file', this.selectedfile, this.selectedfile.name);
       this.nameFile = this.selectedfile.name;
       console.log(this.selectedfile.type)
-      this.TeacherService.addfile(fd, this.selectedfile.name).subscribe(res => { });
+      this.TeacherService.addfile(fd, this.selectedfile.name).subscribe();
     }
-
   }
   addTeacher() {
     this.flag = true;

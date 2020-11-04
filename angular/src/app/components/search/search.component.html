@@ -41,15 +41,15 @@
       <div class="form-group">
        
       </div>
-      <ul class="list-group list-group-flush" >
+      <ul class="list-group list-group-flush col-md-12" >
   
-        <li class="teacher" >
+        <li class="teacher col-md-12" >
 
 
-          <div class="row">
+          <div class="row col-md-12">
 
             <!--Grid column-->
-            <div class="col-md-6" id="li" *ngFor="let teacher of teacherList | appFilter: searchText:searchPrice:searchPriceHigh:searchPlace" (click)="getRecrecommendation(teacher)" >
+            <div class="col-md-4" id="li" *ngFor="let teacher of teacherList | appFilter: searchText:searchPrice:searchPriceHigh:searchPlace"  >
           
               <mdb-card class="testimonial-card" style="float: right !important; width:100%; margin: 5%" >
                 <!--Bacground color-->
@@ -88,6 +88,9 @@
           <div *ngIf="TeacherService.IsChossen()==true" dir="ltr">
             <app-add-lesson></app-add-lesson>
         </div>
+        <button mat-raised-button="primary" class="mat-focus-indicator mat-raised-button mat-button-base" (click)="getRecrecommendation(teacher)" style="color: #dd1d8e ;margin-right: 2%;" ><i class="far fa-thumbs-up"></i>
+          להמלצות</button>
+        <!-- <button   matButton (click)="getRecrecommendation(teacher)"  style="border: none;"><mdb-icon far icon="thumbs-o-up" ></mdb-icon>להמלצות</button>   -->
 
       </mdb-card-body>
               </mdb-card>

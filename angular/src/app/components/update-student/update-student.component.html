@@ -255,11 +255,12 @@
                     <mat-form-field appearance="fill" id="level">
                         <mat-label>בחר שכבה</mat-label > 
                         <select matNativeControl  formControlName="grade" [value]="grade"  class="form-control">
-                            <option value=1>א - ד יסודי</option>
-                            <option value=2>ה- ו יסודי</option>
-                            <option value=3>ז- ח יסודי</option>
-                            <option value=4>תיכון</option>
-                            <option value=5>השתלמות</option>
+                                <option value=1>יסודי </option>
+                                <option value=2>חטיבת ביניים </option>
+                                <option value=3>תיכון</option>
+                                <option value=4>סמינר</option>
+                                <option value=5>השתלמות</option>
+                                <option value=4>אחר</option>
                         </select>
                     </mat-form-field>
                 </div>
@@ -279,7 +280,7 @@
             </div>
 
         </div>
-        <div class="form-group" id="save">
+        <div class="form-group" id="save2">
                 <!-- <button type="submit" mat-raised-button (click)="addStudent()">לרישום</button> -->
                 <div class="form-bottom">
                         <button mat-raised-button color="accent" (click)="updateStudent()" id="save">לעדכון</button>

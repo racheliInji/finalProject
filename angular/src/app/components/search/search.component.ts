@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit {
   searchPriceHigh: string='';
   userFilter: any = { name: '' };
   src = "C:\Users\USER\Desktop\myproject\project\WebApi\ResourcesFiles"
-  constructor(private TeacherService: TeacherService, private AddLessonService: AddLessonService) { }
+  constructor(private router: Router,private TeacherService: TeacherService, private AddLessonService: AddLessonService) { }
 
   ngOnInit() {
     this.getTeachers();
@@ -40,10 +40,9 @@ export class SearchComponent implements OnInit {
   }
   getTeachers() {
     this.TeacherService.getTeacherAndSubject().subscribe(res => { this.teacherList = res, console.log(this.teacherList) });
-    // this.searchText=
   }
   getRecrecommendation(teacher){
-this.TeacherService.getRecrecommendation(teacher.userId).subscribe(res=>console.log(res));
+this.router.navigate(['/recommandation',teacher.userId])
   }
   check(teacher: any) {
     // console.log(teacher);

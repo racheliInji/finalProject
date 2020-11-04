@@ -34,6 +34,26 @@ namespace WebApi.Controllers
             }
 
         }
+        
+            [HttpGet]
+        [Route("GetTeacherAndSubjectById/{id}")]
+        public IHttpActionResult GetTeacherAndSubjectById(int id)
+        {
+
+            try
+            {
+                var q = BL.TeacherBL.GetTeacherAndSubjectById(id);
+                if (q != null)
+                    return Ok(q);
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest();
+            }
+
+        }
         [HttpGet]
         [Route("GetTeacherAndSubject")]
         public IHttpActionResult GetTeacherAndSubject()

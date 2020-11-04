@@ -21,7 +21,7 @@ namespace DAL
             using (RacheliandDiniEntities3 db = new RacheliandDiniEntities3())
             {
                 int index = db.SubjectToTeachers.ToList().FindIndex(item => item.TeacherId == subjectToTeacher.TeacherId &&
-                item.Subject.Contains(subjectToTeacher.Subject)&& item.GradesRange.Contains(subjectToTeacher.GradesRange) && item.PriceForLesson== subjectToTeacher.PriceForLesson);
+                item.Subject.Contains(subjectToTeacher.Subject)&& item.GradesRange.Contains(subjectToTeacher.GradesRange) );
                 if (index >= 0)
                 {
                     return true;

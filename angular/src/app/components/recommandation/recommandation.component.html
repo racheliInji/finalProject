@@ -1,0 +1,28 @@
+<mat-icon id="close" (click)="close()"> close</mat-icon>
+
+<div id="contain">
+        <!-- class="col-md-6" -->
+<div >
+    <h1 id="teacher">המורה {{teacher.firstName}} {{ teacher.lastName}}<i class='fas fa-graduation-cap' id="cap"></i>
+    </h1>
+    <p class="details">
+        מקצוע: {{teacher.SubjectName}}<i class="fas fa-chalkboard-teacher" ></i>
+    </p>
+    <p class="details">מחיר: {{teacher.PriceForLesson}} ש"ח <i class="far fa-money-bill-alt"></i></p>
+    <p class="details">פלאפון : {{teacher.phone}}<i class="fas fa-phone"></i></p>
+    <p class="details">מייל: {{teacher.email}} <i class="far fa-envelope"></i></p>
+    <p class="details">כתובת: {{teacher.city }} {{teacher.street }} {{teacher.numhouse}}<i class="fas fa-map-marker-alt"></i>  </p>
+</div>
+<div *ngFor="let Feedback of FeedbackList">
+    <div *ngIf="check(Feedback)==true">
+            <mat-card class="example-card" id="feedback" *ngIf="check(Feedback)==true">
+                    <mat-card-header>
+                      <div mat-card-avatar id="profile" class="example-header-image"></div>
+                      <!-- <mat-card-title>Shiba Inu</mat-card-title> -->
+                      <mat-card-subtitle>  {{Feedback.RecommendationContents}}</mat-card-subtitle>
+                    </mat-card-header>
+                  </mat-card>
+            </div>
+    </div>
+
+</div>

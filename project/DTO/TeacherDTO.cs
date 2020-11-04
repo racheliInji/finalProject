@@ -23,6 +23,7 @@ namespace DTO
             public string email { get; set; }
             public string password { get; set; }
             public string phone { get; set; }
+
             //public UserDTO userDTO { get; set; }
             //public TeacherDTO teacherDTO { get; set; }
         };

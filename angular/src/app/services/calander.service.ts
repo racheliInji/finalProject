@@ -20,7 +20,6 @@ export class CalanderService {
   userId = this.userService.getIdByToken();
 
   getLesson() {
-   
     console.log(this.userService.getIdByToken())
     return this.http.get<any[]>(`${environment.URL + '/Schedule/GetLessonsByteacherId'}/${this.userService.getIdByToken()}`).subscribe(res => { this.lessonList = res; console.log(this.lessonList) })
   }

@@ -34,7 +34,10 @@ export class TeacherService {
   getTeachers() {
     return this.http.get<Teacher[]>(environment.URL + '/Teacher/GetTeachers');
   }
-
+  getTeacherAndSubjectById(id) {
+    console.log("id");
+    return this.http.get<any>(`${environment.URL + '/Teacher/GetTeacherAndSubjectById'}/${id}`);
+  }
   getTeacherById(id) {
     console.log("id");
     return this.http.get<any>(`${environment.URL + '/Teacher/getTeacherById'}/${id}`);

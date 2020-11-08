@@ -121,7 +121,7 @@ export class CalanderComponent implements OnInit {
         swal(
           {
 
-            title: "הוספת הערה",
+            title: " הוספת הערה לתלמידה",
             content: {
               element: "input",
               attributes: {

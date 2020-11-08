@@ -127,8 +127,8 @@
             </div> -->
             <div>
                 <!--  formControlName="save"-->
-                <button mat-button matStepperNext (click)="addTeacher()" [disabled]="!firstFormGroup.valid">שמור
-                    והמשך</button>
+                <!-- <button mat-button matStepperNext (click)="addTeacher()" [disabled]="!firstFormGroup.valid">שמור
+                    והמשך</button> -->
             </div>
 
         </form>
@@ -502,6 +502,7 @@
     </mat-step>
     <mat-step label="נרשמת בהצלחה">
         <!-- <ng-template matStepLabel>Done</ng-template> -->
+        <input id="teacherHome" type="submit" value="לאזור האישי" (click)="teacherHome()" >
         <img src="assets/הוספת מורה.jpg">
         <!-- <button mat-button matStepperPrevious>חזרה</button> -->
     </mat-step>

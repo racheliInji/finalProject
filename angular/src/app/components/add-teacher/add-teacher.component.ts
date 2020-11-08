@@ -65,10 +65,10 @@ export class AddTeacherComponent implements OnInit {
       this.flag = true;
       this.addTeacher();
     }
-    else if (event.selectedIndex == 2 && this.flag2 == false) {
-      this.flag2 = true;
-      this.addSubjectToTeacher();
-    }
+    // else if (event.selectedIndex == 2 && this.flag2 == false) {
+    //   this.flag2 = true;
+    //   this.addSubjectToTeacher();
+    // }
   }
   ngOnInit() {
 
@@ -312,4 +312,6 @@ export class AddTeacherComponent implements OnInit {
       this.endHour = '22:00:00'
     }
   }
+teacherHome(){  this.router.navigate(['/teacherHome'])}
+
 }
